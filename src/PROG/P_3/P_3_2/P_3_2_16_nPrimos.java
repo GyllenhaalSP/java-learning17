@@ -3,9 +3,9 @@ package PROG.P_3.P_3_2;
 import javax.swing.JOptionPane;
 
 public class P_3_2_16_nPrimos {
-
+    //Mostrar en pantalla los N primeros número primos. Se pide por teclado la cantidad de
+    //números primos que queremos mostrar.
     public static void main(String[] args) {
-
         int range, loop=1, counter=0;
         String esPrimo = "";
         range = Integer.parseInt(JOptionPane.showInputDialog("""
