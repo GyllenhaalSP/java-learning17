@@ -3,6 +3,8 @@ package PROG.P_3.P_3_3;
 import java.util.Scanner;
 
 public class P_3_3_7_numDiasMes {
+//    Escribe un programa que pida un número entero entre uno y doce e imprima el número de días que
+//    tiene el mes correspondiente.
     public static void main(String[] args) {
         int num;
         char ch;

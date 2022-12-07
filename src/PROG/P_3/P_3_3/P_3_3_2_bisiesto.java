@@ -3,6 +3,9 @@ package PROG.P_3.P_3_3;
 import java.util.Scanner;
 
 public class P_3_3_2_bisiesto {
+//    Escribir un programa que lea un año indicar si es bisiesto. Nota: un año es bisiesto si es un
+//    número divisible por 4, pero no si es divisible por 100, excepto que también sea divisible por
+//    400.
     public static void main(String[] args) {
         int year;
         char salir = 'n';
