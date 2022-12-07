@@ -1,0 +1,17 @@
+package PROG.P_REF1EV.P_REF_1;
+
+public class P_REF_1_9 {
+    public static void main(String[] args) {
+        int num, cont = 0, par = 0;
+        java.util.Scanner sc = new java.util.Scanner(System.in);
+        while (cont < 5) {
+            System.out.print("Introduce un número: ");
+            num = Integer.parseInt(sc.nextLine());
+            if (num % 2 == 0) {
+                par++;
+            }
+            cont++;
+        }
+        System.out.println("Has introducido " + par + (par < 2 ? " número par." : " números pares."));
+    }
+}
