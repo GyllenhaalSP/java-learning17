@@ -3,6 +3,13 @@ package PROG.P_3.P_3_4;
 import java.util.Scanner;
 
 public class P_3_4_1_calculadora {
+//    Vamos a realizar las operaciones básicas de una calculadora.
+//    Se capturarán por teclado un operador aritmético y dos valores numéricos.
+//    Para pedir el operador mostraremos el siguiente menú, y pediremos que
+//    se introduzca el número que corresponda a la operación que queremos realizar.
+//        1. + 3. * 5. (MOD) Resto división entera
+//        2. – 4. / 6. División entera
+//    Debemos mostrar un mensaje con la operación efectuada y su resultado.
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int operando, operador, resultado;
@@ -161,7 +168,7 @@ public class P_3_4_1_calculadora {
 
         System.out.println("""
                 Gracias por usar esta calculadora.
-                El programador no se hace responsable resultados inesperados.
+                El programador no se hace responsable de los resultados inesperados.
                 Utilizar con precaución.""");
     }
 }

@@ -3,6 +3,8 @@ package PROG.P_3.P_3_4;
 import java.util.Scanner;
 
 public class P_3_4_3_valorByte {
+//    Declara dos variables del tipo byte. Captura valores para dichos números
+//    comprobando que valores máximos y mínimos son posibles.
     public static void main(String[] args) {
         byte byte1, byte2;
         Scanner sc = new Scanner(System.in);
