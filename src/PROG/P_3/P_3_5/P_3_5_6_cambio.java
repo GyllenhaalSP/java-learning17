@@ -3,6 +3,12 @@ package PROG.P_3.P_3_5;
 import java.util.Scanner;
 
 public class P_3_5_6_cambio {
+//    Diseñar un programa que a partir de una venta y del pago de un producto por parte del comprador,
+//    nos calcule el cambio se tiene que dar utilizando el menor número de monedas o billetes posibles.
+//    Vamos a trabajar con:
+//        ➢ Valor máximo del producto a comprar serán 50 euros.
+//        ➢ Monedas y/o billetes con los que vamos a trabajar son: 50, 20, 10, 5, 2, 1,
+//                                                                  0.50, 0.20, 0.10, 0.05, 0.02 y 0.01.
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Introduce el precio: ");
@@ -73,10 +79,6 @@ public class P_3_5_6_cambio {
             }
         }
     }
-    public static int cambio(int cambio, int cantidad){
-        return cambio/cantidad;
-    }
-    public static int resto(int resto, int cantidad){
-        return resto % cantidad;
-    }
+    public static int cambio(int cambio, int cantidad){return cambio/cantidad;}
+    public static int resto(int resto, int cantidad){return resto % cantidad;}
 }

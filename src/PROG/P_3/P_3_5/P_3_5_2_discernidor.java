@@ -3,6 +3,8 @@ package PROG.P_3.P_3_5;
 import java.util.Scanner;
 
 public class P_3_5_2_discernidor {
+//    Capturamos un carácter y debemos indicar si está en mayúscula, en
+//    minúscula, es un dígito o cualquier otro carácter.
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Introduce cualquier cosa: ");

@@ -3,6 +3,9 @@ package PROG.P_3.P_3_5;
 import java.util.Scanner;
 
 public class P_3_5_3_listaPares {
+//    Introducir un número entero por teclado y deseamos ver la lista de pares
+//    entre el 1 y el número introducido por teclado. Debes comprobar que el
+//    número introducido es mayor que 1.
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int userInput;
