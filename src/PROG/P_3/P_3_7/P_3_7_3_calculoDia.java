@@ -5,6 +5,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class P_3_7_3_calculoDia {
+//    Hacer un organigrama que dados un día D, un mes M y un año A, calcule
+//    cuál es el día siguiente. Se debe tener en cuenta que en los años bisiestos febrero tiene 29 días
+//    y en los no bisiestos 28.
     public static void main(String[] args) {
         int year, month, day;
         boolean flag = false;

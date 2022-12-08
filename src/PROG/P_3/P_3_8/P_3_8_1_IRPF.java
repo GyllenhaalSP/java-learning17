@@ -4,6 +4,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class P_3_8_1_IRPF {
+//    Hacer un programa que sea capaz de calcular el impuesto sobre la renta a partir del salario
+//    anual de una persona y el número de hijos.
+//    Tras cada solicitud de datos y de mostrar el importe del impuesto se pedirá si se quiere
+//    continuar con otro caso (S/N) y el programa terminará al pulsar `N`.
+//    El tipo impositivo será del 15% del salario anual de cada persona si los ingresos son
+//    inferiores a 20.000 euros, del 18% si son superiores o iguales a 20.000 e inferiores a 30.000 y
+//    25% si son superiores a 30.000.
+//    Al salario bruto anual antes de aplicar los porcentajes anteriores se debe realizar una
+//    deducción en función del número de hijos, que es del 0% si tiene 0, del 5% si tiene 1 o 2
+//    y del 15% si tiene más de 2.
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         double hijos, deduccion = 0d, tipoInf = 0.15, tipoMed = 0.18, tipoSup = 0.25;

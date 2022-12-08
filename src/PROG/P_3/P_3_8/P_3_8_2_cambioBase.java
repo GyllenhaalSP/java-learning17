@@ -3,6 +3,9 @@ package PROG.P_3.P_3_8;
 import java.util.Scanner;
 
 public class P_3_8_2_cambioBase {
+//    Se introduce un número en base decimal y deseamos ver su representación en binario, octal
+//    y base cinco. Debemos elegir la representación de ese número entre las tres posibles. Una
+//    vez realizada la primera nos saldrá un mensaje indicando si queremos continuar.
     public static void main(String[] args) {
         String continuar;
         int numero, base;

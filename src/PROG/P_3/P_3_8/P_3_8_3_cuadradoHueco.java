@@ -4,6 +4,10 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class P_3_8_3_cuadradoHueco {
+//    Nos piden dibujar un cuadrado hueco en pantalla.
+//    Por teclado se captura la longitud del lado del cuadrado.
+//    Para la representación del cuadrado, utilizaremos los símbolos de la tabla ASCII (del 169 al 223 ),
+//    a elegir por el programador.
     public static void main(String[] args) {
         Random r = new Random();
         int random = r.nextInt((223-169)+1) + 169;
