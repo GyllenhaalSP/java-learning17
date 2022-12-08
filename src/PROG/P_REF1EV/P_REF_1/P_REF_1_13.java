@@ -3,6 +3,11 @@ package PROG.P_REF1EV.P_REF_1;
 import java.io.IOException;
 
 public class P_REF_1_13 {
+    // Daniel Alonso Lázaro - 2022
+    /*
+    Cuando por fin adivine el número deberemos indicar el número de intentos
+    realizados.
+    */
     public static void main(String[] args) throws IOException, InterruptedException {
         int num1, num2, cont = 0;
         java.util.Scanner sc = new java.util.Scanner(System.in);

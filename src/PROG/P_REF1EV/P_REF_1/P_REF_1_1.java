@@ -3,6 +3,11 @@ package PROG.P_REF1EV.P_REF_1;
 import java.util.Scanner;
 
 public class P_REF_1_1 {
+    // Daniel Alonso Lázaro - 2022
+    /*
+    Queremos calcular la longitud de una circunferencia capturando su radio por
+    teclado y el área y volumen de una esfera.
+    */
     public static void main(String[] args) {
         java.util.Locale.setDefault(java.util.Locale.US);
         final double PI = Math.PI;

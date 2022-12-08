@@ -1,6 +1,11 @@
 package PROG.P_REF1EV.P_REF_1;
 
 public class P_REF_1_9 {
+    // Daniel Alonso Lázaro - 2022
+    /*
+    Modificar el ejercicio anterior para que nos diga al final de la ejecución
+    cuantos números han sido pares.
+    */
     public static void main(String[] args) {
         int num, cont = 0, par = 0;
         java.util.Scanner sc = new java.util.Scanner(System.in);
