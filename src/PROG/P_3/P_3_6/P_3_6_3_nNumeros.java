@@ -3,6 +3,8 @@ package PROG.P_3.P_3_6;
 import java.util.Scanner;
 
 public class P_3_6_3_nNumeros {
+//    Sumar N números introducidos por teclado y mostrar el resultado. El
+//    valor de N se debe haber leído previamente.
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("¿Cuántos números vas a sumar? ");

@@ -3,6 +3,8 @@ package PROG.P_3.P_3_6;
 import java.util.Scanner;
 
 public class P_3_6_2_progresionGeometrica {
+//    Sumar los N primeros términos de una progresión geométrica de primer término A y razón R (dados por teclado).
+//    Se debe realizar la suma sin emplear la fórmula que existe para ello.
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = 1;

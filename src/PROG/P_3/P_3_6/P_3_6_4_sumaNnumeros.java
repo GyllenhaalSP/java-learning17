@@ -3,6 +3,8 @@ package PROG.P_3.P_3_6;
 import java.util.Scanner;
 
 public class P_3_6_4_sumaNnumeros {
+//    Sumar los N primeros impares. Amplíalo después para que haga lo mismo con los pares
+//    y, otro, con los múltiplos de 3.
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Introduce la cantidad de números a imprimir: ");

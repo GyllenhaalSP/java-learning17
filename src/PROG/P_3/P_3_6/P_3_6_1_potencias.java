@@ -1,6 +1,7 @@
 package PROG.P_3.P_3_6;
 
 public class P_3_6_1_potencias {
+//    Escribir las potencias enteras de 2 de 0 a 9. (Usando al menos un while).
     public static void main(String[] args) {
         int i = 0, resultado = 1;
         while(i < 10){
@@ -15,16 +16,10 @@ public class P_3_6_1_potencias {
     }
 
     public static String superindice(String exponente) {
-        exponente = exponente.replaceAll("0", "⁰");
-        exponente = exponente.replaceAll("1", "¹");
-        exponente = exponente.replaceAll("2", "²");
-        exponente = exponente.replaceAll("3", "³");
-        exponente = exponente.replaceAll("4", "⁴");
-        exponente = exponente.replaceAll("5", "⁵");
-        exponente = exponente.replaceAll("6", "⁶");
-        exponente = exponente.replaceAll("7", "⁷");
-        exponente = exponente.replaceAll("8", "⁸");
-        exponente = exponente.replaceAll("9", "⁹");
+        String superindices = "⁰¹²³⁴⁵⁶⁷⁸⁹";
+        for(int i = 0; i < 10; i++){
+            exponente = exponente.replaceAll(Integer.toString(i), Character.toString(superindices.charAt(i)));
+        }
         return exponente;
     }
 }
