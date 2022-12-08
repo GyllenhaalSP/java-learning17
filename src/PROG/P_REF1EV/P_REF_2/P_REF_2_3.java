@@ -3,6 +3,19 @@ package PROG.P_REF1EV.P_REF_2;
 import java.util.Scanner;
 
 public class P_REF_2_3 {
+    // Daniel Alonso Lázaro - 2022
+    /*
+    Nos dan los registros de temperaturas del último mes (noviembre de 2020) de la ciudad de Birobidzhan.
+    Las temperaturas para cada día son 4 registros de las temperaturas diurnas y 4 de las temperaturas nocturnas.
+    Además, pediremos que se introduzca el nombre del responsable que hizo las mediciones cada día.
+    En la entrada de datos hay que validar que los valores de las temperaturas estén comprendidos entre 0º y -20º,
+    de no ser así se mostrará el correspondiente mensaje por pantalla y se repetirá la petición de esa temperatura.
+    Queremos que el programa calcule y muestre:
+        a) Para cada día las temperaturas medias diurna y nocturna.
+        b) Indicar al final del proceso qué día hemos tenido la temperatura nocturna más baja y
+           el responsable de la medición ese día.
+        c) Obtener la temperatura diurna media del mes.
+    */
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);

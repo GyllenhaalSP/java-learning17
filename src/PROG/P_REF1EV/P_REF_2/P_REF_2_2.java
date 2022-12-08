@@ -1,8 +1,19 @@
 package PROG.P_REF1EV.P_REF_2;
 
+import PROG.P_4.P_4_2.P_4_2_7_palindromos;
+
 import java.util.Scanner;
 
 public class P_REF_2_2 {
+    // Daniel Alonso Lázaro - 2022
+    /*
+    Capturamos frases por teclado y deseamos saber el número de vocales que
+    tiene cada frase.
+    Al final del programa indicaremos cuantas vocales en total tenían todas las frases capturadas
+    y el número total de frases.
+    El programa acaba cuando al pedir la nueva frase no se introduzca nada, la entrada quede vacía.
+    */
+
     public static void main(String[] args) {
         String frase;
         int totalVocales = 0;
@@ -13,7 +24,7 @@ public class P_REF_2_2 {
             Scanner sc = new Scanner(System.in);
             System.out.print("Introduce una frase: ");
             frase = sc.nextLine();
-            frase = PROG.P_4.P_4_2.P_4_2_7.normalizador(frase);
+            frase = P_4_2_7_palindromos.normalizador(frase);
             if (!frase.equals("")) {
                 totalFrases++;
                 for (int i = 0; i < frase.length(); i++) {
