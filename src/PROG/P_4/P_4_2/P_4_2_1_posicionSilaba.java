@@ -2,7 +2,13 @@ package PROG.P_4.P_4_2;
 
 import java.util.Scanner;
 
-public class P_4_2_1 {
+public class P_4_2_1_posicionSilaba {
+    // Daniel Alonso Lázaro - 2022
+    /*
+    Capturamos por teclado una palabra y una sílaba, y queremos saber en qué
+    posición empieza la sílaba en la palabra. Tras cada solicitud de entrada de datos
+    preguntar si quiere continuar S o N. (indexOf(string))
+    */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String palabra, silaba;

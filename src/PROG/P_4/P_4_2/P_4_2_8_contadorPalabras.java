@@ -2,7 +2,11 @@ package PROG.P_4.P_4_2;
 
 import java.util.Scanner;
 
-public class P_4_2_8 {
+public class P_4_2_8_contadorPalabras {
+    // Daniel Alonso Lázaro - 2022
+    /*
+    Haz un programa que a partir de una frase introducida por teclado nos diga cuántas palabras contiene.
+    */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Introduce una frase: ");

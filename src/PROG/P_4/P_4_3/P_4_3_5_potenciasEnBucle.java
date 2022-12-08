@@ -2,7 +2,12 @@ package PROG.P_4.P_4_3;
 
 import java.util.Scanner;
 
-public class P_4_3_5 {
+public class P_4_3_5_potenciasEnBucle {
+    // Daniel Alonso Lázaro - 2022
+    /*
+    Capturamos la base y el exponente por teclado y deseamos saber su
+    resultado. El proceso continuará hasta que escribamos la palabra fin.
+    */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String respuesta;

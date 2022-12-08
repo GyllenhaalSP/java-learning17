@@ -2,7 +2,11 @@ package PROG.P_4.P_4_1;
 
 import java.util.Scanner;
 
-public class P_4_1_4 {
+public class P_4_1_4_ordenLexicografico {
+    // Daniel Alonso Lázaro - 2022
+    /*
+    Captura tres palabras por teclado y ordénalas de menor a mayor según el diccionario. (compareTo(String))
+    */
     public static void main(String[] args) {
         String palabra1, palabra2, palabra3, palabraMenor, palabraMediana, palabraMayor;
 

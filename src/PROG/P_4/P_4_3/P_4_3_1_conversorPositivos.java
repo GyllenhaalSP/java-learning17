@@ -2,7 +2,12 @@ package PROG.P_4.P_4_3;
 
 import java.util.Scanner;
 
-public class P_4_3_1 {
+public class P_4_3_1_conversorPositivos {
+    // Daniel Alonso Lázaro - 2022
+    /*
+    Capturamos números enteros por teclado. Si el usuario teclea un número negativo lo convertimos en positivo.
+    Deseamos sabeR cuántos números han sido introducidos y cuántos de ellos han tenido que ser convertidos a positivos.
+    */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String respuesta;

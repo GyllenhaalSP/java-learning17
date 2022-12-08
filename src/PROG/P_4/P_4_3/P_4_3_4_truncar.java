@@ -2,7 +2,13 @@ package PROG.P_4.P_4_3;
 
 import java.util.Scanner;
 
-public class P_4_3_4 {
+public class P_4_3_4_truncar {
+    // Daniel Alonso Lázaro - 2022
+    /*
+    Se capturan números reales por teclado y queremos truncar el
+    número introducido. Vamos a realizarlo con método existente y sin
+    método. Ver si tenemos alguna diferencia.
+    */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String respuesta;

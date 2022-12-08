@@ -3,7 +3,15 @@ package PROG.P_4.P_4_2;
 import java.text.Normalizer;
 import java.util.Scanner;
 
-public class P_4_2_7 {
+public class P_4_2_7_palindromos {
+    // Daniel Alonso Lázaro - 2022
+    /*
+    Capturamos una frase por teclado y deseamos saber si es un palíndromo. Un
+    palíndromo es una palabra, número o frase que se lee igual hacia adelante que
+    hacia atrás. Si se trata de un número, se llama capicúa. (charAt)
+      Ejemplos: La ruta natural, Se van sus naves. Dábale arroz a la zorra el abad,
+      Amo la pacífica paloma, ¿Son mulas o cívicos alumnos? Oirás orar a Rosario. Nada, yo soy Adán.
+    */
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
@@ -22,7 +30,6 @@ public class P_4_2_7 {
         } else {
             System.out.println(palindromo + " no es un palíndromo.");
         }
-        System.out.println(normalizado + palindromo + invertido);
     }
 
     public static String normalizador(String str){

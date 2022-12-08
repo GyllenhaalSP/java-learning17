@@ -2,7 +2,11 @@ package PROG.P_4.P_4_2;
 
 import java.util.Scanner;
 
-public class P_4_2_4 {
+public class P_4_2_4_buscadorInfinitivos {
+    // Daniel Alonso Lázaro - 2022
+    /*
+    Capturamos palabras por teclado y queremos saber si son infinitivos (acaban en ar-er-ir). (endsWith(String))
+    */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Introduce una palabra para saber si es un infinitivo: ");

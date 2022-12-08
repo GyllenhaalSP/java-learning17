@@ -3,7 +3,12 @@ package PROG.P_4.P_4_4;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class P_4_4_5 {
+public class P_4_4_5_relojDigital {
+    // Daniel Alonso Lázaro - 2022
+    /*
+    Realizar un programa que simule el funcionamiento de un reloj digital. Se
+    visualizará en todo momento las horas, minutos y segundos con el formato “hh:mm:ss”.
+    */
     public static void main(String[] args) throws InterruptedException, IOException {
         Scanner sc = new Scanner(System.in);
         System.out.print("Introduce las horas: ");

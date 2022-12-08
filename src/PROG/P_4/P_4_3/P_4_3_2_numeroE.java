@@ -2,7 +2,11 @@ package PROG.P_4.P_4_3;
 
 import java.util.Scanner;
 
-public class P_4_3_2 {
+public class P_4_3_2_numeroE {
+    // Daniel Alonso Lázaro - 2022
+    /*
+    Capturamos un número por teclado y queremos saber el valor de E elevado a ese número. (E^número)
+    */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String respuesta;

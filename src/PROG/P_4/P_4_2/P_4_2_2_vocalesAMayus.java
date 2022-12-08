@@ -2,7 +2,12 @@ package PROG.P_4.P_4_2;
 
 import java.util.Scanner;
 
-public class P_4_2_2 {
+public class P_4_2_2_vocalesAMayus {
+    // Daniel Alonso Lázaro - 2022
+    /*
+    Capturamos una frase por teclado y queremos que todas las vocales aparezcan
+    en mayúsculas. (replace(char viejo, char nuevo))
+    */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 

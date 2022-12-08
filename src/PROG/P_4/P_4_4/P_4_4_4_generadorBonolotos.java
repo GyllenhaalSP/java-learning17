@@ -1,6 +1,11 @@
 package PROG.P_4.P_4_4;
 
-public class P_4_4_4 {
+public class P_4_4_4_generadorBonolotos {
+    // Daniel Alonso Lázaro - 2022
+    /*
+    Queremos sacar 6 números de forma aleatoria para la bonoloto. Los
+    números validos son del 1 al 49.
+    */
     public static void main(String[] args) {
         int cont = 0;
         String combinacion = "";

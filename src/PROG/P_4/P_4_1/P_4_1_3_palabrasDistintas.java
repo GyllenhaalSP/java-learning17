@@ -2,7 +2,12 @@ package PROG.P_4.P_4_1;
 
 import java.util.Scanner;
 
-public class P_4_1_3 {
+public class P_4_1_3_palabrasDistintas {
+    // Daniel Alonso Lázaro - 2022
+    /*
+    Estamos capturando palabras hasta que se repita la primera palabra introducida.
+    Al final del programa debemos visualizar el número de palabras distintas capturadas. (equals(String))
+    */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int contadorPalabras = 1;

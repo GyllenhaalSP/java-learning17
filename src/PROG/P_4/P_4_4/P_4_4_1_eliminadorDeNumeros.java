@@ -1,15 +1,14 @@
-// Daniel Alonso Lázaro
-/*
-Generamos un número aleatorio que tenga 6 cifras (obligatoriamente tiene que tener ese número de cifras).
-Además, se captura un dígito con valor entre 0 a 9. Queremos eliminar dicho dígito del número de 6 cifras,
-suprimiendo del número la posición correspondiente. Visualizar el nuevo número.
-*/
-
 package PROG.P_4.P_4_4;
 
 import java.util.Scanner;
 
-public class P_4_4_1 {
+public class P_4_4_1_eliminadorDeNumeros {
+    // Daniel Alonso Lázaro - 2022
+    /*
+    Generamos un número aleatorio que tenga 6 cifras (obligatoriamente tiene que tener ese número de cifras).
+    Además, se captura un dígito con valor entre 0 a 9. Queremos eliminar dicho dígito del número de 6 cifras,
+    suprimiendo del número la posición correspondiente. Visualizar el nuevo número.
+    */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int num;

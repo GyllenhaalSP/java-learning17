@@ -2,7 +2,11 @@ package PROG.P_4.P_4_3;
 
 import java.util.Scanner;
 
-public class P_4_3_8 {
+public class P_4_3_8_generadorRandoms {
+    // Daniel Alonso Lázaro - 2022
+    /*
+    Genera 10 números aleatorios comprendidos entre 0 y 999.
+    */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String respuesta;

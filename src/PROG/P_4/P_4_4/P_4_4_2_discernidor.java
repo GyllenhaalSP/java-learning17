@@ -1,6 +1,11 @@
 package PROG.P_4.P_4_4;
 
-public class P_4_4_2 {
+public class P_4_4_2_discernidor {
+    // Daniel Alonso Lázaro - 2022
+    /*
+    Capturamos un carácter y debemos indicar si está en mayúscula, en
+    minúscula, es un dígito o cualquier otro carácter.
+    */
     public static void main(String[] args) {
         System.out.print("Introduce un caracter: ");
         char caracter = new java.util.Scanner(System.in).nextLine().charAt(0);
