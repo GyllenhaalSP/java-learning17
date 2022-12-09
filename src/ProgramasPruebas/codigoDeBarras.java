@@ -2,6 +2,8 @@ package ProgramasPruebas;
 import java.util.Scanner;
 
 public class codigoDeBarras {
+    // Daniel Alonso Lázaro - 2022
+
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         String code, newCompleteCode;

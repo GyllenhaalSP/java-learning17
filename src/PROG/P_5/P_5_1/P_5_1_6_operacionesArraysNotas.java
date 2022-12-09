@@ -2,7 +2,7 @@ package PROG.P_5.P_5_1;
 
 import java.util.stream.IntStream;
 
-public class P_5_1_6 {
+public class P_5_1_6_operacionesArraysNotas {
     // Daniel Alonso Lázaro - 2022
     /*
     Realizar un programa Java que cargue un vector con las notas de los 40 alumnos de una clase

@@ -1,6 +1,6 @@
 package PROG.P_5.P_5_0;
 
-public class P_5_0_1 {
+public class P_5_0_1_inicializarArray {
     // Daniel Alonso Lázaro - 2022
     /*
     Crear la matriz ArrayEjemplo de 10 elementos de tipo entero e inicializar sus elementos con el

@@ -2,7 +2,7 @@ package PROG.P_5.P_5_0;
 
 import java.util.Scanner;
 
-public class P_5_0_5 {
+public class P_5_0_5_arrayPaises {
     // Daniel Alonso Lázaro - 2022
     /*
     Crea un vector de tamaño 5, al que llamaras países. En él guardarás los nombres de 5 países que se introduzcan

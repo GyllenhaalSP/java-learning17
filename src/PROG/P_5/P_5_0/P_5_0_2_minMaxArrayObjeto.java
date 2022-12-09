@@ -2,19 +2,17 @@ package PROG.P_5.P_5_0;
 
 import java.util.Scanner;
 
-public class P_5_0_4 {
+public class P_5_0_2_minMaxArrayObjeto {
     // Daniel Alonso Lázaro - 2022
     /*
-    Modifica el ejercicio 2 para que al principio del programa nos pida cuántas posiciones
-    queremos que tenga el vector y sea este dato el que utilicemos para darle dimensión.
+    Crea una matriz de 10 elementos de tipo entero, introduce 10 valores por teclado y
+    almacénalos en los elementos de la matriz para posteriormente comprobar el valor máximo y
+    mínimo almacenado.
     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        int [] matrix = new int[10];
         int mayor, menor;
-
-        System.out.print("Introduce el número de elementos de la matriz: ");
-        int n = sc.nextInt();
-        int [] matrix = new int[n];
 
         System.out.print("Introduce un número: ");
         menor = sc.nextInt();
@@ -29,6 +27,6 @@ public class P_5_0_4 {
                 menor = matrix[i];
             }
         }
-        System.out.println("El valor máximo es " + mayor + " y el valor mínimo es " + menor+".");
+        System.out.println("El valor máximo es " + mayor + " y el valor mínimo es " + menor);
     }
 }

@@ -1,6 +1,6 @@
 package PROG.P_5.P_5_1;
 
-public class P_5_1_2 {
+public class P_5_1_2_sumaArrays {
     // Daniel Alonso Lázaro - 2022
     /*
     A partir de dos vectores numéricos de 15 elementos, denominados vector1 y vector2,

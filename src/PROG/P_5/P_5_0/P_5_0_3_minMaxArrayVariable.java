@@ -2,21 +2,18 @@ package PROG.P_5.P_5_0;
 
 import java.util.Scanner;
 
-public class P_5_0_2 {
+public class P_5_0_3_minMaxArrayVariable {
     // Daniel Alonso Lázaro - 2022
     /*
-    Crea una matriz de 10 elementos de tipo entero, introduce 10 valores por teclado y
-    almacénalos en los elementos de la matriz para posteriormente comprobar el valor máximo y
-    mínimo almacenado.
+    Modifica el ejercicio anterior declarando el vector como una variable.
     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int [] matrix = new int[10];
-        int mayor, menor;
+        int[] matrix = {0,0,0,0,0,0,0,0,0,0};
 
         System.out.print("Introduce un número: ");
-        menor = sc.nextInt();
-        mayor = menor;
+        int menor = sc.nextInt();
+        int mayor = menor;
 
         for(int i = 1; i < matrix.length; i++){
             System.out.print("Introduce un número: ");

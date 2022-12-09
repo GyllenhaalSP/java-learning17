@@ -2,7 +2,7 @@ package PROG.P_5.P_5_1;
 
 import java.util.Random;
 
-public class P_5_1_3 {
+public class P_5_1_3_posicionParesArray {
     // Daniel Alonso Lázaro - 2022
     /*
     Realizar un programa Java que inicialice un array numérico de 10 elementos y visualizar los

@@ -2,7 +2,7 @@ package PROG.P_5.P_5_1;
 
 import javax.swing.*;
 
-public class P_5_1_4 {
+public class P_5_1_4_mediaPosicionesArray {
     // Daniel Alonso Lázaro - 2022
     /*
     Realizar programa Java que permita cargar un vector numérico de 10 elementos desde teclado

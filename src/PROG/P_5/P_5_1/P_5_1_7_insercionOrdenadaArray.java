@@ -1,6 +1,6 @@
 package PROG.P_5.P_5_1;
 
-public class P_5_1_7 {
+public class P_5_1_7_insercionOrdenadaArray {
     // Daniel Alonso Lázaro - 2022
     /*
     Realizar un programa Java que permita cargar por teclado un vector numérico TB_NUM[100],

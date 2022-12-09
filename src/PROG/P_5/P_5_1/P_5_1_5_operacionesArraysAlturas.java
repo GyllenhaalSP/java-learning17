@@ -2,7 +2,7 @@ package PROG.P_5.P_5_1;
 
 import javax.swing.*;
 
-public class P_5_1_5 {
+public class P_5_1_5_operacionesArraysAlturas {
     // Daniel Alonso Lázaro - 2022
     /*
     Hacer un programa que realice las siguientes funciones:
