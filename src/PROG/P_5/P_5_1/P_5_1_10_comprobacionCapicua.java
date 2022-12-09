@@ -11,7 +11,6 @@ public class P_5_1_10_comprobacionCapicua {
         Scanner sc = new Scanner(System.in);
         int[] numArray = new int[10];
         int[] numArrayInvertido = new int[10];
-        boolean capTrue = false;
         String num;
 
         do{
@@ -22,24 +21,18 @@ public class P_5_1_10_comprobacionCapicua {
             }
         }while(num.length() != 10);
 
-        int j = num.length() - 1;
-
-        for(int i = 0; i < num.length(); i++) {
+        for(int i = 0, j = num.length()-1; i < num.length(); i++, j--) {
             numArray[i] = Integer.parseInt(num.substring(i, i + 1));
             numArrayInvertido[j] = numArray[i];
-            j--;
-            capTrue = capicua(numArray, numArrayInvertido);
         }
 
-        if(capTrue) System.out.println("El número es capicúa.");
+        if(capicua(numArray, numArrayInvertido)) System.out.println("El número es capicúa.");
         else System.out.println("El número no es capicúa.");
     }
 
     public static boolean capicua(int[] numArray, int[] numArrayInvertido) {
         for(int i = 0; i < numArray.length; i++) {
-            if (numArray[i] != numArrayInvertido[i]) {
-                return false;
-            }
+            if (numArray[i] != numArrayInvertido[i]) return false;
         }
         return true;
     }
