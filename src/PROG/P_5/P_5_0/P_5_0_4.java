@@ -3,6 +3,11 @@ package PROG.P_5.P_5_0;
 import java.util.Scanner;
 
 public class P_5_0_4 {
+    // Daniel Alonso Lázaro - 2022
+    /*
+    Modifica el ejercicio 2 para que al principio del programa nos pida cuántas posiciones
+    queremos que tenga el vector y sea este dato el que utilicemos para darle dimensión.
+    */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int mayor, menor;

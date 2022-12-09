@@ -3,6 +3,11 @@ package PROG.P_5.P_5_0;
 import java.util.Scanner;
 
 public class P_5_0_5 {
+    // Daniel Alonso Lázaro - 2022
+    /*
+    Crea un vector de tamaño 5, al que llamaras países. En él guardarás los nombres de 5 países que se introduzcan
+    por teclado. En un bucle posterior al de la inicialización del vector, muestra su contenido.
+    */
     public static void main(String[] args) {
         String[] matrix = new String[5];
         Scanner sc = new Scanner(System.in);

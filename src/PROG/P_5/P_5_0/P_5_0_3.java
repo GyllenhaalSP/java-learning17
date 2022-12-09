@@ -3,6 +3,10 @@ package PROG.P_5.P_5_0;
 import java.util.Scanner;
 
 public class P_5_0_3 {
+    // Daniel Alonso Lázaro - 2022
+    /*
+    Modifica el ejercicio anterior declarando el vector como una variable.
+    */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int[] matrix = {0,0,0,0,0,0,0,0,0,0};

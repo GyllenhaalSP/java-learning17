@@ -1,6 +1,11 @@
 package PROG.P_5.P_5_0;
 
 public class P_5_0_1 {
+    // Daniel Alonso Lázaro - 2022
+    /*
+    Crear la matriz ArrayEjemplo de 10 elementos de tipo entero e inicializar sus elementos con el
+    valor de cada índice.
+    */
     public static void main(String[] args) {
         int[] ArrayEjemplo = new int[10];
         ArrayEjemplo[0] = 1;

@@ -3,6 +3,12 @@ package PROG.P_5.P_5_1;
 import javax.swing.JOptionPane;
 
 public class P_5_1_1 {
+    // Daniel Alonso Lázaro - 2022
+    /*
+    Realizar programa Java que permita cargar un vector numérico de 10 elementos desde teclado
+    y, posteriormente visualice el valor del elemento mayor y cuántas veces se repite en el vector
+    este valor máximo. Utiliza JOptionPane.
+    */
     public static void main(String[] args) {
         int[] nums = new int[10];
         int mayor=0, igual=0;
