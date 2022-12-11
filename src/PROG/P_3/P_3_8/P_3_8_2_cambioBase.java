@@ -2,6 +2,8 @@ package PROG.P_3.P_3_8;
 
 import java.util.Scanner;
 
+import static ProgramasPruebas.metodos.base;
+
 public class P_3_8_2_cambioBase {
 //    Se introduce un número en base decimal y deseamos ver su representación en binario, octal
 //    y base cinco. Debemos elegir la representación de ese número entre las tres posibles. Una
@@ -28,9 +30,5 @@ public class P_3_8_2_cambioBase {
             continuar = sc.nextLine();
             System.out.println();
         }while(!continuar.equalsIgnoreCase("n"));
-    }
-
-    public static String base(int num, int rad){
-        return Integer.toString(num, rad);
     }
 }

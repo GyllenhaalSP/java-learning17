@@ -2,6 +2,9 @@ package PROG.P_3.P_3_5;
 
 import java.util.Scanner;
 
+import static ProgramasPruebas.metodos.cambio;
+import static ProgramasPruebas.metodos.resto;
+
 public class P_3_5_6_cambio {
 //    Diseñar un programa que a partir de una venta y del pago de un producto por parte del comprador,
 //    nos calcule el cambio se tiene que dar utilizando el menor número de monedas o billetes posibles.
@@ -79,6 +82,4 @@ public class P_3_5_6_cambio {
             }
         }
     }
-    public static int cambio(int cambio, int cantidad){return cambio/cantidad;}
-    public static int resto(int resto, int cantidad){return resto % cantidad;}
 }

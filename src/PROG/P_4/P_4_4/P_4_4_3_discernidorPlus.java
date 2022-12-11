@@ -1,6 +1,6 @@
 package PROG.P_4.P_4_4;
 
-import java.text.Normalizer;
+import static ProgramasPruebas.metodos.esVocal;
 
 public class P_4_4_3_discernidorPlus {
     // Daniel Alonso Lázaro - 2022
@@ -20,20 +20,5 @@ public class P_4_4_3_discernidorPlus {
         } else {
             System.out.println(caracter+" es un caracter especial.");
         }
-    }
-
-    public static String esVocal(char caracter) {
-        String str = normalizador(String.valueOf(caracter));
-        return (str.equals("a") ||
-                str.equals("e") ||
-                str.equals("i") ||
-                str.equals("o") ||
-                str.equals("u")) ? "es vocal." : "es consonante.";
-    }
-
-    public static String normalizador(String str){
-        if(str == null || str.trim().isEmpty()) return "";
-        String norm = Normalizer.normalize(str.trim(), Normalizer.Form.NFKD);
-        return norm.replaceAll("[\\u0300-\\u0302|\\u0304-\\u036F.,;:?!¿¡' ]", "").toLowerCase();
     }
 }

@@ -2,6 +2,9 @@ package PROG.P_REF1EV.P_REF_2;
 
 import java.util.Scanner;
 
+import static ProgramasPruebas.metodos.dataIn;
+import static ProgramasPruebas.metodos.media;
+
 public class P_REF_2_3 {
     // Daniel Alonso Lázaro - 2022
     /*
@@ -56,21 +59,5 @@ public class P_REF_2_3 {
         System.out.println("La temperatura nocturna más baja es: "
                 +minima+"ªC y el responsable de la medición es: "+respMin);
         System.out.println("La temperatura media del periodo introducido es de "+media(mediaMes, dias)+"ºC");
-    }
-
-    public static double media(double num, int div){
-        return num / div;
-    }
-
-    public static int dataIn(){
-        Scanner sc = new Scanner(System.in);
-        int temp;
-        do {
-            System.out.print("Introduzca la siguiente medición de temperatura: ");
-            temp = sc.nextInt();
-            sc.nextLine();
-        } while(!(temp >= -20 && temp <= 0));
-        System.out.println("Temperatura registrada correctamente");
-        return temp;
     }
 }

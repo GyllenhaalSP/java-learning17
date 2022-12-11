@@ -2,6 +2,8 @@ package PROG.P_REF1EV.P_REF_2;
 
 import java.util.Scanner;
 
+import static ProgramasPruebas.metodos.calculoSalarios;
+
 public class P_REF_2_1 {
     // Daniel Alonso Lázaro - 2022
     /*
@@ -96,9 +98,5 @@ public class P_REF_2_1 {
                 +(totalOtros % 1 == 0 ? (int)totalOtros : String.format("%.2f", totalOtros))+"€");
         System.out.println("El total de salarios es: "
                 +(totalSalarios % 1 == 0 ? (int)totalSalarios : String.format("%.2f", totalSalarios))+"€");
-    }
-
-    public static double calculoSalarios(double base, double complementos){
-        return base + complementos;
     }
 }

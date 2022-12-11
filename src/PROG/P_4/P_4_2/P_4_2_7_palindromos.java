@@ -1,7 +1,8 @@
 package PROG.P_4.P_4_2;
 
-import java.text.Normalizer;
 import java.util.Scanner;
+
+import static ProgramasPruebas.metodos.normalizador;
 
 public class P_4_2_7_palindromos {
     // Daniel Alonso Lázaro - 2022
@@ -13,7 +14,6 @@ public class P_4_2_7_palindromos {
       Amo la pacífica paloma, ¿Son mulas o cívicos alumnos? Oirás orar a Rosario. Nada, yo soy Adán.
     */
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
         System.out.print("Introduce un palíndromo: ");
         String palindromo = sc.nextLine();
@@ -30,11 +30,5 @@ public class P_4_2_7_palindromos {
         } else {
             System.out.println(palindromo + " no es un palíndromo.");
         }
-    }
-
-    public static String normalizador(String str){
-        if(str == null || str.trim().isEmpty()) return "";
-        String norm = Normalizer.normalize(str.trim(), Normalizer.Form.NFKD);
-        return norm.replaceAll("[\\u0300-\\u0302|\\u0304-\\u036F.,;:?!¿¡' ]", "").toLowerCase();
     }
 }

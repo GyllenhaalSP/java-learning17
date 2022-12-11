@@ -1,6 +1,6 @@
 package PROG.P_3.P_3_3;
 
-import java.util.Scanner;
+import static ProgramasPruebas.metodos.dado;
 
 public class P_3_3_6_dadoString {
 //    Realiza un programa que pida por teclado el resultado (dato entero) obtenido al lanzar un dado
@@ -12,15 +12,6 @@ public class P_3_3_6_dadoString {
 //    Ejemplo:
 //        Introduzca número del dado: 5
 //        En la cara opuesta está el "dos".
-    public static int dado() {
-        int userInput;
-        Scanner sc = new Scanner(System.in);
-        do {
-            System.out.print("Introduce una de las seis caras de un dado: ");
-            userInput = sc.nextInt();
-        }while(userInput < 1 | userInput > 6);
-        return userInput;
-    }
 
     public static void main(String[] args) {
         int cara = dado();

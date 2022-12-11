@@ -2,6 +2,8 @@ package PROG.P_3.P_3_5;
 
 import java.util.Scanner;
 
+import static ProgramasPruebas.metodos.factorial;
+
 public class P_3_5_5_combinaciones {
 //    Nos piden que calculemos cuantas combinaciones podemos hacer de m elementos tomados de n en n.
 //    Pediremos que se introduzca por teclado m y n.
@@ -23,13 +25,5 @@ public class P_3_5_5_combinaciones {
 
         resultado = (factorialM / (factorialN * factorialMn));
         System.out.println(resultado);
-    }
-
-    public static long factorial(long num){
-        long resFact = 1;
-        for (long i=1; i<=num; i++) {
-            resFact *= i;
-        }
-        return resFact;
     }
 }

@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
+import static ProgramasPruebas.metodos.bisiesto;
+
 public class P_3_7_3_calculoDia {
 //    Hacer un organigrama que dados un día D, un mes M y un año A, calcule
 //    cuál es el día siguiente. Se debe tener en cuenta que en los años bisiestos febrero tiene 29 días
@@ -27,7 +29,7 @@ public class P_3_7_3_calculoDia {
                 year = sc.nextInt();
                 flag = year < 1910 | year > 2022;
                 flag = flag | month < 1 | month > 12;
-                flag = flag | (PROG.P_3.P_3_3.P_3_3_2_bisiesto.bisiesto(year) ? (month == 2 && day < 1 | day > 29)
+                flag = flag | (bisiesto(year) ? (month == 2 && day < 1 | day > 29)
                         : (month == 2 && day < 1 | day > 28));
                 flag = flag | day < 1 | day > 31;
             } while (flag);

@@ -2,20 +2,13 @@ package PROG.P_3.P_3_6;
 
 import java.util.Scanner;
 
+import static ProgramasPruebas.metodos.fibonacci;
+
 public class P_3_6_5_fibonacci {
 //    La sucesión de Fibonacci se define de la siguiente forma: a1=1, a2=1 y an=an-1+an-2 para n>2, es decir,
 //    los dos primeros son 1 y el resto, cada uno es la suma de los dos anteriores, los primeros son:
 //            1, 1, 2, 3, 5, 8, 13, 21...
 //    Hacer un programa para mostrar la sucesión hasta el N-ésimo término de la sucesión. N se introducirá desde teclado.
-    public static int fibonacci(int n) {
-        if(n==1)
-            return 1;
-        else if(n==2)
-            return 1;
-        else
-            return (fibonacci(n-1) + fibonacci(n-2));
-    }
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Introduce el enésimo número: ");
