@@ -26,6 +26,7 @@ public class P_5_1_4_mediaPosicionesArray {
                 contImpares++;
             }
         }
-        System.out.printf("La media de los números en posición par es: %02.2f y la media de los números en posición impar es: %02.2f", mediaPares/contPares, mediaImpares/contImpares);
+        System.out.printf("La media de los números en posición par es: %02.2f y la media de los números en posición " +
+                "impar es: %02.2f", mediaPares/contPares, mediaImpares/contImpares);
     }
 }
