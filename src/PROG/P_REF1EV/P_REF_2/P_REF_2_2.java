@@ -1,8 +1,8 @@
 package PROG.P_REF1EV.P_REF_2;
 
-import PROG.P_4.P_4_2.P_4_2_7_palindromos;
-
 import java.util.Scanner;
+
+import static ProgramasPruebas.metodos.normalizador;
 
 public class P_REF_2_2 {
     // Daniel Alonso Lázaro - 2022
@@ -24,7 +24,7 @@ public class P_REF_2_2 {
             Scanner sc = new Scanner(System.in);
             System.out.print("Introduce una frase: ");
             frase = sc.nextLine();
-            frase = P_4_2_7_palindromos.normalizador(frase);
+            frase = normalizador(frase);
             if (!frase.equals("")) {
                 totalFrases++;
                 for (int i = 0; i < frase.length(); i++) {
