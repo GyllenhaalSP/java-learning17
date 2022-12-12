@@ -22,23 +22,22 @@ public class P_5_1_8_eliminacionOrdenadaArray {
             Random rand = new Random();
             int[] TB_NUM = new int[100];
             cargarArray(TB_NUM);
-            mostrarArray("Array cargado: ", TB_NUM);
             Arrays.sort(TB_NUM);
             mostrarArray("Array Ordenado: ", TB_NUM);
 
             do{
                 System.out.print("Introduce una posición: ");
                 pos = sc.nextInt();
-                if(TB_NUM[0] > pos && pos > TB_NUM[TB_NUM.length-1]){
-                    System.out.println("Introduce un número entre 0 y 99");
+                if(pos < 0 || pos > (TB_NUM.length-1)){
+                    System.out.println("Introduce un número entre 0 y 99\n");
                 }
-            }while(TB_NUM[0] > pos && pos > TB_NUM[TB_NUM.length-1]);
+            }while(pos < 0 || pos > (TB_NUM.length-1));
+
             pos--;
             for(int i = 0; i < TB_NUM.length; i++) {
-                if(i >= pos) TB_NUM[i] = i == 99 ? TB_NUM[TB_NUM.length - 1] = rand.nextInt(11) :
-                        TB_NUM[(i < TB_NUM.length) ? i + 1 : 99];
+                if(i >= pos) TB_NUM[i] = (i == TB_NUM.length - 1 ? TB_NUM[TB_NUM.length - 1] = rand.nextInt(100) :
+                        TB_NUM[i + 1]);
             }
-            Arrays.sort(TB_NUM);
             mostrarArray("Número Introducido: ", TB_NUM);
     }
 }
