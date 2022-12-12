@@ -5,7 +5,9 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class metodos {
+    // Daniel Alonso Lázaro - 2022
     public static boolean bisiesto(int year) {
+        //Devuelve true si el año es bisiesto, false si no lo es.
         boolean bisiesto = false;
         if (year % 100 == 0) if (year % 400 == 0) bisiesto = true;
         else if (year % 4 == 0) bisiesto = true;
@@ -13,6 +15,7 @@ public class metodos {
     }
 
     public static long factorial(long num){
+        //Devuelve el factorial de un número.
         long resFact = 1;
         for (long i=1; i<=num; i++) {
             resFact *= i;
@@ -20,11 +23,18 @@ public class metodos {
         return resFact;
     }
 
-    public static int cambio(int cambio, int cantidad){return cambio/cantidad;}
+    public static int cambio(int cambio, int cantidad){
+        //Devuelve el número de monedas de un tipo que se pueden dar como cambio.
+        return cambio/cantidad;
+    }
 
-    public static int resto(int resto, int cantidad){return resto % cantidad;}
+    public static int resto(int resto, int cantidad){
+        //Devuelve el resto de monedas de un tipo que se pueden dar como cambio.
+        return resto % cantidad;
+    }
 
     public static String superindice(String exponente) {
+        //Devuelve el exponente en formato superíndice.
         String superindices = "⁰¹²³⁴⁵⁶⁷⁸⁹";
         for(int i = 0; i < 10; i++){
             exponente = exponente.replaceAll(Integer.toString(i), Character.toString(superindices.charAt(i)));
@@ -33,6 +43,7 @@ public class metodos {
     }
 
     public static int fibonacci(int n) {
+        //Devuelve el n-ésimo número de la sucesión de Fibonacci.
         if(n==1)
             return 1;
         else if(n==2)
@@ -42,10 +53,12 @@ public class metodos {
     }
 
     public static String base(int num, int rad){
+        //Devuelve el número en la base indicada.
         return Integer.toString(num, rad);
     }
 
     public static String esVocal(char caracter) {
+        //Devuelve si el caracter es una vocal.
         String str = normalizador(String.valueOf(caracter));
         return (str.equals("a") ||
                 str.equals("e") ||
@@ -55,6 +68,7 @@ public class metodos {
     }
 
     public static int dado() {
+        //Devuelve un número introducido por el usuario entre 1 y 6.
         int userInput;
         Scanner sc = new Scanner(System.in);
         do {
@@ -65,16 +79,19 @@ public class metodos {
     }
 
     public static String normalizador(String str){
+        //Devuelve la cadena de texto sin acentos, ni caracteres especiales, sin espacios laterales y en minúsculas.
         if(str == null || str.trim().isEmpty()) return "";
         String norm = Normalizer.normalize(str.trim(), Normalizer.Form.NFKD);
         return norm.replaceAll("[\\u0300-\\u0302|\\u0304-\\u036F.,;:?!¿¡' ]", "").toLowerCase();
     }
 
     public static double media(double num, int div){
+        //Devuelve la media de un número.
         return num / div;
     }
 
     public static int dataIn(){
+        //Devuelve temperaturas introducidas por el usuario.
         Scanner sc = new Scanner(System.in);
         int temp;
         do {
@@ -87,16 +104,19 @@ public class metodos {
     }
 
     public static double calculoSalarios(double base, double complementos){
+        //Devuelve la suma de la base y los complementos de un trabajador.
         return base + complementos;
     }
 
     public static void cargarArray(int[] v){
+        //Carga un array con números aleatorios entre 0 y 100.
         Random rand = new Random();
         for(int i = 0; i < v.length; i++){
             v[i] = rand.nextInt(101);
         }
     }
     public static void mostrarArray(String mensaje, int[] v){
+        //Imprime el array numérico entero que recibe y un mensaje junto con él.
         System.out.println(mensaje);
         for(int i = 0, j = 1; i < v.length; i++, j++){
             System.out.print(v[i]+"\t");
@@ -106,6 +126,7 @@ public class metodos {
     }
 
     public static boolean capicua(int[] numArray, int[] numArrayInvertido) {
+        //Devuelve true si el número es capicúa o false si no lo es.
         for(int i = 0; i < numArray.length; i++) {
             if (numArray[i] != numArrayInvertido[i]) return false;
         }
