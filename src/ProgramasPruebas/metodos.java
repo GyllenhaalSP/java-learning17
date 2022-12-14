@@ -133,4 +133,51 @@ public class metodos {
         return true;
     }
 
+    public static void printOptions(int precio, String producto) {
+        //Imprime los productos disponibles y el precio.
+        System.out.printf("El precio del %s es %.2f€\n\n", producto, precio/100.0);
+    }
+
+    public static int menuVending(int precio, int contadorCambio){
+        //Imprime el menú del vending y devuelve la opción elegida.
+        Scanner sc = new Scanner(System.in);
+        int dineroCents = 0, newDineroCents = 0;
+        do{
+            System.out.print("""
+                        -2€     -1€     -50cts
+                        -20cts  -10cts  -5cts
+                        Introducir moneda:\040""");
+            switch (sc.nextLine().trim().toLowerCase()) {
+                case "2" -> dineroCents += 200;
+                case "1" -> dineroCents += 100;
+                case "50" -> dineroCents += 50;
+                case "20" -> dineroCents += 20;
+                case "10" -> dineroCents += 10;
+                case "5" -> dineroCents += 5;
+                default -> System.out.println("\nMoneda no aceptada");
+            }
+            if(dineroCents < precio) {
+                contadorCambio = 0;
+                newDineroCents += dineroCents;
+                dineroCents = 0;
+                if((precio - newDineroCents) / 100.0 != 0) System.out.printf("Dinero insuficiente, faltan %.2f euros\n", ((precio - newDineroCents) / 100.0));
+                if(newDineroCents == precio){
+                    dineroCents = newDineroCents;
+                    break;
+                }else if(newDineroCents > precio){
+                    newDineroCents = 0;
+                    contadorCambio = 3;
+                    System.out.println("No hay cambio suficiente, devolviendo dinero introducido.");
+                }
+            }
+            if(dineroCents > precio && contadorCambio >= 2){
+                System.out.println("\n\t¡ATENCIÓN! ¡INTRODUZCA IMPORTE EXACTO!\n");
+                dineroCents = 0;
+            }
+            if(dineroCents > precio) {
+                break;
+            }
+        }while(true);
+        return dineroCents;
+    }
 }
