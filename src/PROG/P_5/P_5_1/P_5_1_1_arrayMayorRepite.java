@@ -11,14 +11,14 @@ public class P_5_1_1_arrayMayorRepite {
     */
     public static void main(String[] args) {
         int[] nums = new int[10];
-        int mayor=0, igual=0;
+        int mayor, igual=0;
 
         nums[0] = Integer.parseInt(JOptionPane.showInputDialog(null, "Introduce un número: "));
-
+        mayor = nums[0];
         for(int i = 1; i < nums.length; i++) {
            nums[i] = Integer.parseInt(JOptionPane.showInputDialog(null, "Introduce un número: "));
 
-           if(nums[i] >= nums[0]){
+           if(nums[i] >= mayor){
                 mayor = nums[i];
            }
         }
