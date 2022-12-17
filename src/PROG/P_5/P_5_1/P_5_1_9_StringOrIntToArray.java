@@ -16,7 +16,7 @@ public class P_5_1_9_StringOrIntToArray {
         String num = sc.nextLine();
         int[] array = new int[num.length()];
         for (int i = 0; i < num.length(); i++) {
-            array[i] = Integer.parseInt(String.valueOf(num.charAt(i)));
+            array[i] = Character.getNumericValue(num.charAt(i));
         }
         System.out.println("El array es: "+ Arrays.toString(array));
 
