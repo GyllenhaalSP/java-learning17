@@ -16,7 +16,7 @@ public class P_5_1_10_comprobacionCapicua {
         do{
             System.out.print("Introduce un número entero positivo de 10 cifras: ");
             num = sc.nextLine();
-            if(num.length() < 10 | num.length() > 10)
+            if(num.length() != 10)
                 System.out.println("El número introducido tiene "+num.length()+" cifras, y debe tener 10.");
             if(Long.parseLong(num) < 0) System.out.print("El número introducido es negativo. " +
                     "Introduzca un número positivo.");
