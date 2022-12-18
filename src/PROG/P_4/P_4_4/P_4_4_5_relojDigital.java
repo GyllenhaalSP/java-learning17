@@ -2,6 +2,7 @@ package PROG.P_4.P_4_4;
 
 import java.io.IOException;
 import java.util.Scanner;
+import static ProgramasPruebas.metodos.cls;
 
 public class P_4_4_5_relojDigital {
     // Daniel Alonso Lázaro - 2022
@@ -27,7 +28,7 @@ public class P_4_4_5_relojDigital {
                                 (seconds < 10 ? "0" + seconds : seconds);
                         System.out.println(reloj);
                         Thread.sleep(1020);
-                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                        cls();
                         seconds++;
                     }
                     seconds = 0;

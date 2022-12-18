@@ -1,5 +1,6 @@
 package ProgramasPruebas;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.Normalizer;
@@ -317,5 +318,9 @@ public class metodos {
         double truncated = (double) ((long) ((Double.parseDouble(doubleAsString)) * multiplier)) / multiplier;
         if (print) System.out.println(doubleAsString + " ==> " + truncated);
         return truncated;
+    }
+
+    public static void cls() throws IOException, InterruptedException {
+        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
     }
 }
