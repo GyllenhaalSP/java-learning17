@@ -1,5 +1,7 @@
 package ProgramasPruebas;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -137,37 +139,62 @@ public class metodos {
         return true;
     }
 
-    public static String[] menuPrincipal(){
-        //Devuelve un array para fijar el precio y el producto.
-        Scanner sc = new Scanner(System.in);
+    public static String[] menuOpciones(){
+        //Devuelve un array para fijar la elección del producto y el precio asociado al mismo.
         String producto;
         int precio = 0;
-        do{
-            System.out.print("""
-                            -Agua
-                            -Refresco
-                            -Zumo
-                            -Salir
-                            Elegir un producto:\040""");
-            switch (producto = sc.nextLine().trim().toLowerCase()) {
-                case "agua" -> printChoice(precio = 50, producto);
-                case "refresco" -> printChoice(precio = 75, producto);
-                case "zumo" -> printChoice(precio = 95, producto);
-                case "salir" -> System.out.println("Gracias por usar nuestra Vending Machine de mierda...");
-                default -> System.out.println("\nProducto no disponible");
-            }
-        }while(!producto.equalsIgnoreCase("agua") &&
-                !producto.equalsIgnoreCase("refresco") &&
-                !producto.equalsIgnoreCase("zumo") &&
-                !producto.equalsIgnoreCase("salir"));
-
+        ImageIcon icono = new ImageIcon(new ImageIcon("resources/vendingMachine/vending.png")
+                .getImage()
+                .getScaledInstance(150, 150, Image.SCALE_SMOOTH));
+        switch ((producto = (String) JOptionPane.showInputDialog(
+                null,
+                "Elegir un producto:",
+                "GYLLENHAAL'S VENDING MACHINE",
+                JOptionPane.INFORMATION_MESSAGE,
+                icono,
+                new Object[] {"Agua", "Refresco", "Zumo", "Cerveza", "Salir"},
+                "Agua"))) {
+            case "Agua" -> printChoice(precio = 50, producto);
+            case "Refresco" -> printChoice(precio = 75, producto);
+            case "Zumo" -> printChoice(precio = 95, producto);
+            case "Cerveza" -> printChoice(precio = 130, producto);
+            case "Salir" -> JOptionPane.showMessageDialog(
+                    null,
+                    "VUELVA PRONTO\nLE ESPERAMOS",
+                    "FINALIZANDO",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
         return new String[]{producto, String.valueOf(precio)};
     }
 
-    public static int menuVending(int precio, int[] cantidad, int[] monedas){
-        //Imprime el menú del vending y devuelve la opción elegida.
-        Scanner sc = new Scanner(System.in);
-        int cents = 0, whileCents = 0, contadorCambio = 0;
+    public static int imprimirPrecios(int precio){
+        int cents = 0;
+        ImageIcon icono = new ImageIcon(new ImageIcon("resources/vendingMachine/coins.png")
+                .getImage()
+                .getScaledInstance(150, 141, Image.SCALE_DEFAULT));
+        StringBuilder mensajeMonedas = new StringBuilder("Introduce monedas:\n");
+        switch (((String) JOptionPane.showInputDialog(
+                null,
+                mensajeMonedas.append("Precio: ")
+                        .append(precio < 99 ? precio : String.format("%.2f", precio/100.0))
+                        .append((precio > 99 ? precio == 100 ? " euro" : " euros" : " céntimos")),
+                "PAGO",
+                JOptionPane.INFORMATION_MESSAGE,
+                icono,
+                new Object[] {"2€", "1€", "50 cts", "20 cts", "10 cts", "5 cts"}, "2€"))) {
+            case "2€" -> cents += 200;
+            case "1€" -> cents += 100;
+            case "50 cts" -> cents += 50;
+            case "20 cts" -> cents += 20;
+            case "10 cts" -> cents += 10;
+            case "5 cts" -> cents += 5;
+        }
+        return cents;
+    }
+
+    public static int calculoPrecios(int precio, int[] cantidad, int[] monedas) {
+        //Imprime el menú de precios y devuelve la opción elegida.
+        int cents, whileCents = 0, contadorCambio = 0;
         int[] contadorIntroducidas = new int[6];
         boolean contadorCambioBool = false, flag = true, ultimaMoneda = false;
 
@@ -180,19 +207,7 @@ public class metodos {
                 (contadorCambio == 1 && ultimaMoneda)) contadorCambioBool = true;
 
         do{
-            System.out.print("""
-                        -2€     -1€     -50cts
-                        -20cts  -10cts  -5cts
-                        Introducir moneda:\040""");
-            switch (sc.nextLine().trim().toLowerCase()) {
-                case "2" -> cents += 200;
-                case "1" -> cents += 100;
-                case "50" -> cents += 50;
-                case "20" -> cents += 20;
-                case "10" -> cents += 10;
-                case "5" -> cents += 5;
-                default -> System.out.println("\n\tMoneda no aceptada\n");
-            }
+            cents = imprimirPrecios(precio);
 
             whileCents += cents;
 
@@ -204,7 +219,10 @@ public class metodos {
 
             if(cents > precio && contadorCambioBool){
                 //No hay para dar cambio
-                System.out.println("\n\t¡ATENCIÓN! ¡INTRODUZCA IMPORTE EXACTO!\n");
+                JOptionPane.showMessageDialog(null, """
+                                LA MÁQUINA NO DISPONE DE CAMBIO EN ESTOS MOMENTOS
+                                ¡INTRODUZCA IMPORTE EXACTO!""",
+                        "¡ATENCIÓN¡", JOptionPane.ERROR_MESSAGE);
                 cents = 0;
             }
 
@@ -227,7 +245,12 @@ public class metodos {
                     contadorCambioBool = true;
                     calderilla(cents, cantidad, monedas, contadorIntroducidas, false);
                     whileCents = insufficientCoins(false, precio, whileCents);
-                    System.out.println("No hay cambio suficiente, devolviendo el dinero introducido. Introduzca el precio de nuevo: ");
+                    retardoJOptionPane(3);
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "La devolución se ha completado con éxito\nIntroduzca el precio de nuevo.",
+                            "INFORMACIÓN",
+                            JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         }while(flag);
@@ -236,8 +259,8 @@ public class metodos {
 
     public static void calderilla(int calderilla, int[] cantidad, int[] monedas,
                                   int[] contadorIntroducidas, boolean sumar){
-        //Hace el recuento de monedas y las redistribuye en el array de cantidad de monedas tanto si es
-        //para sumar como si es para restarlas en caso de error.
+        //Hace el recuento de monedas y las redistribuye en el array de cantidad
+        //tanto si es para sumar como si es para restarlas en caso de error.
         if(sumar){
             for (int i = 0; i < cantidad.length; i++) {
                 if (calderilla == monedas[i]) {
@@ -255,62 +278,130 @@ public class metodos {
 
     public static void printChoice(int precio, String producto) {
         //Imprime los productos disponibles y el precio.
-        System.out.printf("\n\tEl precio del %s es %.2f€\n\n", producto, precio/100.0);
+        JDialog dialog = new JDialog();
+        dialog.setTitle("INFORMACIÓN");
+        dialog.setModalityType(Dialog.DEFAULT_MODALITY_TYPE);
+        dialog.setContentPane(new JOptionPane(
+                String.format("\n\tEl precio de"+
+                        (producto.equalsIgnoreCase("Cerveza") ? " la " : "l ")+
+                        "%s es %.2f€\n\n", producto.toLowerCase(), precio/100.0),
+                JOptionPane.INFORMATION_MESSAGE,
+                JOptionPane.DEFAULT_OPTION,
+                null,
+                new Object[]{},
+                null));
+        dialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        dialog.pack();
+        dialog.setSize(300,150);
+        dialog.setLocationRelativeTo(null);
+        retardoJOptionPane(3);
+        dialog.setVisible(true);
     }
 
     public static void returnChange(int cambio, int[] monedas, int[] cantidad){
         //Devuelve el cambio.
         double euros;
+        StringBuilder acumulador = new StringBuilder();
         for(int i = 0; i < monedas.length; i++){
             euros = monedas[i]/100.0;
             if(monedas[i] > 99){
                 if(cambio >= monedas[i]){
-                    System.out.println("\t\tMonedas de "
+                    acumulador.append(String.format("Monedas de "
                             +(euros%1==0.0
                             ? (int)euros
                             : String.format("%.2f", euros))
-                            +" euro: "+cambio/monedas[i]+"\n");
+                            +" euro: "+cambio/monedas[i]+"\n"));
                     cambio%=monedas[i];
                     cantidad[i]-=1;
                 }
             }else if (cambio >= monedas[i]){
-                System.out.println("\t\tMonedas de "+euros+" céntimos: "+cambio/monedas[i]+"\n");
+                acumulador.append(String.format("Monedas de %d céntimos: %d\n", monedas[i], (cambio/monedas[i])));
                 cambio%=monedas[i];
                 cantidad[i]-=1;
             }
         }
+        retardoJOptionPane(3);
+        JOptionPane.showMessageDialog(null, acumulador, "CAMBIO", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public static void cierreMaquina(int[] cantidad, int[] monedas){
         //Formatea e imprime los datos económicos de la máquina.
         double[] beneficios = new double[6];
         double euros, total = 0;
+        StringBuilder acumulador = new StringBuilder("La máquina tiene:\n");
         for(int i = 0; i < beneficios.length; i++) {
             euros = monedas[i]/100.0;
-            BigDecimal formatoDecimal = new BigDecimal(cantidad[i]*euros).setScale(2, RoundingMode.HALF_UP);
-            beneficios[i] = formatoDecimal.doubleValue();
-            System.out.println("\nLa máquina tiene "
-                    +(beneficios[i]%1==0.0
-                    ? (int)beneficios[i] : String.format("%.2f", beneficios[i]))
-                    +" euros en "
+            beneficios[i] = new BigDecimal(cantidad[i]*euros)
+                    .setScale(2, RoundingMode.HALF_UP)
+                    .doubleValue();
+            acumulador.append(String.format((beneficios[i]%1==0.0
+                        ? (int)beneficios[i] : String.format("%.2f", beneficios[i]))
+                    +(beneficios[i] == 1 ? " euro en " : " euros en ")
                     +(cantidad[i] == 1 ? cantidad[i]+" moneda de " : cantidad[i]+" monedas de ")
-                    +(euros < 1 ? (int)(euros*100)+" céntimos" : (euros%1==0.0
-                    ? (int)euros : Double.toString(euros))+((monedas[i] == 200)
-                    ? " euros" : " euro")));
+                    +(euros < 1 ? (int)(euros*100)+" céntimos\n" : (euros%1==0.0
+                        ? (int)euros : Double.toString(euros))+((monedas[i] == 200)
+                        ? " euros\n" : " euro\n"))));
             total += beneficios[i];
         }
-        System.out.println("El beneficio total del día ha sido: "+total);
+        JOptionPane.showMessageDialog(
+                null,
+                acumulador,
+                "DESGLOSE DE VENTAS",
+                JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(
+                null,
+                String.format("Los beneficios totales del día han sido:\n %.2f€", total),
+                "BENEFICIOS DEL DÍA",
+                JOptionPane.INFORMATION_MESSAGE);
     }
 
-    public static int insufficientCoins(boolean insuficiente, int precio, int whileCents){
+    public static int insufficientCoins(boolean insuficiente, int precio, int whileCents) {
         //Devuelve el mensaje de dinero insuficiente y pone los céntimos a 0.
         if(insuficiente){
-            System.out.printf("\n\tDinero insuficiente, faltan %.2f euros.\n", Math.abs(((precio - whileCents) / 100.0)));
+            retardoJOptionPane(1.5);
+            JOptionPane.showMessageDialog(
+                    null,
+                    String.format("\n\tDINERO INSUFICIENTE\nPor favor, introduzca los %.2f euros faltantes.\n",
+                            Math.abs(((precio - whileCents) / 100.0))),
+                    "DINERO INSUFICIENTE",
+                    JOptionPane.ERROR_MESSAGE);
             return 0;
         }else{
-            System.out.printf("\n\tNo se pueden devolver %.2f euros de cambio.\n", Math.abs(((precio - whileCents) / 100.0)));
+            retardoJOptionPane(4);
+            JOptionPane.showMessageDialog(
+                    null,
+                    String.format("""
+                                    La máquina no dispone de cambio.
+                                    No se pueden devolver %.2f euros.
+                                    Iniciando proceso de devolución.
+                                    Espere...""",
+                            Math.abs(((precio - whileCents) / 100.0))),
+                    "PROCEDIENDO A LA DEVOLUCIÓN",
+                    JOptionPane.WARNING_MESSAGE);
         }
         return 0;
+    }
+
+    public static void expendedor(String producto, int cambio){
+        retardoJOptionPane(2);
+        JOptionPane.showMessageDialog(
+                null,
+                String.format("\nExpendiendo producto y cambio\n\tProducto: %s.\n\tCambio: %.2f€\n",
+                        producto.toUpperCase(), cambio/100.0),
+                "EXPENDIENDO",
+                JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public static void retardoJOptionPane(double tiempoEnSecs){
+        Thread temporizador = new Thread(() -> {
+            try {
+                Thread.sleep((long) (tiempoEnSecs*1000));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            JOptionPane.getRootFrame().dispose();
+        });
+        temporizador.start();
     }
 
     public static double limitPrecision(String doubleAsString, int maxDigitsAfterDecimal, boolean print) {

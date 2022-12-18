@@ -1,7 +1,5 @@
 package PROG.P_5.P_5_2;
 
-import java.util.Arrays;
-import java.util.Scanner;
 import static ProgramasPruebas.metodos.*;
 
 public class P_5_2_2_maquinaVending {
@@ -21,32 +19,20 @@ public class P_5_2_2_maquinaVending {
     dispone de monedas de un solo tipo y este es el de 5 cts., y que solo acepte este dinero.
     Al finalizar el programa nos debe dar el total del dinero disponible en la máquina, por unidad monetaria
     */
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) throws InterruptedException {
+        int[] monedas = {200, 100, 50, 20, 10, 5};
+        int[] cantidad = {20, 1, 1, 1, 1, 0};
         int precio, cambio;
         String producto;
-        int[] monedas = {200, 100, 50, 20, 10, 5};
-        int[] cantidad = {20, 1, 1, 1, 1, 1};
         do {
-            String[] menu = menuPrincipal();
-            producto = menu[0];
+            String[] menu = menuOpciones();
             precio = Integer.parseInt(menu[1]);
-            System.out.println(Arrays.toString(cantidad));
-            if(!producto.equalsIgnoreCase("salir")) {
-                cambio = (menuVending(precio, cantidad, monedas) - precio);
-                System.out.println("\nExpendiendo producto y cambio");
-                System.out.println("\tProducto: " + producto.toUpperCase() + ".");
-                System.out.println("\tCambio: " + cambio / 100.0 + "€");
-                cambio(cambio, monedas, cantidad);
-                System.out.println(Arrays.toString(cantidad));
-                System.out.print("\nIntroduzca 'salir' para terminar o pulse 'enter' para continuar: ");
-                producto = sc.nextLine().trim().toLowerCase();
-                System.out.println();
-                System.out.println(Arrays.toString(cantidad));
+            if(!(producto = menu[0]).equalsIgnoreCase("salir")) {
+                cambio = (calculoPrecios(precio, cantidad, monedas) - precio);
+                expendedor(producto, cambio);
+                if(cambio != 0) returnChange(cambio, monedas, cantidad);
             }
         }while(!producto.equalsIgnoreCase("salir"));
-
         cierreMaquina(cantidad, monedas);
     }
 }
