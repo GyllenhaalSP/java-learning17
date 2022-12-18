@@ -26,7 +26,7 @@ public class metodos {
         return resFact;
     }
 
-    public static int cambio(int cambio, int cantidad){
+    public static int returnChange(int cambio, int cantidad){
         //Devuelve el número de monedas de un tipo que se pueden dar como cambio.
         return cambio/cantidad;
     }
@@ -137,7 +137,7 @@ public class metodos {
     }
 
     public static String[] menuPrincipal(){
-        //Devuelve un array para setear el precio y el producto.
+        //Devuelve un array para fijar el precio y el producto.
         Scanner sc = new Scanner(System.in);
         String producto;
         int precio = 0;
@@ -149,18 +149,9 @@ public class metodos {
                             -Salir
                             Elegir un producto:\040""");
             switch (producto = sc.nextLine().trim().toLowerCase()) {
-                case "agua" -> {
-                    precio = 50;
-                    printOptions(precio, producto);
-                }
-                case "refresco" -> {
-                    precio = 75;
-                    printOptions(precio, producto);
-                }
-                case "zumo" -> {
-                    precio = 95;
-                    printOptions(precio, producto);
-                }
+                case "agua" -> printChoice(precio = 50, producto);
+                case "refresco" -> printChoice(precio = 75, producto);
+                case "zumo" -> printChoice(precio = 95, producto);
                 case "salir" -> System.out.println("Gracias por usar nuestra Vending Machine de mierda...");
                 default -> System.out.println("\nProducto no disponible");
             }
@@ -175,17 +166,17 @@ public class metodos {
     public static int menuVending(int precio, int[] cantidad, int[] monedas){
         //Imprime el menú del vending y devuelve la opción elegida.
         Scanner sc = new Scanner(System.in);
-        int cents = 0, newDineroCents = 0, contadorCambio = 0;
+        int cents = 0, whileCents = 0, contadorCambio = 0;
         int[] contadorIntroducidas = new int[6];
-        boolean contadorCambioBool = false, flag = true;
+        boolean contadorCambioBool = false, flag = true, ultimaMoneda = false;
 
-        for(int i = 0; i < cantidad.length-2; i++){
+        for(int i = 0; i < cantidad.length-2; i++) {
             if(cantidad[i] < 1) contadorCambio += 1;
+            if(cantidad[i] == 1) ultimaMoneda = true;
         }
 
-        if (cantidad[5] < 1 || contadorCambio == 2) {
-            contadorCambioBool = true;
-        }
+        if (cantidad[5] < 1 || contadorCambio >= 2 ||
+                (contadorCambio == 1 && ultimaMoneda)) contadorCambioBool = true;
 
         do{
             System.out.print("""
@@ -199,18 +190,19 @@ public class metodos {
                 case "20" -> cents += 20;
                 case "10" -> cents += 10;
                 case "5" -> cents += 5;
-                default -> System.out.println("\nMoneda no aceptada");
+                default -> System.out.println("\n\tMoneda no aceptada\n");
             }
 
-            newDineroCents += cents;
+            whileCents += cents;
 
-            if(newDineroCents == precio) {
+            if(whileCents == precio) {
+                //Precio justo
                 flag = false;
-                calderilla(cents, cantidad, monedas, contadorIntroducidas);
+                calderilla(cents, cantidad, monedas, contadorIntroducidas, true);
             }
 
             if(cents > precio && contadorCambioBool){
-                //No hay cambio
+                //No hay para dar cambio
                 System.out.println("\n\t¡ATENCIÓN! ¡INTRODUZCA IMPORTE EXACTO!\n");
                 cents = 0;
             }
@@ -218,81 +210,85 @@ public class metodos {
             if(cents > precio){
                 //Necesita cambio
                 flag = false;
-                calderilla(cents, cantidad, monedas, contadorIntroducidas);
+                calderilla(cents, cantidad, monedas, contadorIntroducidas, true);
             }
 
             if(cents < precio) {
-                //hay que introducir más monedas
+                //Hay que introducir más monedas
                 contadorCambioBool = false;
-                double ctrl = (precio - newDineroCents) / 100.0;
-                if(ctrl > 0) {
+                if((precio - whileCents) / 100.0 > 0) {
                     //Controla que el importe introducido sea distinto de 0
-                    dineroInsuficiente(true, precio, newDineroCents);
-                    calderilla(cents, cantidad, monedas, contadorIntroducidas);
-                    cents = 0;
+                    calderilla(cents, cantidad, monedas, contadorIntroducidas, true);
+                    cents = insufficientCoins(true, precio, whileCents);
                 }
 
-                if(newDineroCents > precio){
+                if(whileCents > precio){
                     contadorCambioBool = true;
-                    dineroInsuficiente(false, precio, newDineroCents);
-                    System.out.println("No hay cambio suficiente, devolviendo dinero introducido. Introduzca el precio de nuevo: ");
-                    for(int i = 0; i < cantidad.length; i++){
-                        for(int j = 0; j < contadorIntroducidas[i]; j++){
-                            cantidad[i]--;
-                        }
-                    }
-                    newDineroCents = 0;
+                    calderilla(cents, cantidad, monedas, contadorIntroducidas, false);
+                    whileCents = insufficientCoins(false, precio, whileCents);
+                    System.out.println("No hay cambio suficiente, devolviendo el dinero introducido. Introduzca el precio de nuevo: ");
                 }
             }
         }while(flag);
-        return newDineroCents;
+        return whileCents;
     }
 
-    public static void calderilla(int calderilla, int[] cantidad, int[] monedas, int[] contadorIntroducidas){
-        //Hace el recuento de monedas y las distribuye en el array de cantidad de monedas.
-        for (int i = 0; i < cantidad.length; i++) {
-            if (calderilla == monedas[i]) {
-                cantidad[i]++;
-                contadorIntroducidas[i]++;
+    public static void calderilla(int calderilla, int[] cantidad, int[] monedas,
+                                  int[] contadorIntroducidas, boolean sumar){
+        //Hace el recuento de monedas y las redistribuye en el array de cantidad de monedas tanto si es
+        //para sumar como si es para restarlas en caso de error.
+        if(sumar){
+            for (int i = 0; i < cantidad.length; i++) {
+                if (calderilla == monedas[i]) {
+                    cantidad[i]++;
+                    contadorIntroducidas[i]++;
+                }
+            }
+            Arrays.fill(contadorIntroducidas, 0);
+        }else{
+            for(int i = 0; i < cantidad.length; i++) {
+                for(int j = 0; j < contadorIntroducidas[i]; j++) cantidad[i]--;
             }
         }
-        Arrays.fill(contadorIntroducidas, 0);
     }
 
-    public static void printOptions(int precio, String producto) {
+    public static void printChoice(int precio, String producto) {
         //Imprime los productos disponibles y el precio.
-        System.out.printf("El precio del %s es %.2f€\n\n", producto, precio/100.0);
+        System.out.printf("\n\tEl precio del %s es %.2f€\n\n", producto, precio/100.0);
     }
 
-    public static void cambio(int cambio, int[] monedas, int[] cantidad){
+    public static void returnChange(int cambio, int[] monedas, int[] cantidad){
         //Devuelve el cambio.
+        double euros;
         for(int i = 0; i < monedas.length; i++){
+            euros = monedas[i]/100.0;
             if(monedas[i] > 99){
                 if(cambio >= monedas[i]){
                     System.out.println("\t\tMonedas de "
-                            +((monedas[i]/100.0)%1==0.0
-                            ? (int)(monedas[i]/100.0)
-                            : String.format("%.2f", (monedas[i]/100.0)))
-                            +" euro: "+cambio/monedas[i]);
+                            +(euros%1==0.0
+                            ? (int)euros
+                            : String.format("%.2f", euros))
+                            +" euro: "+cambio/monedas[i]+"\n");
                     cambio%=monedas[i];
                     cantidad[i]-=1;
                 }
             }else if (cambio >= monedas[i]){
-                System.out.println("\t\tMonedas de "+(monedas[i]/100.0)+" céntimos: "+cambio/monedas[i]);
-                cambio %= monedas[i];
+                System.out.println("\t\tMonedas de "+euros+" céntimos: "+cambio/monedas[i]+"\n");
+                cambio%=monedas[i];
                 cantidad[i]-=1;
             }
         }
     }
 
     public static void cierreMaquina(int[] cantidad, int[] monedas){
+        //Formatea e imprime los datos económicos de la máquina.
         double[] beneficios = new double[6];
-        double euros;
+        double euros, total = 0;
         for(int i = 0; i < beneficios.length; i++) {
             euros = monedas[i]/100.0;
             BigDecimal formatoDecimal = new BigDecimal(cantidad[i]*euros).setScale(2, RoundingMode.HALF_UP);
             beneficios[i] = formatoDecimal.doubleValue();
-            System.out.println("La máquina tiene "
+            System.out.println("\nLa máquina tiene "
                     +(beneficios[i]%1==0.0
                     ? (int)beneficios[i] : String.format("%.2f", beneficios[i]))
                     +" euros en "
@@ -300,19 +296,26 @@ public class metodos {
                     +(euros < 1 ? (int)(euros*100)+" céntimos" : (euros%1==0.0
                     ? (int)euros : Double.toString(euros))+((monedas[i] == 200)
                     ? " euros" : " euro")));
+            total += beneficios[i];
         }
+        System.out.println("El beneficio total del día ha sido: "+total);
     }
 
-    public static void dineroInsuficiente(boolean insuficiente, int precio, int newDineroCents){
-        //Devuelve el mensaje de dinero insuficiente y setea los céntimos a 0.
-        System.out.printf("Dinero insuficiente, "+(insuficiente? "faltan %.2f euros\n":"sobran %.2f euros\n"),
-                Math.abs(((precio - newDineroCents) / 100.0)));
+    public static int insufficientCoins(boolean insuficiente, int precio, int whileCents){
+        //Devuelve el mensaje de dinero insuficiente y pone los céntimos a 0.
+        if(insuficiente){
+            System.out.printf("\n\tDinero insuficiente, faltan %.2f euros.\n", Math.abs(((precio - whileCents) / 100.0)));
+            return 0;
+        }else{
+            System.out.printf("\n\tNo se pueden devolver %.2f euros de cambio.\n", Math.abs(((precio - whileCents) / 100.0)));
+        }
+        return 0;
     }
 
-    public static double limitPrecision(String dblAsString, int maxDigitsAfterDecimal) {
+    public static double limitPrecision(String doubleAsString, int maxDigitsAfterDecimal, boolean print) {
         int multiplier = (int) Math.pow(10, maxDigitsAfterDecimal);
-        double truncated = (double) ((long) ((Double.parseDouble(dblAsString)) * multiplier)) / multiplier;
-        System.out.println(dblAsString + " ==> " + truncated);
+        double truncated = (double) ((long) ((Double.parseDouble(doubleAsString)) * multiplier)) / multiplier;
+        if (print) System.out.println(doubleAsString + " ==> " + truncated);
         return truncated;
     }
 }

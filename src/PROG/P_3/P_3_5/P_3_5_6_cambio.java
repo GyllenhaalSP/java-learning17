@@ -2,7 +2,7 @@ package PROG.P_3.P_3_5;
 
 import java.util.Scanner;
 
-import static ProgramasPruebas.metodos.cambio;
+import static ProgramasPruebas.metodos.returnChange;
 import static ProgramasPruebas.metodos.resto;
 
 public class P_3_5_6_cambio {
@@ -22,37 +22,37 @@ public class P_3_5_6_cambio {
         final int b20 = 2000, b10 = 1000, b5 = 500,
                 m2 = 200, m1 = 100, m50 = 50, m20 = 20, m10 = 10, m05 = 5, m02 = 2, m01 = 1;
 
-        int contb20 = cambio(cambio, b20);
+        int contb20 = returnChange(cambio, b20);
         int resto = resto(cambio, b20);
 
-        int contb10 = cambio(resto, b10);
+        int contb10 = returnChange(resto, b10);
         resto = resto(resto, b10);
 
-        int contb5 = cambio(resto, b5);
+        int contb5 = returnChange(resto, b5);
         resto = resto(resto, b5);
 
-        int contm2 = cambio(resto, m2);
+        int contm2 = returnChange(resto, m2);
         resto = resto(resto, m2);
 
-        int contm1 = cambio(resto, m1);
+        int contm1 = returnChange(resto, m1);
         resto = resto(resto, m1);
 
-        int contm50 = cambio(resto, m50);
+        int contm50 = returnChange(resto, m50);
         resto = resto(resto, m50);
 
-        int contm20 = cambio(resto, m20);
+        int contm20 = returnChange(resto, m20);
         resto = resto(resto, m20);
 
-        int contm10 = cambio(resto, m10);
+        int contm10 = returnChange(resto, m10);
         resto = resto(resto, m10);
 
-        int contm05 = cambio(resto, m05);
+        int contm05 = returnChange(resto, m05);
         resto = resto(resto, m05);
 
-        int contm02 = cambio(resto, m02);
+        int contm02 = returnChange(resto, m02);
         resto = resto(resto, m02);
 
-        int contm01 = cambio(resto, m01);
+        int contm01 = returnChange(resto, m01);
 
         if (cambio <= 0) System.out.println("\n¡Abre el puño y suelta los duros!");
         else if (precio == 0 | precio >= 5100) System.out.println("\nQue si quiere bolsa, señora.");
