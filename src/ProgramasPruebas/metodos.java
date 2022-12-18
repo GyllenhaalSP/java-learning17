@@ -139,25 +139,29 @@ public class metodos {
         return true;
     }
 
+    //MÉTODOS DE LA VENDING MACHINE
+
     public static String[] menuOpciones(){
         //Devuelve un array para fijar la elección del producto y el precio asociado al mismo.
         String producto;
         int precio = 0;
-        ImageIcon icono = new ImageIcon(new ImageIcon("resources/vendingMachine/vending.png")
+        ImageIcon icono = new ImageIcon(
+                new ImageIcon("resources/vendingMachine/vending.png")
                 .getImage()
                 .getScaledInstance(150, 150, Image.SCALE_SMOOTH));
-        switch ((producto = (String) JOptionPane.showInputDialog(
+        producto = (String) JOptionPane.showInputDialog(
                 null,
                 "Elegir un producto:",
                 "GYLLENHAAL'S VENDING MACHINE",
                 JOptionPane.INFORMATION_MESSAGE,
                 icono,
-                new Object[] {"Agua", "Refresco", "Zumo", "Cerveza", "Salir"},
-                "Agua"))) {
+                new Object[]{"Agua", "Refresco", "Zumo", "Cerveza", "Salir"},
+                "Agua");
+        switch (producto == null ? producto = "Salir" : producto) {
             case "Agua" -> printChoice(precio = 50, producto);
             case "Refresco" -> printChoice(precio = 75, producto);
             case "Zumo" -> printChoice(precio = 95, producto);
-            case "Cerveza" -> printChoice(precio = 130, producto);
+            case "Cerveza" -> printChoice(precio = 135, producto);
             case "Salir" -> JOptionPane.showMessageDialog(
                     null,
                     "VUELVA PRONTO\nLE ESPERAMOS",
@@ -169,11 +173,12 @@ public class metodos {
 
     public static int imprimirPrecios(int precio){
         int cents = 0;
+        String userChoice;
         ImageIcon icono = new ImageIcon(new ImageIcon("resources/vendingMachine/coins.png")
                 .getImage()
                 .getScaledInstance(150, 141, Image.SCALE_DEFAULT));
         StringBuilder mensajeMonedas = new StringBuilder("Introduce monedas:\n");
-        switch (((String) JOptionPane.showInputDialog(
+        userChoice = ((String) JOptionPane.showInputDialog(
                 null,
                 mensajeMonedas.append("Precio: ")
                         .append(precio < 99 ? precio : String.format("%.2f", precio/100.0))
@@ -181,13 +186,17 @@ public class metodos {
                 "PAGO",
                 JOptionPane.INFORMATION_MESSAGE,
                 icono,
-                new Object[] {"2€", "1€", "50 cts", "20 cts", "10 cts", "5 cts"}, "2€"))) {
+                new Object[] {"2€", "1€", "50 cts", "20 cts", "10 cts", "5 cts"}, "2€"));
+        switch (userChoice == null ? "" : userChoice) {
             case "2€" -> cents += 200;
             case "1€" -> cents += 100;
             case "50 cts" -> cents += 50;
             case "20 cts" -> cents += 20;
             case "10 cts" -> cents += 10;
             case "5 cts" -> cents += 5;
+            default -> {
+                return -1;
+            }
         }
         return cents;
     }
@@ -207,7 +216,9 @@ public class metodos {
                 (contadorCambio == 1 && ultimaMoneda)) contadorCambioBool = true;
 
         do{
-            cents = imprimirPrecios(precio);
+            if((cents = imprimirPrecios(precio)) == -1){
+                return -1;
+            }
 
             whileCents += cents;
 
@@ -245,12 +256,9 @@ public class metodos {
                     contadorCambioBool = true;
                     calderilla(cents, cantidad, monedas, contadorIntroducidas, false);
                     whileCents = insufficientCoins(false, precio, whileCents);
-                    retardoJOptionPane(3);
-                    JOptionPane.showMessageDialog(
-                            null,
-                            "La devolución se ha completado con éxito\nIntroduzca el precio de nuevo.",
-                            "INFORMACIÓN",
-                            JOptionPane.INFORMATION_MESSAGE);
+                    jDialog("La devolución se ha completado con éxito\nIntroduzca el precio de nuevo.",
+                            "INFORMACIÓN", 0, 350, 100,
+                            "resources/vendingMachine/infoGreen.png");
                 }
             }
         }while(flag);
@@ -278,13 +286,27 @@ public class metodos {
 
     public static void printChoice(int precio, String producto) {
         //Imprime los productos disponibles y el precio.
+        jDialog(String.format("\n\tEl precio de"+
+                (producto.equalsIgnoreCase("Cerveza") ? " la " : "l ")+
+                "%s es %.2f€\n\n", producto.toLowerCase(), precio/100.0),
+                "INFORMACIÓN",
+                0, 380, 100, "resources/vendingMachine/infoGreen.png");
+    }
+
+    public static void jDialog(String format, String titulo, int tiempo, int width, int height, String... icon) {
+        ImageIcon icono = null;
+        if (icon != null) {
+            icono = new ImageIcon(
+                    new ImageIcon(icon[0])
+                            .getImage()
+                            .getScaledInstance(32 , 32, Image.SCALE_SMOOTH));
+        }
         JDialog dialog = new JDialog();
-        dialog.setTitle("INFORMACIÓN");
+        if (icon!=null) dialog.setIconImage(icono.getImage());
+        dialog.setTitle(titulo);
         dialog.setModalityType(Dialog.DEFAULT_MODALITY_TYPE);
         dialog.setContentPane(new JOptionPane(
-                String.format("\n\tEl precio de"+
-                        (producto.equalsIgnoreCase("Cerveza") ? " la " : "l ")+
-                        "%s es %.2f€\n\n", producto.toLowerCase(), precio/100.0),
+                format,
                 JOptionPane.INFORMATION_MESSAGE,
                 JOptionPane.DEFAULT_OPTION,
                 null,
@@ -292,9 +314,9 @@ public class metodos {
                 null));
         dialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         dialog.pack();
-        dialog.setSize(300,150);
+        dialog.setSize(width, height);
         dialog.setLocationRelativeTo(null);
-        retardoJOptionPane(3);
+        retardoJOptionPane(3 + tiempo);
         dialog.setVisible(true);
     }
 
@@ -320,8 +342,8 @@ public class metodos {
                 cantidad[i]-=1;
             }
         }
-        retardoJOptionPane(3);
-        JOptionPane.showMessageDialog(null, acumulador, "CAMBIO", JOptionPane.INFORMATION_MESSAGE);
+        jDialog(String.valueOf(acumulador), "CAMBIO", 0, 300, 150,
+                "resources/vendingMachine/infoGreen.png");
     }
 
     public static void cierreMaquina(int[] cantidad, int[] monedas){
@@ -350,7 +372,7 @@ public class metodos {
                 JOptionPane.INFORMATION_MESSAGE);
         JOptionPane.showMessageDialog(
                 null,
-                String.format("Los beneficios totales del día han sido:\n %.2f€", total),
+                String.format("Los beneficios totales del día han sido:\n%.2f€", total),
                 "BENEFICIOS DEL DÍA",
                 JOptionPane.INFORMATION_MESSAGE);
     }
@@ -358,38 +380,34 @@ public class metodos {
     public static int insufficientCoins(boolean insuficiente, int precio, int whileCents) {
         //Devuelve el mensaje de dinero insuficiente y pone los céntimos a 0.
         if(insuficiente){
-            retardoJOptionPane(1.5);
-            JOptionPane.showMessageDialog(
-                    null,
-                    String.format("\n\tDINERO INSUFICIENTE\nPor favor, introduzca los %.2f euros faltantes.\n",
-                            Math.abs(((precio - whileCents) / 100.0))),
-                    "DINERO INSUFICIENTE",
-                    JOptionPane.ERROR_MESSAGE);
+            jDialog(String.format("""
+                                    POR FAVOR, CONTINUE INTRODUCIENDO MONEDAS
+                                    Faltan %.2f euros por introducir
+                                    """,
+                    Math.abs(((precio - whileCents) / 100.0))),
+                    "DINERO INSUFICIENTE", 0, 400, 150,
+                    "resources/vendingMachine/warningRed.png");
             return 0;
         }else{
-            retardoJOptionPane(4);
-            JOptionPane.showMessageDialog(
-                    null,
-                    String.format("""
-                                    La máquina no dispone de cambio.
+            jDialog(String.format("""
+                                    Desafortunadamente, la máquina no dispone de cambio.
                                     No se pueden devolver %.2f euros.
                                     Iniciando proceso de devolución.
+                                    
                                     Espere...""",
-                            Math.abs(((precio - whileCents) / 100.0))),
+                    Math.abs(((precio - whileCents) / 100.0))),
                     "PROCEDIENDO A LA DEVOLUCIÓN",
-                    JOptionPane.WARNING_MESSAGE);
+                    2, 430, 160, "resources/vendingMachine/infoGreen.png");
         }
         return 0;
     }
 
     public static void expendedor(String producto, int cambio){
-        retardoJOptionPane(2);
-        JOptionPane.showMessageDialog(
-                null,
-                String.format("\nExpendiendo producto y cambio\n\tProducto: %s.\n\tCambio: %.2f€\n",
-                        producto.toUpperCase(), cambio/100.0),
-                "EXPENDIENDO",
-                JOptionPane.INFORMATION_MESSAGE);
+        if (cambio > 0){
+        jDialog(String.format("¡Expendiendo producto y cambio!\n\nProducto: %s\nCambio: %.2f€\n",
+                producto.toUpperCase(), cambio/100.0), "EXPENDIENDO", 0, 300, 150,
+                "resources/vendingMachine/infoGreen.png");
+        }
     }
 
     public static void retardoJOptionPane(double tiempoEnSecs){

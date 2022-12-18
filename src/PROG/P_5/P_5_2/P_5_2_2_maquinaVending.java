@@ -19,9 +19,9 @@ public class P_5_2_2_maquinaVending {
     dispone de monedas de un solo tipo y este es el de 5 cts., y que solo acepte este dinero.
     Al finalizar el programa nos debe dar el total del dinero disponible en la máquina, por unidad monetaria
     */
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         int[] monedas = {200, 100, 50, 20, 10, 5};
-        int[] cantidad = {20, 1, 1, 1, 1, 0};
+        int[] cantidad = {20, 20, 20, 20, 20, 20};
         int precio, cambio;
         String producto;
         do {
@@ -29,6 +29,7 @@ public class P_5_2_2_maquinaVending {
             precio = Integer.parseInt(menu[1]);
             if(!(producto = menu[0]).equalsIgnoreCase("salir")) {
                 cambio = (calculoPrecios(precio, cantidad, monedas) - precio);
+                if(cambio < 0) break;
                 expendedor(producto, cambio);
                 if(cambio != 0) returnChange(cambio, monedas, cantidad);
             }
