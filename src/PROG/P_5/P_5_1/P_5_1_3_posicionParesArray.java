@@ -1,5 +1,7 @@
 package PROG.P_5.P_5_1;
 
+import static ProgramasPruebas.metodos.cargarArray;
+
 public class P_5_1_3_posicionParesArray {
     // Daniel Alonso Lázaro - 2022
     /*
@@ -8,7 +10,7 @@ public class P_5_1_3_posicionParesArray {
     */
     public static void main(String[] args) {
         int[] array = new int[10];
-        ProgramasPruebas.metodos.cargarArray(array);
+        cargarArray(array, 101);
         for (int i = 0; i < array.length; i++) {
             if (array[i] % 2 == 0) System.out.println("El index "+i+" contiene: "+array[i]+" que es par.");
         }

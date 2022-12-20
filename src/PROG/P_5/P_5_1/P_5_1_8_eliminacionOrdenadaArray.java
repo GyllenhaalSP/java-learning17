@@ -21,7 +21,7 @@ public class P_5_1_8_eliminacionOrdenadaArray {
             Scanner sc = new Scanner(System.in);
             Random rand = new Random();
             int[] TB_NUM = new int[100];
-            cargarArray(TB_NUM);
+            cargarArray(TB_NUM, 101);
             Arrays.sort(TB_NUM);
             mostrarArray("Array Ordenado: ", TB_NUM);
 

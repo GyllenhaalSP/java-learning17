@@ -114,13 +114,30 @@ public class metodos {
         return base + complementos;
     }
 
-    public static void cargarArray(int[] v){
+    public static void cargarArray(int[] v, int bound){
         //Carga un array con números aleatorios entre 0 y 100.
         Random rand = new Random();
-        for(int i = 0; i < v.length; i++){
-            v[i] = rand.nextInt(101);
+        if (v.getClass().getComponentType().isArray()) {
+            for (int i = 0; i < v.length; i++) {
+                for (int j = 0; j < v.length; j++) {
+                    v[j] = rand.nextInt(bound);
+                }
+            }
         }
     }
+
+    public static void cargarArray(int[][] v, int bound){
+        //Carga un array bidimensional con números aleatorios entre 0 y 100.
+        Random rand = new Random();
+        if (v.getClass().getComponentType().isArray()) {
+            for (int i = 0; i < v.length; i++) {
+                for (int j = 0; j < v[i].length; j++) {
+                    v[i][j] = rand.nextInt(bound);
+                }
+            }
+        }
+    }
+
     public static void mostrarArray(String mensaje, int[] v){
         //Imprime el array numérico entero que recibe y un mensaje junto con él.
         System.out.println(mensaje);
@@ -414,7 +431,7 @@ public class metodos {
         Thread temporizador = new Thread(() -> {
             try {
                 Thread.sleep((long) (tiempoEnSecs*1000));
-            } catch (InterruptedException e) {
+            } catch(InterruptedException e) {
                 e.printStackTrace();
             }
             JOptionPane.getRootFrame().dispose();

@@ -21,7 +21,7 @@ public class P_5_2_2_maquinaVending {
     */
     public static void main(String[] args) {
         int[] monedas = {200, 100, 50, 20, 10, 5};
-        int[] cantidad = {20, 20, 20, 20, 20, 20};
+        int[] cantidad = {20, 20, 20, 20, 20, 0};
         int precio, cambio;
         String producto;
         do {

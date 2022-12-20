@@ -17,7 +17,7 @@ public class P_5_1_7_insercionOrdenadaArray {
         int num;
         Scanner sc = new Scanner(System.in);
         int[] TB_NUM = new int[100];
-        metodos.cargarArray(TB_NUM);
+        metodos.cargarArray(TB_NUM, 101);
         metodos.mostrarArray("Array cargado: ", TB_NUM);
         Arrays.sort(TB_NUM);
         metodos.mostrarArray("Array Ordenado: ", TB_NUM);
