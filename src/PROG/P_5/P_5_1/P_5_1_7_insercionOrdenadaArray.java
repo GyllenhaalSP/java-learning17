@@ -16,21 +16,22 @@ public class P_5_1_7_insercionOrdenadaArray {
     public static void main(String[] args) {
         int num;
         Scanner sc = new Scanner(System.in);
-        int[] TB_NUM = new int[100];
+        Object[] TB_NUM = new Object[100];
         metodos.cargarArray(TB_NUM, 101);
         metodos.mostrarArray("Array cargado: ", TB_NUM);
         Arrays.sort(TB_NUM);
         metodos.mostrarArray("Array Ordenado: ", TB_NUM);
+
         do{
             System.out.print("Introduce un número: ");
             num = sc.nextInt();
-            if(TB_NUM[0] > num && num > TB_NUM[TB_NUM.length-1]){
+            if((int)TB_NUM[0] > num && num > (int)TB_NUM[TB_NUM.length-1]){
                 System.out.print("Introduce un número entre 1 y 99:  ");
             }
-        }while(TB_NUM[0] > num && num > TB_NUM[TB_NUM.length-1]);
+        }while((int)TB_NUM[0] > num && num > (int)TB_NUM[TB_NUM.length-1]);
 
         for(int i = 0, j = 0; i < TB_NUM.length; i++){
-            if(TB_NUM[i] > num && j == 0){
+            if((int)TB_NUM[i] > num && j == 0){
                 TB_NUM[i] = num;
                 j++;
             }

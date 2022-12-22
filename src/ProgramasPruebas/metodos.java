@@ -114,31 +114,25 @@ public class metodos {
         return base + complementos;
     }
 
-    public static void cargarArray(int[] v, int bound){
+    public static void cargarArray(Object[] v, int bound){
         //Carga un array con números aleatorios entre 0 y 100.
         Random rand = new Random();
-        if (v.getClass().getComponentType().isArray()) {
-            for (int i = 0; i < v.length; i++) {
-                for (int j = 0; j < v.length; j++) {
-                    v[j] = rand.nextInt(bound);
-                }
-            }
+        for (int i = 0; i < v.length; i++) {
+            v[i] = rand.nextInt(bound);
         }
     }
 
-    public static void cargarArray(int[][] v, int bound){
+    public static void cargarArray(Object[][] v, int bound){
         //Carga un array bidimensional con números aleatorios entre 0 y 100.
         Random rand = new Random();
-        if (v.getClass().getComponentType().isArray()) {
-            for (int i = 0; i < v.length; i++) {
-                for (int j = 0; j < v[i].length; j++) {
-                    v[i][j] = rand.nextInt(bound);
-                }
+        for (int i = 0; i < v.length; i++) {
+            for (int j = 0; j < v[i].length; j++) {
+                v[i][j] = rand.nextInt(bound);
             }
         }
     }
 
-    public static void mostrarArray(String mensaje, int[] v){
+    public static void mostrarArray(String mensaje, Object[] v){
         //Imprime el array numérico entero que recibe y un mensaje junto con él.
         System.out.println(mensaje);
         for(int i = 0, j = 1; i < v.length; i++, j++){
@@ -155,10 +149,9 @@ public class metodos {
         }
         return true;
     }
-
     //MÉTODOS DE LA VENDING MACHINE
 
-    public static String[] menuOpciones(){
+    public static Object[] menuOpciones(){
         //Devuelve un array para fijar la elección del producto y el precio asociado al mismo.
         String producto;
         int precio = 0;
@@ -172,10 +165,10 @@ public class metodos {
                 "GYLLENHAAL'S VENDING MACHINE",
                 JOptionPane.INFORMATION_MESSAGE,
                 icono,
-                new Object[]{"Agua", "Refresco", "Zumo", "Cerveza", "Salir"},
+                new Object[]{"Agua", "Refresco", "Zumo", "Cerveza", "Tonica", "Salir"},
                 "Agua");
         switch (producto == null ? producto = "Salir" : producto) {
-            case "Agua" -> printChoice(precio = 50, producto);
+            case "Agua", "Tonica" -> printChoice(precio = 50, producto);
             case "Refresco" -> printChoice(precio = 75, producto);
             case "Zumo" -> printChoice(precio = 95, producto);
             case "Cerveza" -> printChoice(precio = 135, producto);
@@ -185,7 +178,7 @@ public class metodos {
                     "FINALIZANDO",
                     JOptionPane.INFORMATION_MESSAGE);
         }
-        return new String[]{producto, String.valueOf(precio)};
+        return new Object[]{producto, precio};
     }
 
     public static int imprimirPrecios(int precio){
@@ -448,5 +441,11 @@ public class metodos {
 
     public static void cls() throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+    }
+
+    public static double monetaryRound(double value){
+        return new BigDecimal(value)
+                .setScale(2, RoundingMode.HALF_UP)
+                .doubleValue();
     }
 }

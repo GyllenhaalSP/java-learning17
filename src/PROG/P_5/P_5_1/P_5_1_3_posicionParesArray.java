@@ -9,10 +9,10 @@ public class P_5_1_3_posicionParesArray {
     elementos que sean par y la posición en que se encuentra.
     */
     public static void main(String[] args) {
-        int[] array = new int[10];
+        Object[] array = new Object[10];
         cargarArray(array, 101);
         for (int i = 0; i < array.length; i++) {
-            if (array[i] % 2 == 0) System.out.println("El index "+i+" contiene: "+array[i]+" que es par.");
+            if ((int)array[i] % 2 == 0) System.out.println("El index "+i+" contiene: "+array[i]+" que es par.");
         }
     }
 }
