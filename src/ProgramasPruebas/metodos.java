@@ -41,15 +41,15 @@ public class metodos {
 
     public static String superindice(String exponente) {
         //Devuelve el exponente en formato superíndice.
-        String superindices = "⁰¹²³⁴⁵⁶⁷⁸⁹";
+        String superIndices = "⁰¹²³⁴⁵⁶⁷⁸⁹";
         for(int i = 0; i < 10; i++){
-            exponente = exponente.replaceAll(Integer.toString(i), Character.toString(superindices.charAt(i)));
+            exponente = exponente.replaceAll(Integer.toString(i), Character.toString(superIndices.charAt(i)));
         }
         return exponente;
     }
 
     public static int fibonacci(int n) {
-        //Devuelve el n-ésimo número de la sucesión de Fibonacci.
+        //Devuelve el enésimo número de la sucesión de Fibonacci.
         if(n==1)
             return 1;
         else if(n==2)
@@ -64,7 +64,7 @@ public class metodos {
     }
 
     public static String esVocal(char caracter) {
-        //Devuelve si el caracter es una vocal.
+        //Devuelve si el carácter es una vocal.
         String str = normalizador(String.valueOf(caracter));
         return (str.equals("a") ||
                 str.equals("e") ||
@@ -114,11 +114,31 @@ public class metodos {
         return base + complementos;
     }
 
-    public static void cargarArray(Object[] v, int bound){
+    public static boolean capicua(int[] numArray, int[] numArrayInvertido) {
+        //Devuelve true si el número es capicúa o false si no lo es.
+        for(int i = 0; i < numArray.length; i++) {
+            if (numArray[i] != numArrayInvertido[i]) return false;
+        }
+        return true;
+    }
+
+    public static void cargarArray(Object[] v, int bound, String type){
+        //Dependiendo del tipo de dato, carga un array con números o chars aleatorios.
         //Carga un array con números aleatorios entre 0 y 100.
+        //Carga un array con chars aleatorios con bound 97 para a-z y 65 para A-Z.
         Random rand = new Random();
-        for (int i = 0; i < v.length; i++) {
-            v[i] = rand.nextInt(bound);
+        if(type.equalsIgnoreCase("char")){
+            for (int i = 0; i < v.length; i++) {
+                v[i] = (char)(rand.nextInt(26)+bound);
+            }
+        }else if(type.equalsIgnoreCase("int")) {
+            for (int i = 0; i < v.length; i++) {
+                v[i] = rand.nextInt(bound+1);
+            }
+        }else if(type.equalsIgnoreCase("double")) {
+            for (int i = 0; i < v.length; i++) {
+                v[i] = rand.nextDouble(bound + 1);
+            }
         }
     }
 
@@ -127,7 +147,7 @@ public class metodos {
         Random rand = new Random();
         for (int i = 0; i < v.length; i++) {
             for (int j = 0; j < v[i].length; j++) {
-                v[i][j] = rand.nextInt(bound);
+                v[i][j] = rand.nextInt(bound+1);
             }
         }
     }
@@ -142,13 +162,19 @@ public class metodos {
         System.out.println();
     }
 
-    public static boolean capicua(int[] numArray, int[] numArrayInvertido) {
-        //Devuelve true si el número es capicúa o false si no lo es.
-        for(int i = 0; i < numArray.length; i++) {
-            if (numArray[i] != numArrayInvertido[i]) return false;
+    public static void mostrarArray(String mensaje, Object[][] v){
+        //Imprime el array numérico entero que recibe y un mensaje junto con él.
+        System.out.println(mensaje);
+        for (Object[] objects : v) {
+            for(int i = 0, j = 1; i < v.length; i++, j++){
+                System.out.print(objects[i]+"\t");
+                if(j%10==0)System.out.println();
+            }
+            System.out.println();
         }
-        return true;
+        System.out.println();
     }
+
     //MÉTODOS DE LA VENDING MACHINE
 
     public static Object[] menuOpciones(){
@@ -278,7 +304,7 @@ public class metodos {
     public static void calderilla(int calderilla, int[] cantidad, int[] monedas,
                                   int[] contadorIntroducidas, boolean sumar){
         //Hace el recuento de monedas y las redistribuye en el array de cantidad
-        //tanto si es para sumar como si es para restarlas en caso de error.
+        //tanto si es para sumarlas como si es para restarlas en caso de error.
         if(sumar){
             for (int i = 0; i < cantidad.length; i++) {
                 if (calderilla == monedas[i]) {

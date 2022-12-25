@@ -21,19 +21,18 @@ public class P_5_2_2_maquinaVending {
     */
     public static void main(String[] args) {
         int[] monedas = {200, 100, 50, 20, 10, 5};
-        int[] cantidad = {20, 20, 20, 20, 20, 0};
+        int[] cantidad = {20, 20, 20, 20, 20, 20};
         int precio, cambio;
-        String producto;
+        String producto, salida = "salir";
         do {
-            String[] menu = menuOpciones();
-            precio = Integer.parseInt(menu[1]);
-            if(!(producto = menu[0]).equalsIgnoreCase("salir")) {
-                cambio = (calculoPrecios(precio, cantidad, monedas) - precio);
-                if(cambio < 0) break;
+            Object[] menu = menuOpciones();
+            precio = (int)menu[1];
+            if(!(producto = (String)menu[0]).equalsIgnoreCase(salida)) {
+                if((cambio = (calculoPrecios(precio, cantidad, monedas) - precio)) < 0) break;
                 expendedor(producto, cambio);
                 if(cambio != 0) returnChange(cambio, monedas, cantidad);
             }
-        }while(!producto.equalsIgnoreCase("salir"));
+        }while(!producto.equalsIgnoreCase(salida));
         cierreMaquina(cantidad, monedas);
     }
 }
