@@ -137,13 +137,47 @@ public class metodos {
             }
         }else if(type.equalsIgnoreCase("double")) {
             for (int i = 0; i < v.length; i++) {
-                v[i] = rand.nextDouble(bound + 1);
+                v[i] = rand.nextDouble(bound+1);
             }
         }
     }
 
-    public static void cargarArray(Object[][] v, int bound){
-        //Carga un array bidimensional con números aleatorios entre 0 y 100.
+    public static void cargarArray(Object[][] v, int bound, String type) {
+        //Dependiendo del tipo de dato, carga un array bidimensional con números o chars aleatorios.
+        //Carga un array con números aleatorios entre 0 y 100.
+        //Carga un array con chars aleatorios con bound 97 para a-z y 65 para A-Z.
+        Random rand = new Random();
+        if(type.equalsIgnoreCase("char")){
+            for (int i = 0; i < v.length; i++) {
+                for (int j = 0; j < v[i].length; j++) {
+                    v[i][j] = (char)(rand.nextInt(26)+bound);
+                }
+            }
+        }else if(type.equalsIgnoreCase("int")) {
+            for (int i = 0; i < v.length; i++) {
+                for (int j = 0; j < v[i].length; j++) {
+                    v[i][j] = rand.nextInt(bound+1);
+                }
+            }
+        }else if(type.equalsIgnoreCase("double")) {
+            for (int i = 0; i < v.length; i++) {
+                for (int j = 0; j < v[i].length; j++) {
+                    v[i][j] = rand.nextDouble(bound+1);
+                }
+            }
+        }
+    }
+
+    public static void cargarArray(int[] v, int bound){
+        //Carga un array con números aleatorios entre 0 y 100.
+        Random rand = new Random();
+        for (int i = 0; i < v.length; i++) {
+            v[i] = rand.nextInt(bound+1);
+        }
+    }
+
+    public static void cargarArray(int[][] v, int bound) {
+        //Carga un array bidimensional de tipo int con números aleatorios en el rango de la variable bound.
         Random rand = new Random();
         for (int i = 0; i < v.length; i++) {
             for (int j = 0; j < v[i].length; j++) {
@@ -153,7 +187,7 @@ public class metodos {
     }
 
     public static void mostrarArray(String mensaje, Object[] v){
-        //Imprime el array numérico entero que recibe y un mensaje junto con él.
+        //Imprime el array de objetos que recibe y un mensaje junto con él.
         System.out.println(mensaje);
         for(int i = 0, j = 1; i < v.length; i++, j++){
             System.out.print(v[i]+"\t");
@@ -163,12 +197,35 @@ public class metodos {
     }
 
     public static void mostrarArray(String mensaje, Object[][] v){
-        //Imprime el array numérico entero que recibe y un mensaje junto con él.
+        //Imprime el array de objetos que recibe y un mensaje junto con él.
         System.out.println(mensaje);
         for (Object[] objects : v) {
             for(int i = 0, j = 1; i < v.length; i++, j++){
                 System.out.print(objects[i]+"\t");
                 if(j%10==0)System.out.println();
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+    public static void mostrarArray(String mensaje, int[] v, int separador){
+        //Imprime el array numérico entero que recibe y un mensaje junto con él.
+        System.out.println(mensaje);
+        for(int i = 0, j = 1; i < v.length; i++, j++){
+            System.out.print(v[i]+"\t");
+            if(j%separador==0)System.out.println();
+        }
+        System.out.println();
+    }
+
+    public static void mostrarArray(String mensaje, int[][] v, int separador){
+        //Imprime el array numérico entero que recibe y un mensaje junto con él.
+        System.out.println(mensaje);
+        for (int[] nums : v) {
+            for(int i = 0, j = 1; i < nums.length; i++, j++){
+                System.out.print(nums[i]+"\t");
+                if(j%separador==0)System.out.println();
             }
             System.out.println();
         }

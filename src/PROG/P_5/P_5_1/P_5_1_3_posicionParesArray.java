@@ -10,7 +10,7 @@ public class P_5_1_3_posicionParesArray {
     */
     public static void main(String[] args) {
         Object[] array = new Object[10];
-        cargarArray(array, 101);
+        cargarArray(array, 101, "int");
         for (int i = 0; i < array.length; i++) {
             if ((int)array[i] % 2 == 0) System.out.println("El index "+i+" contiene: "+array[i]+" que es par.");
         }
