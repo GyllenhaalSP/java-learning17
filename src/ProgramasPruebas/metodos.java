@@ -122,6 +122,18 @@ public class metodos {
         return true;
     }
 
+    public static boolean esValidoNIF(String nif){
+        char letraNIF = nif.charAt(8);
+        String letrasControl = "TRWAGMYFPDXBNJZSQVHLCKE";
+
+        if (nif.length()!=9) return false;
+
+        String numeroNIF = nif.toUpperCase().substring(0, nif.length()-1).replace("X", "0")
+                .replace("Y", "1").replace("Z", "2");
+
+        return letraNIF == letrasControl.charAt(Integer.parseInt(numeroNIF) % 23);
+    }
+
     public static void cargarArray(Object[] v, int bound, String type){
         /*
         Dependiendo del tipo de dato, carga un array de objetos con números enteros, chars o decimales aleatorios.
@@ -284,7 +296,7 @@ public class metodos {
         String userChoice = ((String) JOptionPane.showInputDialog(
                 null,
                 mensajeMonedas.append("Precio: ")
-                        .append(precio < 99 ? precio : String.format("%.2f", precio / 100.0))
+                        .append(precio < 99 ? precio : String.format("%.2f", precio/100.0))
                         .append((precio > 99 ? precio == 100 ? " euro" : " euros" : " céntimos")),
                 "PAGO",
                 JOptionPane.INFORMATION_MESSAGE,
