@@ -123,9 +123,12 @@ public class metodos {
     }
 
     public static void cargarArray(Object[] v, int bound, String type){
-        //Dependiendo del tipo de dato, carga un array con números o chars aleatorios.
-        //Carga un array con números aleatorios entre 0 y 100.
-        //Carga un array con chars aleatorios con bound 97 para a-z y 65 para A-Z.
+        /*
+        Dependiendo del tipo de dato, carga un array de objetos con números enteros, chars o decimales aleatorios.
+        type = int carga el array con números enteros aleatorios entre 0 y bound.
+        type = char carga el array con chars aleatorios con bound 97 para a-z y 65 para A-Z.
+        type = double carga el array con números decimales aleatorios entre 0 y bound.
+        */
         Random rand = new Random();
         if(type.equalsIgnoreCase("char")){
             for (int i = 0; i < v.length; i++) {
@@ -143,9 +146,13 @@ public class metodos {
     }
 
     public static void cargarArray(Object[][] v, int bound, String type) {
-        //Dependiendo del tipo de dato, carga un array bidimensional con números o chars aleatorios.
-        //Carga un array con números aleatorios entre 0 y 100.
-        //Carga un array con chars aleatorios con bound 97 para a-z y 65 para A-Z.
+        /*
+        Dependiendo del tipo de dato, carga un array bidimensional de objetos con números enteros, chars o
+        decimales aleatorios.
+        type = int carga el array con números enteros aleatorios entre 0 y bound.
+        type = char carga el array con chars aleatorios con bound 97 para a-z y 65 para A-Z.
+        type = double carga el array con números decimales aleatorios entre 0 y bound.
+        */
         Random rand = new Random();
         if(type.equalsIgnoreCase("char")){
             for (int i = 0; i < v.length; i++) {
@@ -169,7 +176,7 @@ public class metodos {
     }
 
     public static void cargarArray(int[] v, int bound){
-        //Carga un array con números aleatorios entre 0 y 100.
+        //Carga un array de enteros con números aleatorios entre 0 y bound.
         Random rand = new Random();
         for (int i = 0; i < v.length; i++) {
             v[i] = rand.nextInt(bound+1);
@@ -177,7 +184,7 @@ public class metodos {
     }
 
     public static void cargarArray(int[][] v, int bound) {
-        //Carga un array bidimensional de tipo int con números aleatorios en el rango de la variable bound.
+        //Carga un array bidimensional de enteros con números aleatorios entre 0 y bound.
         Random rand = new Random();
         for (int i = 0; i < v.length; i++) {
             for (int j = 0; j < v[i].length; j++) {
@@ -186,23 +193,25 @@ public class metodos {
         }
     }
 
-    public static void mostrarArray(String mensaje, Object[] v){
+    public static void mostrarArray(String mensaje, Object[] v, int separador){
         //Imprime el array de objetos que recibe y un mensaje junto con él.
+        //La variable "separador" indica cada cuántos elementos se imprime un salto de línea.
         System.out.println(mensaje);
         for(int i = 0, j = 1; i < v.length; i++, j++){
             System.out.print(v[i]+"\t");
-            if(j%10==0)System.out.println();
+            if(j%separador==0)System.out.println();
         }
         System.out.println();
     }
 
-    public static void mostrarArray(String mensaje, Object[][] v){
-        //Imprime el array de objetos que recibe y un mensaje junto con él.
+    public static void mostrarArray(String mensaje, Object[][] v, int separador){
+        //Imprime el array bidimensional de objetos que recibe y un mensaje junto con él.
+        //La variable "separador" indica cada cuántos elementos se imprime un salto de línea.
         System.out.println(mensaje);
         for (Object[] objects : v) {
             for(int i = 0, j = 1; i < v.length; i++, j++){
                 System.out.print(objects[i]+"\t");
-                if(j%10==0)System.out.println();
+                if(j%separador==0)System.out.println();
             }
             System.out.println();
         }
@@ -210,7 +219,8 @@ public class metodos {
     }
 
     public static void mostrarArray(String mensaje, int[] v, int separador){
-        //Imprime el array numérico entero que recibe y un mensaje junto con él.
+        //Imprime el array de enteros que recibe y un mensaje junto con él.
+        //La variable "separador" indica cada cuántos elementos se imprime un salto de línea.
         System.out.println(mensaje);
         for(int i = 0, j = 1; i < v.length; i++, j++){
             System.out.print(v[i]+"\t");
@@ -220,7 +230,8 @@ public class metodos {
     }
 
     public static void mostrarArray(String mensaje, int[][] v, int separador){
-        //Imprime el array numérico entero que recibe y un mensaje junto con él.
+        //Imprime el array bidimensional de enteros que recibe y un mensaje junto con él.
+        //La variable "separador" indica cada cuántos elementos se imprime un salto de línea.
         System.out.println(mensaje);
         for (int[] nums : v) {
             for(int i = 0, j = 1; i < nums.length; i++, j++){
@@ -232,17 +243,16 @@ public class metodos {
         System.out.println();
     }
 
-    //MÉTODOS DE LA VENDING MACHINE
+    //------------------MÉTODOS DE LA VENDING MACHINE------------------
 
     public static Object[] menuOpciones(){
         //Devuelve un array para fijar la elección del producto y el precio asociado al mismo.
-        String producto;
         int precio = 0;
         ImageIcon icono = new ImageIcon(
                 new ImageIcon("resources/vendingMachine/vending.png")
                 .getImage()
                 .getScaledInstance(150, 150, Image.SCALE_SMOOTH));
-        producto = (String) JOptionPane.showInputDialog(
+        String producto = (String) JOptionPane.showInputDialog(
                 null,
                 "Elegir un producto:",
                 "GYLLENHAAL'S VENDING MACHINE",
@@ -265,21 +275,21 @@ public class metodos {
     }
 
     public static int imprimirPrecios(int precio){
+        //Imprime el menu de precios y devuelve el precio del producto elegido.
         int cents = 0;
-        String userChoice;
         ImageIcon icono = new ImageIcon(new ImageIcon("resources/vendingMachine/coins.png")
                 .getImage()
                 .getScaledInstance(150, 141, Image.SCALE_DEFAULT));
         StringBuilder mensajeMonedas = new StringBuilder("Introduce monedas:\n");
-        userChoice = ((String) JOptionPane.showInputDialog(
+        String userChoice = ((String) JOptionPane.showInputDialog(
                 null,
                 mensajeMonedas.append("Precio: ")
-                        .append(precio < 99 ? precio : String.format("%.2f", precio/100.0))
+                        .append(precio < 99 ? precio : String.format("%.2f", precio / 100.0))
                         .append((precio > 99 ? precio == 100 ? " euro" : " euros" : " céntimos")),
                 "PAGO",
                 JOptionPane.INFORMATION_MESSAGE,
                 icono,
-                new Object[] {"2€", "1€", "50 cts", "20 cts", "10 cts", "5 cts"}, "2€"));
+                new Object[]{"2€", "1€", "50 cts", "20 cts", "10 cts", "5 cts"}, "2€"));
         switch (userChoice == null ? "" : userChoice) {
             case "2€" -> cents += 200;
             case "1€" -> cents += 100;
@@ -295,7 +305,7 @@ public class metodos {
     }
 
     public static int calculoPrecios(int precio, int[] cantidad, int[] monedas) {
-        //Imprime el menú de precios y devuelve la opción elegida.
+        //Calcula los precios y devuelve el cambio en céntimos.
         int cents, whileCents = 0, contadorCambio = 0;
         int[] contadorIntroducidas = new int[6];
         boolean contadorCambioBool = false, flag = true, ultimaMoneda = false;
@@ -380,13 +390,15 @@ public class metodos {
     public static void printChoice(int precio, String producto) {
         //Imprime los productos disponibles y el precio.
         jDialog(String.format("\n\tEl precio de"+
-                (producto.equalsIgnoreCase("Cerveza") ? " la " : "l ")+
-                "%s es %.2f€\n\n", producto.toLowerCase(), precio/100.0),
+                        ((producto.equalsIgnoreCase("Cerveza") ||
+                            producto.equalsIgnoreCase("Tonica")) ? " la " : "l ")+
+                                "%s es %.2f€\n\n", producto.toLowerCase(), precio/100.0),
                 "INFORMACIÓN",
                 0, 380, 100, "resources/vendingMachine/infoGreen.png");
     }
 
     public static void jDialog(String format, String titulo, int tiempo, int width, int height, String... icon) {
+        //Crea un JDialog con un mensaje y un icono.
         ImageIcon icono = null;
         if (icon != null) {
             icono = new ImageIcon(
@@ -496,6 +508,7 @@ public class metodos {
     }
 
     public static void expendedor(String producto, int cambio){
+        //Imprime el mensaje de compra realizada con éxito.
         if (cambio > 0){
         jDialog(String.format("¡Expendiendo producto y cambio!\n\nProducto: %s\nCambio: %.2f€\n",
                 producto.toUpperCase(), cambio/100.0), "EXPENDIENDO", 0, 300, 150,
@@ -504,6 +517,7 @@ public class metodos {
     }
 
     public static void retardoJOptionPane(double tiempoEnSecs){
+        //Retardo para el JDialog.
         Thread temporizador = new Thread(() -> {
             try {
                 Thread.sleep((long) (tiempoEnSecs*1000));
@@ -515,7 +529,10 @@ public class metodos {
         temporizador.start();
     }
 
+    //------------------FIN MÉTODOS DE LA VENDING MACHINE------------------
+
     public static double limitPrecision(String doubleAsString, int maxDigitsAfterDecimal, boolean print) {
+        //Limita la precisión de un double.
         int multiplier = (int) Math.pow(10, maxDigitsAfterDecimal);
         double truncated = (double) ((long) ((Double.parseDouble(doubleAsString)) * multiplier)) / multiplier;
         if (print) System.out.println(doubleAsString + " ==> " + truncated);
@@ -523,10 +540,12 @@ public class metodos {
     }
 
     public static void cls() throws IOException, InterruptedException {
+        //Limpia la consola.
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
     }
 
     public static double monetaryRound(double value){
+        //Redondea un double a 2 decimales con precisión monetaria.
         return new BigDecimal(value)
                 .setScale(2, RoundingMode.HALF_UP)
                 .doubleValue();

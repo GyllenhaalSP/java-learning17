@@ -25,7 +25,7 @@ public class P_5_3_7_notasClaseBidimensionales {
         cargarArray(notasClase2, 10);
         cargarArray(notasClase3, 10);
 
-        mostrarArray("Las notas son: ", notas);
+        mostrarArray("Las notas son: ", notas, 10);
 
         for(int i = 0; i < notas.length; i++) {
             for (int j = 0; j < notas[i].length; j++) {

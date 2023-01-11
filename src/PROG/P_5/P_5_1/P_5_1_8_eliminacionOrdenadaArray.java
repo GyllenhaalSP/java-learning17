@@ -23,7 +23,7 @@ public class P_5_1_8_eliminacionOrdenadaArray {
             Object[] TB_NUM = new Object[100];
             cargarArray(TB_NUM, 101, "int");
             Arrays.sort(TB_NUM);
-            mostrarArray("Array Ordenado: ", TB_NUM);
+            mostrarArray("Array Ordenado: ", TB_NUM, 10);
 
             do{
                 System.out.print("Introduce una posición: ");
@@ -38,6 +38,6 @@ public class P_5_1_8_eliminacionOrdenadaArray {
                 if(i >= pos) TB_NUM[i] = (i == TB_NUM.length - 1 ? TB_NUM[TB_NUM.length - 1] = rand.nextInt(100) :
                         TB_NUM[i + 1]);
             }
-            mostrarArray("Número Introducido: ", TB_NUM);
+            mostrarArray("Número Introducido: ", TB_NUM, 10);
     }
 }

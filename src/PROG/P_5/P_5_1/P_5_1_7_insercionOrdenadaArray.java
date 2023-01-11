@@ -18,9 +18,9 @@ public class P_5_1_7_insercionOrdenadaArray {
         Scanner sc = new Scanner(System.in);
         Object[] TB_NUM = new Object[100];
         metodos.cargarArray(TB_NUM, 101, "int");
-        metodos.mostrarArray("Array cargado: ", TB_NUM);
+        metodos.mostrarArray("Array cargado: ", TB_NUM, 10);
         Arrays.sort(TB_NUM);
-        metodos.mostrarArray("Array Ordenado: ", TB_NUM);
+        metodos.mostrarArray("Array Ordenado: ", TB_NUM, 10);
 
         do{
             System.out.print("Introduce un número: ");
@@ -36,6 +36,6 @@ public class P_5_1_7_insercionOrdenadaArray {
                 j++;
             }
         }
-        metodos.mostrarArray("Número Introducido: ", TB_NUM);
+        metodos.mostrarArray("Número Introducido: ", TB_NUM, 10);
     }
 }
