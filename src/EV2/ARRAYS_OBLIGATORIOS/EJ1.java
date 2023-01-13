@@ -18,7 +18,7 @@ public class EJ1 {
         int[] cuadrado = new int[20];
         int[] cubo = new int[20];
 
-        cargarArray(numero, 100);
+        numero = cargarArray(numero, 1,  100);
         Arrays.sort(numero);
 
         for (int i = 0; i < numero.length; i++) {
@@ -31,11 +31,8 @@ public class EJ1 {
         }
     }
 
-    public static void cargarArray(int[] v, int bound){
-        //Carga un array de enteros con números aleatorios entre 0 y bound.
-        Random rand = new Random();
-        for (int i = 0; i < v.length; i++) {
-            v[i] = rand.nextInt(bound+1);
-        }
+    public static int[] cargarArray(int[] v, int min, int max){
+        //Carga un array de enteros con números aleatorios entre min y max +1.
+        return new Random().ints(v.length, min, max+1).toArray();
     }
 }

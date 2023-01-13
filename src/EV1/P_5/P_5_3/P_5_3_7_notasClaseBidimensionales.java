@@ -21,9 +21,9 @@ public class P_5_3_7_notasClaseBidimensionales {
         int[] notasClase3 = notas[2];
         int notaMaxima = 0, notaMinima = 10;
 
-        cargarArray(notasClase1, 10);
-        cargarArray(notasClase2, 10);
-        cargarArray(notasClase3, 10);
+        cargarArray(notasClase1, 0, 10);
+        cargarArray(notasClase2, 0, 10);
+        cargarArray(notasClase3, 0, 10);
 
         mostrarArray("Las notas son: ", notas, 10);
 

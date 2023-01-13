@@ -21,7 +21,7 @@ public class P_5_3_6_notasBidimensionales {
         double mediaClase;
         int sumaNotas = 0, sumaAsignaturas = 0, cont = 1;
 
-        cargarArray(notas, 11);
+        cargarArray(notas, 0, 10);
 
         for(int[] nota : notas){
             System.out.print(Arrays.toString(nota)+" ");

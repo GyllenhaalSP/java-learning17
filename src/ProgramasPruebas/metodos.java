@@ -187,22 +187,18 @@ public class metodos {
         }
     }
 
-    public static void cargarArray(int[] v, int bound){
-        //Carga un array de enteros con números aleatorios entre 0 y bound.
-        Random rand = new Random();
-        for (int i = 0; i < v.length; i++) {
-            v[i] = rand.nextInt(bound+1);
-        }
+    public static int[] cargarArray(int[] v, int min, int max){
+        //Carga un array de enteros con números aleatorios entre min y max +1.
+        return new Random().ints(v.length, min, max+1).toArray();
     }
 
-    public static void cargarArray(int[][] v, int bound) {
-        //Carga un array bidimensional de enteros con números aleatorios entre 0 y bound.
+    public static int[][] cargarArray(int[][] v, int min, int max) {
+        //Carga un array bidimensional de enteros con números aleatorios entre min y max + 1.
         Random rand = new Random();
         for (int i = 0; i < v.length; i++) {
-            for (int j = 0; j < v[i].length; j++) {
-                v[i][j] = rand.nextInt(bound+1);
-            }
+            v[i] = rand.ints(v[i].length, min, max+1).toArray();
         }
+        return v;
     }
 
     public static void mostrarArray(String mensaje, Object[] v, int separador){

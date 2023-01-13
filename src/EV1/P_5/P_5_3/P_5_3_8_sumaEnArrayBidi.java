@@ -14,7 +14,7 @@ public class P_5_3_8_sumaEnArrayBidi {
     public static void main(String[] args) {
         int[][] array = new int[10][15];
         int[] array2 = new int[10];
-        cargarArray(array, 101);
+        cargarArray(array, 1, 100);
         mostrarArray("El array es ", array, 15);
 
         for(int i = 0; i < array.length; i++)

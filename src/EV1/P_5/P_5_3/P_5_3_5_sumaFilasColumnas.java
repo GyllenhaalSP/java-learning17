@@ -17,7 +17,7 @@ public class P_5_3_5_sumaFilasColumnas {
         int sumaFilas = 0, sumaColumnas = 0, cont = 1;
         int[][] matriz = new int[5][5];
 
-        cargarArray(matriz, 101, "int");
+        cargarArray(matriz, 0, 101);
 
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
