@@ -1,6 +1,6 @@
 package EV2.ARRAYS_OBLIGATORIOS;
 
-import static ProgramasPruebas.metodos.cargarArray;
+import java.util.Random;
 
 public class EJ2 {
     // Daniel Alonso Lázaro - 2023
@@ -11,10 +11,13 @@ public class EJ2 {
     igual que si de una hoja de cálculo se tratara. La suma total debe aparecer
     en la esquina inferior derecha.
     */
+    static final int FILAS = 4;
+    static final int COLUMNAS = 5;
+
     public static void main(String[] args) {
-        int[][] numeros = new int[4][5];
-        int[] sumaFilas = new int[4];
-        int[] sumaColumnas = new int[5];
+        int[][] numeros = new int[FILAS][COLUMNAS];
+        int[] sumaFilas = new int[FILAS];
+        int[] sumaColumnas = new int[COLUMNAS];
         int sumaTotal = 0;
 
         cargarArray(numeros, 100);
@@ -45,5 +48,15 @@ public class EJ2 {
             }
         }
         System.out.println();
+    }
+
+    public static void cargarArray(int[][] v, int bound) {
+        //Carga un array bidimensional de enteros con números aleatorios entre 0 y bound.
+        Random rand = new Random();
+        for (int i = 0; i < v.length; i++) {
+            for (int j = 0; j < v[i].length; j++) {
+                v[i][j] = rand.nextInt(bound+1);
+            }
+        }
     }
 }

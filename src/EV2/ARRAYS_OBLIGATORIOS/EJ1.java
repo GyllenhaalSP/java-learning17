@@ -1,7 +1,7 @@
 package EV2.ARRAYS_OBLIGATORIOS;
 
 import java.util.Arrays;
-import static ProgramasPruebas.metodos.cargarArray;
+import java.util.Random;
 
 public class EJ1 {
     // Daniel Alonso Lázaro - 2023
@@ -28,6 +28,14 @@ public class EJ1 {
 
         for (int i = 0; i < numero.length; i++) {
             System.out.printf("Número: %7d | Cuadrado: %7d | Cubo: %7d%n", numero[i], cuadrado[i], cubo[i]);
+        }
+    }
+
+    public static void cargarArray(int[] v, int bound){
+        //Carga un array de enteros con números aleatorios entre 0 y bound.
+        Random rand = new Random();
+        for (int i = 0; i < v.length; i++) {
+            v[i] = rand.nextInt(bound+1);
         }
     }
 }
