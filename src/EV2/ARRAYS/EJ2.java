@@ -1,4 +1,4 @@
-package EV2.ARRAYS_OBLIGATORIOS;
+package EV2.ARRAYS;
 
 public class EJ2 {
     // Daniel Alonso Lázaro - 2023
