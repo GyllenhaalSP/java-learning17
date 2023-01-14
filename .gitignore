@@ -3,6 +3,9 @@
 /out/
 /.fleet/
 
+# FILES
+/src/TODO.txt
+
 ### Eclipse ###
 .apt_generated
 .classpath
