@@ -3,9 +3,22 @@
 /out/
 /.fleet/
 
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
 # Default ignored files
 /shelf/
 /workspace.xml
+*.iml
 
 # Editor-based HTTP Client requests
 /httpRequests/
@@ -17,11 +30,14 @@
 # Compiled class file
 *.class
 
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+
 # Log file
 *.log
-
-# BlueJ files
-*.ctxt
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
