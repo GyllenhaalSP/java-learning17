@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Arrays;
 
-public class vendingMachine {
+public class VendingMachine {
     // Daniel Alonso Lázaro - 2022
     /*
     Disponemos de una máquina automática de venta de bebidas. Disponemos de tres productos:
