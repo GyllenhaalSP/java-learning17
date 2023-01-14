@@ -2,7 +2,7 @@ package EV1.P_3.P_3_8;
 
 import java.util.Scanner;
 
-import static ProgramasPruebas.metodos.base;
+import static ProgramasPruebas.Metodos.base;
 
 public class P_3_8_2_cambioBase {
 //    Se introduce un número en base decimal y deseamos ver su representación en binario, octal

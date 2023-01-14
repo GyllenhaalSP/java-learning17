@@ -2,7 +2,7 @@ package EV1.P_3.P_3_5;
 
 import java.util.Scanner;
 
-import static ProgramasPruebas.metodos.factorial;
+import static ProgramasPruebas.Metodos.factorial;
 
 public class P_3_5_5_combinaciones {
 //    Nos piden que calculemos cuantas combinaciones podemos hacer de m elementos tomados de n en n.

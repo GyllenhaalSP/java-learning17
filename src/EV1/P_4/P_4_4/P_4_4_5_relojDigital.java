@@ -2,7 +2,7 @@ package EV1.P_4.P_4_4;
 
 import java.io.IOException;
 import java.util.Scanner;
-import static ProgramasPruebas.metodos.cls;
+import static ProgramasPruebas.Metodos.cls;
 
 public class P_4_4_5_relojDigital {
     // Daniel Alonso Lázaro - 2022

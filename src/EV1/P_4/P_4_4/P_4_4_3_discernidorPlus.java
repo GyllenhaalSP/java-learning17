@@ -1,6 +1,6 @@
 package EV1.P_4.P_4_4;
 
-import static ProgramasPruebas.metodos.esVocal;
+import static ProgramasPruebas.Metodos.esVocal;
 
 public class P_4_4_3_discernidorPlus {
     // Daniel Alonso Lázaro - 2022

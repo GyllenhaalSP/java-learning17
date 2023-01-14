@@ -2,7 +2,7 @@ package EV1.P_3.P_3_3;
 
 import java.util.Scanner;
 
-import static ProgramasPruebas.metodos.bisiesto;
+import static ProgramasPruebas.Metodos.bisiesto;
 
 public class P_3_3_2_bisiesto {
 //    Escribir un programa que lea un año indicar si es bisiesto. Nota: un año es bisiesto si es un

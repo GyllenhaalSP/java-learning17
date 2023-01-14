@@ -2,7 +2,7 @@ package EV1.P_3.P_3_3;
 
 import java.util.Scanner;
 
-import static ProgramasPruebas.metodos.bisiesto;
+import static ProgramasPruebas.Metodos.bisiesto;
 
 public class P_3_3_3_yearChecker {
 //    Pedir el día, mes y año de una fecha e indicar si es correcta.

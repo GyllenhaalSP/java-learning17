@@ -2,7 +2,7 @@ package EV1.P_REF1EV.P_REF_2;
 
 import java.util.Scanner;
 
-import static ProgramasPruebas.metodos.normalizador;
+import static ProgramasPruebas.Metodos.normalizador;
 
 public class P_REF_2_2 {
     // Daniel Alonso Lázaro - 2022

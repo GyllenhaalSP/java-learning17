@@ -2,7 +2,7 @@ package EV1.P_REF1EV.P_REF_2;
 
 import java.util.Scanner;
 
-import static ProgramasPruebas.metodos.calculoSalarios;
+import static ProgramasPruebas.Metodos.calculoSalarios;
 
 public class P_REF_2_1 {
     // Daniel Alonso Lázaro - 2022

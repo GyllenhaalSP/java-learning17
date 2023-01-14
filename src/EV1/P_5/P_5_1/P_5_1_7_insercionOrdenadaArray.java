@@ -1,6 +1,6 @@
 package EV1.P_5.P_5_1;
 
-import ProgramasPruebas.metodos;
+import ProgramasPruebas.Metodos;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -17,10 +17,10 @@ public class P_5_1_7_insercionOrdenadaArray {
         int num;
         Scanner sc = new Scanner(System.in);
         Object[] TB_NUM = new Object[100];
-        metodos.cargarArray(TB_NUM, 101, "int");
-        metodos.mostrarArray("Array cargado: ", TB_NUM, 10);
+        Metodos.cargarArray(TB_NUM, 101, "int");
+        Metodos.mostrarArray("Array cargado: ", TB_NUM, 10);
         Arrays.sort(TB_NUM);
-        metodos.mostrarArray("Array Ordenado: ", TB_NUM, 10);
+        Metodos.mostrarArray("Array Ordenado: ", TB_NUM, 10);
 
         do{
             System.out.print("Introduce un número: ");
@@ -36,6 +36,6 @@ public class P_5_1_7_insercionOrdenadaArray {
                 j++;
             }
         }
-        metodos.mostrarArray("Número Introducido: ", TB_NUM, 10);
+        Metodos.mostrarArray("Número Introducido: ", TB_NUM, 10);
     }
 }

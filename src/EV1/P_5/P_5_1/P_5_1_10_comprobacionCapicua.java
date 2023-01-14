@@ -1,5 +1,7 @@
 package EV1.P_5.P_5_1;
 
+import ProgramasPruebas.Metodos;
+
 import java.util.Scanner;
 
 public class P_5_1_10_comprobacionCapicua {
@@ -27,7 +29,7 @@ public class P_5_1_10_comprobacionCapicua {
             numArrayInvertido[j] = numArray[i];
         }
 
-        if(ProgramasPruebas.metodos.capicua(numArray, numArrayInvertido)) System.out.println("El número es capicúa.");
+        if(Metodos.capicua(numArray, numArrayInvertido)) System.out.println("El número es capicúa.");
         else System.out.println("El número no es capicúa.");
     }
 }

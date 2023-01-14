@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-import static ProgramasPruebas.metodos.cargarArray;
-import static ProgramasPruebas.metodos.mostrarArray;
+import static ProgramasPruebas.Metodos.cargarArray;
+import static ProgramasPruebas.Metodos.mostrarArray;
 
 public class P_5_1_8_eliminacionOrdenadaArray {
     // Daniel Alonso Lázaro - 2022

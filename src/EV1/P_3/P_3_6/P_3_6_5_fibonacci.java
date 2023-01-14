@@ -2,7 +2,7 @@ package EV1.P_3.P_3_6;
 
 import java.util.Scanner;
 
-import static ProgramasPruebas.metodos.fibonacci;
+import static ProgramasPruebas.Metodos.fibonacci;
 
 public class P_3_6_5_fibonacci {
 //    La sucesión de Fibonacci se define de la siguiente forma: a1=1, a2=1 y an=an-1+an-2 para n>2, es decir,

@@ -1,6 +1,6 @@
 package EV1.P_3.P_3_6;
 
-import static ProgramasPruebas.metodos.superindice;
+import static ProgramasPruebas.Metodos.superindice;
 
 public class P_3_6_1_potencias {
 //    Escribir las potencias enteras de 2 de 0 a 9. (Usando al menos un while).

@@ -2,8 +2,8 @@ package EV1.P_3.P_3_5;
 
 import java.util.Scanner;
 
-import static ProgramasPruebas.metodos.returnChange;
-import static ProgramasPruebas.metodos.resto;
+import static ProgramasPruebas.Metodos.returnChange;
+import static ProgramasPruebas.Metodos.resto;
 
 public class P_3_5_6_cambio {
 //    Diseñar un programa que a partir de una venta y del pago de un producto por parte del comprador,

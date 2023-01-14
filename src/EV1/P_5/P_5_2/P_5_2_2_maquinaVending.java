@@ -1,6 +1,6 @@
 package EV1.P_5.P_5_2;
 
-import static ProgramasPruebas.metodos.*;
+import static ProgramasPruebas.Metodos.*;
 
 public class P_5_2_2_maquinaVending {
     //    Daniel Alonso Lázaro - 2022

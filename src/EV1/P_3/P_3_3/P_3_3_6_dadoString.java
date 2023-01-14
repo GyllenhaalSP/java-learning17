@@ -1,6 +1,6 @@
 package EV1.P_3.P_3_3;
 
-import static ProgramasPruebas.metodos.dado;
+import static ProgramasPruebas.Metodos.dado;
 
 public class P_3_3_6_dadoString {
 //    Realiza un programa que pida por teclado el resultado (dato entero) obtenido al lanzar un dado

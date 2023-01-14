@@ -1,6 +1,6 @@
 package EV1.P_5.P_5_1;
 
-import static ProgramasPruebas.metodos.cargarArray;
+import static ProgramasPruebas.Metodos.cargarArray;
 
 public class P_5_1_3_posicionParesArray {
     // Daniel Alonso Lázaro - 2022

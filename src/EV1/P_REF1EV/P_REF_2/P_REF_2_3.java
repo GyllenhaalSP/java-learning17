@@ -2,8 +2,8 @@ package EV1.P_REF1EV.P_REF_2;
 
 import java.util.Scanner;
 
-import static ProgramasPruebas.metodos.dataIn;
-import static ProgramasPruebas.metodos.media;
+import static ProgramasPruebas.Metodos.dataIn;
+import static ProgramasPruebas.Metodos.media;
 
 public class P_REF_2_3 {
     // Daniel Alonso Lázaro - 2022

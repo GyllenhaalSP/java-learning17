@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
-import static ProgramasPruebas.metodos.bisiesto;
+import static ProgramasPruebas.Metodos.bisiesto;
 
 public class P_3_7_3_calculoDia {
 //    Hacer un organigrama que dados un día D, un mes M y un año A, calcule

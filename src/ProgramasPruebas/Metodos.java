@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-public class metodos {
+public class Metodos {
     // Daniel Alonso Lázaro - 2022
     public static boolean bisiesto(int year) {
         //Devuelve true si el año es bisiesto, false si no lo es.
@@ -143,17 +143,14 @@ public class metodos {
         */
         Random rand = new Random();
         if(type.equalsIgnoreCase("char")){
-            for (int i = 0; i < v.length; i++) {
+            for (int i = 0; i < v.length; i++)
                 v[i] = (char)(rand.nextInt(26)+bound);
-            }
         }else if(type.equalsIgnoreCase("int")) {
-            for (int i = 0; i < v.length; i++) {
+            for (int i = 0; i < v.length; i++)
                 v[i] = rand.nextInt(bound+1);
-            }
         }else if(type.equalsIgnoreCase("double")) {
-            for (int i = 0; i < v.length; i++) {
+            for (int i = 0; i < v.length; i++)
                 v[i] = rand.nextDouble(bound+1);
-            }
         }
     }
 
@@ -167,38 +164,29 @@ public class metodos {
         */
         Random rand = new Random();
         if(type.equalsIgnoreCase("char")){
-            for (int i = 0; i < v.length; i++) {
-                for (int j = 0; j < v[i].length; j++) {
+            for (int i = 0; i < v.length; i++)
+                for (int j = 0; j < v[i].length; j++)
                     v[i][j] = (char)(rand.nextInt(26)+bound);
-                }
-            }
         }else if(type.equalsIgnoreCase("int")) {
-            for (int i = 0; i < v.length; i++) {
-                for (int j = 0; j < v[i].length; j++) {
+            for (int i = 0; i < v.length; i++)
+                for (int j = 0; j < v[i].length; j++)
                     v[i][j] = rand.nextInt(bound+1);
-                }
-            }
         }else if(type.equalsIgnoreCase("double")) {
-            for (int i = 0; i < v.length; i++) {
-                for (int j = 0; j < v[i].length; j++) {
+            for (int i = 0; i < v.length; i++)
+                for (int j = 0; j < v[i].length; j++)
                     v[i][j] = rand.nextDouble(bound+1);
-                }
-            }
         }
     }
 
     public static int[] cargarArray(int[] v, int min, int max){
         //Carga un array de enteros con números aleatorios entre min y max +1.
-        return new Random().ints(v.length, min, max+1).toArray();
+        return new Random().ints(v.length, min, max + 1).toArray();
     }
 
-    public static int[][] cargarArray(int[][] v, int min, int max) {
+    public static void cargarArray(int[][] v, int min, int max) {
         //Carga un array bidimensional de enteros con números aleatorios entre min y max + 1.
         Random rand = new Random();
-        for (int i = 0; i < v.length; i++) {
-            v[i] = rand.ints(v[i].length, min, max+1).toArray();
-        }
-        return v;
+        for (int i = 0; i < v.length; i++) v[i] = rand.ints(v[i].length, min, max+1).toArray();
     }
 
     public static void mostrarArray(String mensaje, Object[] v, int separador){
@@ -557,5 +545,49 @@ public class metodos {
         return new BigDecimal(value)
                 .setScale(2, RoundingMode.HALF_UP)
                 .doubleValue();
+    }
+
+    public static int dimensionOf(Object arr) {
+        // shows the depth of a multidimensional array
+        int dimensionCount = 0;
+        Class<?> c = arr.getClass(); // getting the runtime class of an object
+        System.out.println("Class c = arr.getClass(): " + c);
+
+        while (c.isArray()){ // check whether the object is an array
+            System.out.println("c.isArray() is True");
+            c = c.getComponentType(); // returns the class denoting the component type of the array
+            System.out.println("c.getComponentType() = " + c);
+            dimensionCount++;
+        }
+        return dimensionCount;
+    }
+
+    public static String normalize(String code){
+        // normalizes barcodes to match a specific length
+        if(code.length() <= 8) {
+            while(!(code.length() == 8)){
+                code = "0".concat(code);
+            }
+        }else{
+            while(!(code.length() == 13)){
+                code = "0".concat(code);
+            }
+        }
+        return code;
+    }
+
+    public static boolean isCorrectDC(String newCompleteCode){
+        int suma8 = 0, suma13 = 0;
+        for (int i = 0; i < newCompleteCode.length()-1; i++){
+            int parsedInt = Integer.parseInt(Character.toString(newCompleteCode.charAt(i)));
+            if(i % 2 == 0 && newCompleteCode.length() == 8) suma8 += parsedInt*3;
+            else if(i % 2 != 0 && newCompleteCode.length() == 13) suma13 += parsedInt*3;
+            else{
+                suma8 += parsedInt;
+                suma13 += parsedInt;
+            }
+        }
+        String toString = Character.toString(newCompleteCode.charAt(newCompleteCode.length() - 1));
+        return ((Integer.parseInt(toString) + suma8) % 10 == 0) || ((Integer.parseInt(toString) + suma13) % 10 == 0);
     }
 }

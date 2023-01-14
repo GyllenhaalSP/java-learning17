@@ -1,7 +1,8 @@
 package ProgramasPruebas;
 
 import java.util.Scanner;
-public class examen1ev {
+
+public class Examen1Ev {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         int ageMedian = 0, sumAgeMedian = 0, countAgeMedian = 0, countDoCelebrateP = 0, countDoCelebrateR = 0,

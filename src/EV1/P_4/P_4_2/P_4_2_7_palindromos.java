@@ -2,7 +2,7 @@ package EV1.P_4.P_4_2;
 
 import java.util.Scanner;
 
-import static ProgramasPruebas.metodos.normalizador;
+import static ProgramasPruebas.Metodos.normalizador;
 
 public class P_4_2_7_palindromos {
     // Daniel Alonso Lázaro - 2022

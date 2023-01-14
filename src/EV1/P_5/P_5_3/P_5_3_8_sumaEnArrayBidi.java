@@ -1,7 +1,7 @@
 package EV1.P_5.P_5_3;
 
-import static ProgramasPruebas.metodos.cargarArray;
-import static ProgramasPruebas.metodos.mostrarArray;
+import static ProgramasPruebas.Metodos.cargarArray;
+import static ProgramasPruebas.Metodos.mostrarArray;
 
 public class P_5_3_8_sumaEnArrayBidi {
     //Daniel Alonso Lázaro - 2023

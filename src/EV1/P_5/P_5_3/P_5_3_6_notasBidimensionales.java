@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Arrays;
 
-import static ProgramasPruebas.metodos.cargarArray;
+import static ProgramasPruebas.Metodos.cargarArray;
 
 public class P_5_3_6_notasBidimensionales {
     //Daniel Alonso Lázaro - 2023

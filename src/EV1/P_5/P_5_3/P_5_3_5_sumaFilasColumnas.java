@@ -2,7 +2,7 @@ package EV1.P_5.P_5_3;
 
 import java.util.Arrays;
 
-import static ProgramasPruebas.metodos.cargarArray;
+import static ProgramasPruebas.Metodos.cargarArray;
 
 public class P_5_3_5_sumaFilasColumnas {
     //Daniel Alonso Lázaro - 2023
