@@ -1,7 +1,5 @@
 package EV2.ARRAYS_OBLIGATORIOS;
 
-import java.util.Random;
-
 public class EJ2 {
     // Daniel Alonso Lázaro - 2023
     /*
@@ -50,12 +48,10 @@ public class EJ2 {
         System.out.println();
     }
 
-    public static int[][] cargarArray(int[][] v, int min, int max) {
+    public static void cargarArray(int[][] v, int min, int max) {
         //Carga un array bidimensional de enteros con números aleatorios entre min y max + 1.
-        Random rand = new Random();
-        for (int i = 0; i < v.length; i++) {
+        java.util.Random rand = new java.util.Random();
+        for (int i = 0; i < v.length; i++)
             v[i] = rand.ints(v[i].length, min, max+1).toArray();
-        }
-        return v;
     }
 }

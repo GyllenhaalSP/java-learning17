@@ -1,8 +1,5 @@
 package EV2.ARRAYS_OBLIGATORIOS;
 
-import java.util.Arrays;
-import java.util.Random;
-
 public class EJ1 {
     // Daniel Alonso Lázaro - 2023
     /*
@@ -14,25 +11,24 @@ public class EJ1 {
     columnas.
     */
     public static void main(String[] args) {
-        int[] numero = new int[20];
-        int[] cuadrado = new int[20];
-        int[] cubo = new int[20];
+        int[] numeros = new int[20];
+        int[] cuadrados = new int[20];
+        int[] cubos = new int[20];
 
-        numero = cargarArray(numero, 1,  100);
-        Arrays.sort(numero);
+        java.util.Arrays.sort(cargarArray(numeros, 1,  100));
 
-        for (int i = 0; i < numero.length; i++) {
-            cuadrado[i] = (int)Math.pow(numero[i], 2);
-            cubo[i] = (int)Math.pow(numero[i], 3);
+        for (int i = 0; i < numeros.length; i++) {
+            cuadrados[i] = (int)Math.pow(numeros[i], 2);
+            cubos[i] = (int)Math.pow(numeros[i], 3);
         }
 
-        for (int i = 0; i < numero.length; i++) {
-            System.out.printf("Número: %7d | Cuadrado: %7d | Cubo: %7d%n", numero[i], cuadrado[i], cubo[i]);
+        for (int i = 0; i < numeros.length; i++) {
+            System.out.printf("Número: %7d | Cuadrado: %7d | Cubo: %7d%n", numeros[i], cuadrados[i], cubos[i]);
         }
     }
 
     public static int[] cargarArray(int[] v, int min, int max){
         //Carga un array de enteros con números aleatorios entre min y max +1.
-        return new Random().ints(v.length, min, max+1).toArray();
+        return new java.util.Random().ints(v.length, min, max+1).toArray();
     }
 }
