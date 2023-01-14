@@ -13,7 +13,7 @@ public class Main {
         System.out.println("Marca: " + vehiculo1.getMarca());
         System.out.println("Modelo: " + vehiculo1.getModelo());
         System.out.println("Número de pasajeros: " + vehiculo1.getNumPasajeros());
-        System.out.println("Capacidad de combustible: " + vehiculo1.getCapacidadCombustible()+" L");
+        System.out.println("Capacidad de combustible: " + vehiculo1.getCapacidadCombustible()+"L");
         System.out.println("Consumo: " + vehiculo1.getConsumo()+"L/100km");
 
         Vehiculo vehiculo2 = new Vehiculo("Alfa", "147", 5, 45, 5.5);
@@ -21,7 +21,7 @@ public class Main {
         System.out.println("Marca: " + vehiculo2.getMarca());
         System.out.println("Modelo: " + vehiculo2.getModelo());
         System.out.println("Número de pasajeros: " + vehiculo2.getNumPasajeros());
-        System.out.println("Capacidad de combustible: " + vehiculo2.getCapacidadCombustible()+" L");
+        System.out.println("Capacidad de combustible: " + vehiculo2.getCapacidadCombustible()+"L");
         System.out.println("Consumo: " + vehiculo2.getConsumo()+"L/100km");
     }
 }
