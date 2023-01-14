@@ -7,7 +7,7 @@ import java.math.RoundingMode;
 import java.util.Arrays;
 
 public class vendingMachine {
-    //    Daniel Alonso Lázaro - 2022
+    // Daniel Alonso Lázaro - 2022
     /*
     Disponemos de una máquina automática de venta de bebidas. Disponemos de tres productos:
     agua cuyo precio es 0,50, refresco con precio de 0,75 y zumo cuyo precio es de 0,95 cts.
@@ -21,7 +21,7 @@ public class vendingMachine {
     Se debe dar el cambio correcto, con el menor número de monedas posibles. Quiero que aparezca en pantalla un
     mensaje de “INTRODUZCA IMPORTE EXACTO” si la máquina no dispone de monedas en 2 tipos de estas o más o si no
     dispone de monedas de un solo tipo y este es el de 5 cts., y que solo acepte este dinero.
-    Al finalizar el programa nos debe dar el total del dinero disponible en la máquina, por unidad monetaria
+    Al finalizar el programa nos debe dar el total del dinero disponible en la máquina, por unidad monetaria.
     */
     public static void main(String[] args) {
         int[] monedas = {200, 100, 50, 20, 10, 5};
