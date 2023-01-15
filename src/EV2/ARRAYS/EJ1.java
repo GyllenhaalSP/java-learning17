@@ -15,7 +15,7 @@ public class EJ1 {
         int[] cuadrados = new int[20];
         int[] cubos = new int[20];
 
-        java.util.Arrays.sort(cargarArray(numeros, 1,  100));
+        java.util.Arrays.sort(numeros = cargarArray(numeros, 1,  100));
 
         for (int i = 0; i < numeros.length; i++) {
             cuadrados[i] = (int)Math.pow(numeros[i], 2);
@@ -23,7 +23,7 @@ public class EJ1 {
         }
 
         for (int i = 0; i < numeros.length; i++) {
-            System.out.printf("Número: %7d | Cuadrado: %7d | Cubo: %7d%n", numeros[i], cuadrados[i], cubos[i]);
+            System.out.printf("Número: %3d | Cuadrado: %5d | Cubo: %7d%n", numeros[i], cuadrados[i], cubos[i]);
         }
     }
 
