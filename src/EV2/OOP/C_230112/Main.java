@@ -1,4 +1,4 @@
-package EV2.OOP.C_120123;
+package EV2.OOP.C_230112;
 
 public class Main {
     public static void main(String[] args) {

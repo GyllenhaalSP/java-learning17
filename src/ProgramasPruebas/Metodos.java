@@ -14,10 +14,12 @@ public class Metodos {
     // Daniel Alonso Lázaro - 2022
     public static boolean bisiesto(int year) {
         //Devuelve true si el año es bisiesto, false si no lo es.
+        /*
         boolean bisiesto = false;
         if (year % 100 == 0) if (year % 400 == 0) bisiesto = true;
         else if (year % 4 == 0) bisiesto = true;
-        return bisiesto;//((year % 100 != 0) | (year % 400 == 0)) & (year % 4 == 0)
+        */
+        return ((year % 100 != 0) | (year % 400 == 0)) & (year % 4 == 0);
     }
 
     public static long factorial(long num){
@@ -43,7 +45,8 @@ public class Metodos {
         //Devuelve el exponente en formato superíndice.
         String superIndices = "⁰¹²³⁴⁵⁶⁷⁸⁹";
         for(int i = 0; i < 10; i++){
-            exponente = exponente.replaceAll(Integer.toString(i), Character.toString(superIndices.charAt(i)));
+            exponente = exponente.replaceAll(Integer.toString(i),
+                    Character.toString(superIndices.charAt(i)));
         }
         return exponente;
     }
