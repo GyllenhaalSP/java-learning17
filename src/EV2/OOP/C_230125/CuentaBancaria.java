@@ -1,8 +1,5 @@
 package EV2.OOP.C_230125;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-
 public class CuentaBancaria {
     // Daniel Alonso Lázaro - 2023
     // Atributos
@@ -34,10 +31,6 @@ public class CuentaBancaria {
 
     public String getMoneda() {
         return moneda;
-    }
-
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
     }
 
     // Métodos
@@ -97,16 +90,8 @@ public class CuentaBancaria {
         System.out.println("Número de cuenta: " + this.getNumeroCuenta());
         System.out.println("Titular: " + this.getTitular());
         System.out.println("Saldo: "
-                + (this.getSaldo() % 1 == 0.0
-                    ? (int)this.getSaldo()
-                    :redondeoMonetario(this.getSaldo())
-                + this.getMoneda()+"\n"));
-    }
-
-    public static double redondeoMonetario(double cantidad){
-        //Redondea un double a 2 decimales con precisión monetaria.
-        return new BigDecimal(cantidad)
-                .setScale(2, RoundingMode.HALF_UP)
-                .doubleValue();
+                + this.getSaldo()
+                + this.getMoneda()
+                +"\n");
     }
 }

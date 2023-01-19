@@ -17,6 +17,5 @@ public class Ej_230125_CuentaBancaria {
 
         cuentaNomina.consultarCuenta();
         cuentaAhorro.consultarCuenta();
-
     }
 }
