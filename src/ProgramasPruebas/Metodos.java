@@ -14,11 +14,6 @@ public class Metodos {
     // Daniel Alonso Lázaro - 2022
     public static boolean bisiesto(int year) {
         //Devuelve true si el año es bisiesto, false si no lo es.
-        /*
-        boolean bisiesto = false;
-        if (year % 100 == 0) if (year % 400 == 0) bisiesto = true;
-        else if (year % 4 == 0) bisiesto = true;
-        */
         return ((year % 100 != 0) | (year % 400 == 0)) & (year % 4 == 0);
     }
 
