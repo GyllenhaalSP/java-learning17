@@ -1,11 +1,17 @@
 package EV2.OOP.C_230125;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
+/**
+ * Clase Ej_230125_CuentaBancaria
+ * Contiene el método main de la clase CuentaBancaria.
+ * @author Daniel Alonso Lázaro - 2023
+ * @version 1.0
+ */
 public class Ej_230125_CuentaBancaria {
+    static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
-        // Daniel Alonso Lázaro - 2023
+        System.out.println("-------------------------------PARTE OBLIGATORIA----------------------------------------");
         // Se crea la cuenta nómina
         CuentaBancaria cuentaNomina = new CuentaBancaria(
                 "Daniel Alonso Lázaro",
@@ -23,7 +29,6 @@ public class Ej_230125_CuentaBancaria {
 //        CuentaBancaria cuentaNomina = abrirCuenta();
 //        CuentaBancaria cuentaAhorro = abrirCuenta();
 
-        // Parte obligatoria del ejercicio.
         consultarSaldo(cuentaNomina);
         consultarSaldo(cuentaAhorro);
         cuentaNomina.retirarDinero(500);
@@ -34,7 +39,7 @@ public class Ej_230125_CuentaBancaria {
         consultarSaldo(cuentaNomina);
         consultarSaldo(cuentaAhorro);
 
-        System.out.println("----------------------------------------");
+        System.out.println("------------------------------PARTE OPCIONAL----------------------------------------");
         // Retirar con céntimos
         cuentaNomina.retirarDinero(20.76);
         // Depositar con céntimos
@@ -54,28 +59,56 @@ public class Ej_230125_CuentaBancaria {
         consultarSaldo(cuentaAhorro);
     }
 
+    /**
+     * Método que abre una cuenta bancaria.
+     * @return Cuenta bancaria creada.
+     */
     public static CuentaBancaria abrirCuenta() {
-        Scanner sc = new Scanner(System.in);
-        String titular, moneda;
-        double saldo;
-        boolean ventajasNomina;
+        return new CuentaBancaria(getNombreTitular(), getSaldoInicial(), getTipoMoneda(), getVentajasNomina());
+    }
 
+    /**
+     * Método que pide al usuario por teclado el nombre del titular de la cuenta bancaria.
+     * @return Nombre del titular.
+     */
+    public static String getNombreTitular(){
+        String titular;
         do{
             System.out.print("Introduzca el nombre del titular: ");
             titular = sc.nextLine();
         }while(titular.isBlank());
+        return titular;
+    }
 
+    /**
+     * Método que pide al usuario el saldo inicial de la cuenta bancaria.
+     * @return Saldo inicial de la cuenta bancaria.
+     */
+    public static double getSaldoInicial(){
+        double saldo;
         do{
             System.out.print("Introduzca el saldo inicial: ");
             saldo = sc.nextDouble();
             sc.nextLine();
         }while(saldo < 0);
+        return saldo;
+    }
 
+    /**
+     * Método que pide al usuario el tipo de moneda de la cuenta bancaria.
+     * @return Tipo de moneda de la cuenta bancaria.
+     */
+    public static String getTipoMoneda(){
+        String moneda;
         do{
-            System.out.print("Introduzca la moneda: ");
+            System.out.print("Introduzca el tipo de moneda: ");
             moneda = sc.nextLine();
-        }while(moneda.isBlank());
+        }while(moneda.equals("€") || moneda.equals("$") || moneda.equals("£"));
+        return moneda;
+    }
 
+    public static boolean getVentajasNomina(){
+        boolean ventajasNomina;
         do{
             System.out.print("¿Es una cuenta nómina? (S/N): ");
             String input = sc.nextLine();
@@ -87,17 +120,18 @@ public class Ej_230125_CuentaBancaria {
                 break;
             }
         }while(true);
-
-        System.out.println();
-        return new CuentaBancaria(titular, saldo, moneda, ventajasNomina);
+        return ventajasNomina;
     }
 
+    /**
+     * Método que muestra los datos de un objeto de cuenta bancaria.
+     * @param cuenta Cuenta bancaria de la que se quieren consultar los datos.
+     */
     public static void consultarSaldo(CuentaBancaria cuenta) {
-        // Se muestran los datos de la cuenta y el saldo.
         System.out.println("Número de cuenta: " + cuenta.getNumeroCuenta());
         System.out.println("Titular: " + cuenta.getTitular());
         System.out.println("Saldo: "
-                + CuentaBancaria.normalizador(cuenta.getSaldo())
+                + CuentaBancaria.normalizadorDecimales(cuenta.getSaldo())
                 + cuenta.getMoneda());
         System.out.println("Ventajas cuenta nómina: "
                 + (cuenta.getVentajasNomina()
