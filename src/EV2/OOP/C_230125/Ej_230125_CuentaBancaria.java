@@ -11,9 +11,9 @@ public class Ej_230125_CuentaBancaria {
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-       // System.out.println("-------------------PARTE OBLIGATORIA (Ejecución hardcoded)----------------------------");
+        System.out.println("-------------------PARTE OBLIGATORIA (Ejecución hardcoded)----------------------------");
 
-/*        CuentaBancaria cuentaNomina = new CuentaBancaria(
+        CuentaBancaria cuentaNomina = new CuentaBancaria(
                 "Daniel Alonso Lázaro",
                 1500,
                 "€",
@@ -29,13 +29,13 @@ public class Ej_230125_CuentaBancaria {
                 "Daniel Alonso Lázaro",
                 0,
                 "$",
-                false);*/
+                false);
 
-        System.out.println("-------------------PARTE OBLIGATORIA (Ejecución input)----------------------------");
-
-        CuentaBancaria cuentaNomina = abrirCuenta();
-        CuentaBancaria cuentaAhorro = abrirCuenta();
-        CuentaBancaria cuentaDolares = abrirCuenta();
+//        System.out.println("-------------------PARTE OBLIGATORIA (Ejecución input)----------------------------");
+//
+//        CuentaBancaria cuentaNomina = abrirCuenta();
+//        CuentaBancaria cuentaAhorro = abrirCuenta();
+//        CuentaBancaria cuentaDolares = abrirCuenta();
 
         consultarSaldo(cuentaNomina);
         consultarSaldo(cuentaAhorro);
