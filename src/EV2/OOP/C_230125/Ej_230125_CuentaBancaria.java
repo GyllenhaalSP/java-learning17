@@ -11,9 +11,9 @@ public class Ej_230125_CuentaBancaria {
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        System.out.println("-------------------------------PARTE OBLIGATORIA----------------------------------------");
+       // System.out.println("-------------------PARTE OBLIGATORIA (Ejecución hardcoded)----------------------------");
 
-        CuentaBancaria cuentaNomina = new CuentaBancaria(
+/*        CuentaBancaria cuentaNomina = new CuentaBancaria(
                 "Daniel Alonso Lázaro",
                 1500,
                 "€",
@@ -29,11 +29,13 @@ public class Ej_230125_CuentaBancaria {
                 "Daniel Alonso Lázaro",
                 0,
                 "$",
-                false);
+                false);*/
 
-//        CuentaBancaria cuentaNomina = abrirCuenta();
-//        CuentaBancaria cuentaAhorro = abrirCuenta();
-//        CuentaBancaria cuentaDolares = abrirCuenta();
+        System.out.println("-------------------PARTE OBLIGATORIA (Ejecución input)----------------------------");
+
+        CuentaBancaria cuentaNomina = abrirCuenta();
+        CuentaBancaria cuentaAhorro = abrirCuenta();
+        CuentaBancaria cuentaDolares = abrirCuenta();
 
         consultarSaldo(cuentaNomina);
         consultarSaldo(cuentaAhorro);
@@ -45,7 +47,7 @@ public class Ej_230125_CuentaBancaria {
         consultarSaldo(cuentaNomina);
         consultarSaldo(cuentaAhorro);
 
-        System.out.println("------------------------------PARTE OPCIONAL----------------------------------------");
+        System.out.println("----------------------------------PARTE OPCIONAL----------------------------------------");
         // Transferencia denegada por saldo insuficiente.
         cuentaNomina.hacerTransferencia(cuentaAhorro, 300);
         // Retirada denegada por saldo insuficiente.
@@ -70,17 +72,27 @@ public class Ej_230125_CuentaBancaria {
         consultarSaldo(cuentaNomina);
         consultarSaldo(cuentaAhorro);
 
-        consultarSaldo(cuentaDolares);
+
+        // Depositar dinero en cuenta en dólares
         cuentaDolares.depositarDinero(1000);
+        // Retirar dinero en cuenta en dólares
         cuentaDolares.retirarDinero(1000);
+        // Consultar saldo cuenta en dólares con saldo 0
         cuentaDolares.retirarDinero(1000);
+        // Consultar saldo cuenta en dólares con saldo 0
         consultarSaldo(cuentaDolares);
+        // Transferencia en dólares con saldo 0
         cuentaDolares.hacerTransferencia(cuentaNomina, 500);
+        // Ingreso en cuenta nómina para quitar el negativo.
         cuentaNomina.depositarDinero(459.08);
+        // Estado de las dos cuentas
         consultarSaldo(cuentaDolares);
         consultarSaldo(cuentaNomina);
+        // Transferencia de cuenta nómina a cuenta en dólares con cambio de moneda.
         cuentaNomina.hacerTransferencia(cuentaDolares, 100);
+        // Transferencia a la inversa, de dolares a euros.
         cuentaDolares.hacerTransferencia(cuentaNomina, 50);
+        // Saldos finales
         consultarSaldo(cuentaDolares);
         consultarSaldo(cuentaNomina);
     }
@@ -145,17 +157,20 @@ public class Ej_230125_CuentaBancaria {
      * </ul>
      */
     public static boolean getInputVentajasNomina(){
-        boolean ventajasNomina;
+        boolean ventajasNomina = false;
         do{
+
             System.out.print("¿Es una cuenta nómina? (S/N): ");
             String input = sc.nextLine();
             if (input.equalsIgnoreCase("S")) {
                 ventajasNomina = true;
                 break;
             } else if (input.equalsIgnoreCase("N")){
-                ventajasNomina = false;
                 break;
             }
+            System.out.println("Introduzca si o no (S/N) para indicar si la cuenta es nómina.\n"
+                    + input
+                    +" no es una opción válida.");
         }while(true);
         System.out.println();
         return ventajasNomina;

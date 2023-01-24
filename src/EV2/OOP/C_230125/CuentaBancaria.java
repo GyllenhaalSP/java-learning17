@@ -3,7 +3,7 @@ package EV2.OOP.C_230125;
 import java.util.Random;
 
 /**
- * Simula el funcionamiento de una cuenta bancaria rudimentaria.
+ * Simula el funcionamiento interno de una cuenta bancaria rudimentaria.
  * @author Daniel Alonso Lázaro - 2023
  * @version 1.0
  */
@@ -12,12 +12,22 @@ public class CuentaBancaria {
     /**
      * Constante de la longitud del número IBAN.<p>
      */
-    private final byte LONGITUD_IBAN = 26;
+    private static final byte LONGITUD_IBAN = 26;
 
     /**
      * Constante del código IBAN de la cuenta bancaria.<p>
      */
-    private final String IBAN = "ES";
+    private static final String IBAN = "ES";
+
+    /**
+     * Array con las denominaciones de billetes de euro que se usan en cajeros.<p>
+     */
+    private static final double[] DENOMINACIONES = {50, 20, 10};
+
+    /**
+     * Tasa de cambio EURO/DÓLAR.<p>
+     */
+    private static final double TASA_CAMBIO = 1.10; // 1€ = 1.10$
 
     /**
      * Número de cuenta bancaria.<p>
@@ -38,16 +48,6 @@ public class CuentaBancaria {
      * Saldo de la cuenta bancaria.<p>
      */
     private double saldo;
-
-    /**
-     * Array con las denominaciones de billetes de euro que se usan en cajeros.<p>
-     */
-    private final double[] DENOMINACIONES = {50, 20, 10};
-
-    /**
-     * Tasa de cambio EURO/DÓLAR.<p>
-     */
-    private final double TASA_CAMBIO = 1.10; // 1€ = 1.10$
 
     /**
      * Indica si la cuenta bancaria tiene ventajas por ser una cuenta de tipo nómina.<p>
@@ -225,7 +225,7 @@ public class CuentaBancaria {
     }
 
     /**
-     * Devuelve la cantidad con dos decimales si no es un número entero.
+     * Devuelve un String con la cantidad con dos posiciones decimales si no es un número entero.
      * @param cantidad cantidad en formato decimal a normalizar.
      * @return
      * <ul>
