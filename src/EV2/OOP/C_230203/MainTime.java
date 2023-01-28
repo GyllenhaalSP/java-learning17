@@ -6,9 +6,10 @@ public class MainTime {
         Time mediodia = new Time(12, 0, 0);
         Time tiempoPorDefecto = new Time();
 
-        System.out.println("medianoche es " + medianoche);
-        System.out.println("mediodía es " + mediodia);
+        System.out.println("Medianoche es " + medianoche);
+        System.out.println("Mediodía es " + mediodia);
         System.out.println("El valor de tiempoPorDefecto es " + tiempoPorDefecto);
+        System.out.println();
 
         final int quince = 15;
         final int treinta = 30;
@@ -58,7 +59,7 @@ public class MainTime {
                     + mediodia);
         }
 
-        System.out.println("\nNuevo objeto \"tiempoPrueba\" creado con 23:59:59");
+        System.out.println("\nNuevo objeto \"tiempoPrueba\" creado con 23:59:59\n");
 
         Time tiempoPrueba = new Time(23, 59, 59);
 
