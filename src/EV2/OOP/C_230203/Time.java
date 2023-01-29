@@ -23,7 +23,6 @@ public class Time {
     /**
      * Constructor que inicializa los tres atributos de Hora: hora, minuto y segundo a 0.
      */
-
     public Time() {
         this(0, 0, 0);
     }
