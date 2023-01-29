@@ -60,12 +60,12 @@ public class Time {
      * los segundos con el caracter "dos puntos"
      */
     public String toString() {
-//        return (hora < 10 ? "0" + hora:hora)
-//            + ":"
-//            + (minuto < 10 ? "0" + minuto:minuto)
-//            + ":"
-//            + (segundo < 10 ? "0" + segundo:segundo);
-        return String.format("%02d:%02d:%02d", hora, minuto, segundo);
+        return (hora < 10 ? "0" + hora:hora)
+            + ":"
+            + (minuto < 10 ? "0" + minuto:minuto)
+            + ":"
+            + (segundo < 10 ? "0" + segundo:segundo);
+        //return String.format("%02d:%02d:%02d", hora, minuto, segundo);
     }
 
     /**
@@ -150,5 +150,4 @@ public class Time {
             hora -= 24;
         }
     }
-
 }
