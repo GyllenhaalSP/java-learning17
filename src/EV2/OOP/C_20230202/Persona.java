@@ -2,10 +2,10 @@ package EV2.OOP.C_20230202;
 
 public class Persona {
     // Atributos o Variables de clase
-    private String nombre;
+    private final String nombre;
     protected int alturaCm;
     protected int pesoKg;
-    private int edad;
+    private final int edad;
 
     // Constructor
     public Persona(String nombre, int alturaCm, int pesoKg, int edad) {

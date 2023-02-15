@@ -1,13 +1,13 @@
 package EV2.OOP.C_20230202;
 
 public class Pizzeria {
-    private String nombrePizzeria;
-    private Cliente[] clientes;
-    private Pedidos[] pedidos;
+    private final String nombrePizzeria;
+    private final Cliente[] clientes;
+    private final Pedidos[] pedidos;
     private static int numClientes;
     private static int numPedidos;
-    private int maxClientes;
-    private int maxPedidos;
+    private final int maxClientes;
+    private final int maxPedidos;
 
     public Pizzeria(String nombrePizzeria, int maxClientes, int maxPedidos) {
         this.nombrePizzeria = nombrePizzeria;

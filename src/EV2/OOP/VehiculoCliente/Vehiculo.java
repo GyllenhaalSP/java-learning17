@@ -1,8 +1,8 @@
 package EV2.OOP.VehiculoCliente;
 
 public class Vehiculo {
-  private String marca;
-  private String modelo;
+  private final String marca;
+  private final String modelo;
   private Integer posicionClienteAlquiler;
 
   public Vehiculo(String marca, String modelo) {
@@ -27,10 +27,7 @@ public class Vehiculo {
   }
 
   public boolean alquilado(){
-    if(posicionClienteAlquiler == null) {
-      return false;
-    }
-    return true;
+      return posicionClienteAlquiler != null;
   }
 
   @Override

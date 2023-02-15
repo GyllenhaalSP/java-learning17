@@ -1,8 +1,8 @@
 package EV2.OOP.C_20230202;
 
 public class Pizza {
-    private String size;
-    private String type;
+    private final String size;
+    private final String type;
     private String estado = "pedida";
     private static int numPedidas = 0;
     private static int numServidas = 0;

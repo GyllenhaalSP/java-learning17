@@ -1,9 +1,9 @@
 package EV2.OOP.C_20230202;
 
 public class Pedidos {
-    private Cliente cliente;
-    private Pizza pizza;
-    private int pedidoNumObj;
+    private final Cliente cliente;
+    private final Pizza pizza;
+    private final int pedidoNumObj;
     private static int pedidoNum = 0;
 
     public Pedidos(Cliente cliente, String size, String type) {
