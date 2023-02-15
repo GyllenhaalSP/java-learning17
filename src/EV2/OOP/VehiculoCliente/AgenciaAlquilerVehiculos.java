@@ -3,9 +3,9 @@ package EV2.OOP.VehiculoCliente;
 import java.util.Arrays;
 
 public class AgenciaAlquilerVehiculos {
-  private String nombre;
-  private Vehiculo vehiculos[];
-  private Cliente clientes[];
+  private final String nombre;
+  private final Vehiculo[] vehiculos;
+  private final Cliente[] clientes;
   private int numClientes;
   private int numVehiculos;
   
@@ -52,10 +52,7 @@ public class AgenciaAlquilerVehiculos {
       return false;
     }
 
-    if(!vehiculos[posVehiculo].setPosicionClienteAlquiler(posCliente)){
-      return false;
-    }
-    return true;
+      return vehiculos[posVehiculo].setPosicionClienteAlquiler(posCliente);
   }
   
   /*
