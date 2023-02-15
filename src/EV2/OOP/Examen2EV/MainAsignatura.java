@@ -78,8 +78,8 @@ public class MainAsignatura {
           sc.nextLine();
           double nota1Ev, nota2Ev, nota3Ev;
           do {
-            System.out.println("Introduzca el número del estudiante: ");;
-            do {
+            System.out.println("Introduzca el número del estudiante: ");
+              do {
               System.out.println("Introduzca la nota de la 1ª evaluación: ");
             } while (checkNota(nota1Ev = sc.nextDouble()));
 
