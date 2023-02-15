@@ -1,8 +1,8 @@
 package EV2.OOP.Examen2EV;
 
 public class Estudiante {
-  private String nombre;
-  private String apellidos;
+  private final String nombre;
+  private final String apellidos;
   private final String NIA;
 
   public Estudiante(String nombre, String apellidos, String NIA) {

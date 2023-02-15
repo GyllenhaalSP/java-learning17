@@ -1,10 +1,10 @@
 package EV2.OOP.C_20230202;
 
 public class Cliente {
-    private String nombre;
-    private String apellidos;
-    private String dir;
-    private String tel;
+    private final String nombre;
+    private final String apellidos;
+    private final String dir;
+    private final String tel;
 
     public Cliente(String nombre, String apellidos, String dir, String tel) {
         this.nombre = nombre;

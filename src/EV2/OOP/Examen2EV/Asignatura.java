@@ -2,14 +2,14 @@ package EV2.OOP.Examen2EV;
 
 public class Asignatura {
 
-  private String nombre;
-  private Estudiante[] estudiantes;
-  private double[][] notas;
-  private int numMaxEstudiantes;
+  private final String nombre;
+  private final Estudiante[] estudiantes;
+  private final double[][] notas;
+  private final int numMaxEstudiantes;
   private static int numEstudiante = 0;
-  private static int PESO_PRIMERA_EVALUACION = 20;
-  private static int PESO_SEGUNDA_EVALUACION = 30;
-  private static int PESO_TERCERA_EVALUACION = 50;
+  private static final int PESO_PRIMERA_EVALUACION = 20;
+  private static final int PESO_SEGUNDA_EVALUACION = 30;
+  private static final int PESO_TERCERA_EVALUACION = 50;
 
   public Asignatura(String nombre, int numMaxEstudiantes) {
     this.nombre = nombre;

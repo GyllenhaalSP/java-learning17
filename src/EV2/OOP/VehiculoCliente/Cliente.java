@@ -3,8 +3,8 @@ package EV2.OOP.VehiculoCliente;
 import javax.sound.sampled.BooleanControl;
 
 public class Cliente {
-  private String nombre;
-  private String apellido;
+  private final String nombre;
+  private final String apellido;
   private Integer posicionVehiculoAlquilado;
 
   
@@ -26,10 +26,7 @@ public class Cliente {
   }
 
   public boolean tieneAlquiler() {
-    if(posicionVehiculoAlquilado == null) {
-      return false;
-    }
-    return true;
+      return posicionVehiculoAlquilado != null;
   }
 
   @Override
