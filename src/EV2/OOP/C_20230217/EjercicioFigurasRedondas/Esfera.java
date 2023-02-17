@@ -18,7 +18,7 @@ public class Esfera {
     public double getVolumen(){
         final double MULTIPLICADOR_VOLUMEN = 4.0 / 3.0;
         final int EXPONENTE = 3;
-        return (MULTIPLICADOR_VOLUMEN) * Math.PI * Math.pow(RADIO, EXPONENTE);
+        return MULTIPLICADOR_VOLUMEN * Math.PI * Math.pow(RADIO, EXPONENTE);
     }
 
     public double getArea(){
