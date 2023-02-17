@@ -15,7 +15,7 @@ public class Circulo {
                 + " ...");
     }
 
-    public double getArea(){
+    private double getArea(){
         return Math.PI * Math.pow(RADIO, 2);
     }
 

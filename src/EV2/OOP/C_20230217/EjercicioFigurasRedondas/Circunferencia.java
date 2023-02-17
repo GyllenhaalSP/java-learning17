@@ -15,7 +15,7 @@ public class Circunferencia {
                 + " ...");
     }
 
-    public double getPerimetro(){
+    private double getPerimetro(){
         return 2 * Math.PI * RADIO;
     }
 

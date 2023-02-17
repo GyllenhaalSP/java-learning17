@@ -15,13 +15,13 @@ public class Esfera {
                 + " ...");
     }
 
-    public double getVolumen(){
+    private double getVolumen(){
         final double MULTIPLICADOR_VOLUMEN = 4.0 / 3.0;
         final int EXPONENTE = 3;
         return MULTIPLICADOR_VOLUMEN * Math.PI * Math.pow(RADIO, EXPONENTE);
     }
 
-    public double getArea(){
+    private double getArea(){
         final int MULTIPLICADOR_AREA = 4;
         final int EXPONENTE = 2;
         return MULTIPLICADOR_AREA * Math.PI * Math.pow(RADIO, EXPONENTE);
