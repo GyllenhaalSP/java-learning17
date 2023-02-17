@@ -1,4 +1,4 @@
-package EV2.OOP.VehiculoCliente;
+package EV2.OOP.C_20230206;
 
 public class Vehiculo {
   private final String marca;

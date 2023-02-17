@@ -1,6 +1,4 @@
-package EV2.OOP.VehiculoCliente;
-
-import javax.sound.sampled.BooleanControl;
+package EV2.OOP.C_20230206;
 
 public class Cliente {
   private final String nombre;

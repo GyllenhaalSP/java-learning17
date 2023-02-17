@@ -1,4 +1,4 @@
-package EV2.OOP.EjDivEntYMod;
+package EV2.OOP.C_20230215;
 
 import java.util.Random;
 import static ProgramasPruebas.Metodos.mostrarArray;

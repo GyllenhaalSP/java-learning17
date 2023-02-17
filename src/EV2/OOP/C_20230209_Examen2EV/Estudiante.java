@@ -1,4 +1,4 @@
-package EV2.OOP.Examen2EV;
+package EV2.OOP.C_20230209_Examen2EV;
 
 public class Estudiante {
   private final String nombre;

@@ -1,4 +1,4 @@
-package EV2.OOP.EjDivEntYMod;
+package EV2.OOP.C_20230215;
 
 public class EjDivEntYMod1 {
     public static void main(String[] args) {

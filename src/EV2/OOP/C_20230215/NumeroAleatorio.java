@@ -1,4 +1,4 @@
-package EV2.OOP.NumeroAleatorio;
+package EV2.OOP.C_20230215;
 
 import java.util.Random;
 import java.util.Scanner;
