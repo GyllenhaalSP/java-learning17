@@ -3,6 +3,11 @@ package EV2.OOP.C_20230202;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * Main de la Pizzería.
+ * @author Daniel Alonso Lázaro - 2023
+ * @version 1.0
+ */
 public class MainPizzeria {
     static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) throws IOException, InterruptedException {

@@ -1,5 +1,10 @@
 package EV2.OOP.C_20230112;
 
+/**
+ * Clase que simula un Vehículo.
+ * @author Daniel Alonso Lázaro - 2023
+ * @version 1.0
+ */
 public class Vehiculo{
     public Vehiculo() {
         this.marca = "Sin marca";

@@ -1,5 +1,10 @@
 package EV2.OOP.C_20230202;
 
+/**
+ * Clase que simula una Pizzería.
+ * @author Daniel Alonso Lázaro - 2023
+ * @version 1.0
+ */
 public class Pizzeria {
     private final String nombrePizzeria;
     private final Cliente[] clientes;

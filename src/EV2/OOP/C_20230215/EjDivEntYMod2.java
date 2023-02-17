@@ -3,6 +3,10 @@ package EV2.OOP.C_20230215;
 import java.util.Random;
 import static ProgramasPruebas.Metodos.mostrarArray;
 
+/**.
+ * @author Daniel Alonso Lázaro - 2023
+ * @version 1.0
+ */
 public class EjDivEntYMod2 {
     public static void main(String[] args) {
         final int FILAS = 4;

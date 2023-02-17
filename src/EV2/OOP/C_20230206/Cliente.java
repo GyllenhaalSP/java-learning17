@@ -1,5 +1,10 @@
 package EV2.OOP.C_20230206;
 
+/**
+ * Clase que simula un Cliente.
+ * @author Daniel Alonso Lázaro - 2023
+ * @version 1.0
+ */
 public class Cliente {
   private final String nombre;
   private final String apellido;

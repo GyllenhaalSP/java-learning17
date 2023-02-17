@@ -3,6 +3,10 @@ package EV2.OOP.C_20230215;
 import java.util.Random;
 import java.util.Scanner;
 
+/**.
+ * @author Daniel Alonso Lázaro - 2023
+ * @version 1.0
+ */
 public class NumeroAleatorio {
     public static void main(String[] args) {
         Random rand = new Random();

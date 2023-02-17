@@ -2,6 +2,12 @@ package EV2.OOP.C_20230201;
 
 import java.util.Scanner;
 
+/**
+ * Clase que muestra el uso de referencias a objetos.
+ * @author Daniel Alonso Lázaro - 2023
+ * @version 1.0
+ */
+
 public class EjemploReferenciasPerro {
   public static void main(String[] args) {
     Perro milu = new Perro("Milu", 94, "grand fox terrier");

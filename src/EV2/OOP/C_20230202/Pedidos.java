@@ -1,5 +1,10 @@
 package EV2.OOP.C_20230202;
 
+/**
+ * Clase que simula un Pedido.
+ * @author Daniel Alonso Lázaro - 2023
+ * @version 1.0
+ */
 public class Pedidos {
     private final Cliente cliente;
     private final Pizza pizza;

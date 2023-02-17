@@ -2,6 +2,11 @@ package EV2.OOP.C_20230117;
 
 import java.util.Scanner;
 
+/**
+ * Clase que simula una cuenta corriente.
+ * @author Daniel Alonso Lázaro - 2023
+ * @version 1.0
+ */
 public class CuentaCorriente {
     static Scanner sc = new Scanner(System.in);
 

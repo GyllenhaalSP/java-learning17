@@ -1,5 +1,10 @@
 package EV2.OOP.C_20230206;
 
+/**
+ * Clase que simula un Vehiculo.
+ * @author Daniel Alonso Lázaro - 2023
+ * @version 1.0
+ */
 public class Vehiculo {
   private final String marca;
   private final String modelo;

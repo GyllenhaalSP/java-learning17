@@ -2,6 +2,11 @@ package EV2.OOP.C_20230206;
 
 import java.util.Arrays;
 
+/**
+ * Clase que simula una agencia de alquiler de vehículos.
+ * @author Daniel Alonso Lázaro - 2023
+ * @version 1.0
+ */
 public class AgenciaAlquilerVehiculos {
   private final String nombre;
   private final Vehiculo[] vehiculos;

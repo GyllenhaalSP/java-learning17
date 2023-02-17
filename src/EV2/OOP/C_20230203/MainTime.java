@@ -1,5 +1,10 @@
 package EV2.OOP.C_20230203;
 
+/**
+ * Main de la clase Time.
+ * @author Daniel Alonso Lázaro - 2023
+ * @version 1.0
+ */
 public class MainTime {
     public static void main(String[] args) {
         Time medianoche = new Time(0, 0);

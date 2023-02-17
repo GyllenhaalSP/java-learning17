@@ -1,5 +1,9 @@
 package EV2.OOP.C_20230215;
 
+/**.
+ * @author Daniel Alonso Lázaro - 2023
+ * @version 1.0
+ */
 public class EjDivEntYMod1 {
     public static void main(String[] args) {
 

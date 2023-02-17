@@ -1,8 +1,10 @@
 package EV2.OOP.C_20230203;
 
-/**
+ /**
  * La clase Time representa una hora determinada, un momento de un día. Esta
  * representación cuenta con un valor para hora, minuto y segundo.
+ * @author Daniel Alonso Lázaro - 2023
+ * @version 1.0
  */
 public class Time {
     /**

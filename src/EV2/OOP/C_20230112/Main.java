@@ -1,5 +1,11 @@
 package EV2.OOP.C_20230112;
 
+/**
+ * Main de la clase Vehículo
+ * @author Daniel Alonso Lázaro - 2023
+ * @version 1.0
+ */
+
 public class Main {
     public static void main(String[] args) {
         Vehiculo vehiculo1 = new Vehiculo();

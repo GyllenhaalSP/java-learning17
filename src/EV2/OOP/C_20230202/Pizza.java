@@ -1,5 +1,10 @@
 package EV2.OOP.C_20230202;
 
+/**
+ * Clase que simula una pizza.
+ * @author Daniel Alonso Lázaro - 2023
+ * @version 1.0
+ */
 public class Pizza {
     private final String size;
     private final String type;

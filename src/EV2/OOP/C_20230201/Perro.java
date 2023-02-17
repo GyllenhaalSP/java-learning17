@@ -1,5 +1,10 @@
 package EV2.OOP.C_20230201;
 
+/**
+ * Clase Perro.
+ * @author Daniel Alonso Lázaro - 2023
+ * @version 1.0
+ */
 public class Perro {
   // Atributos de la clase
   public String nombre;

@@ -1,6 +1,7 @@
 package EV2.OOP.C_20230113;
 
 public class Perro {
+    // Daniel Alonso Lázaro - 2023
     public static void main(String[] args) {
         Perro perro = new Perro("Firulais", 5, "Pastor Alemán");
         System.out.println("Nombre: "+perro.getNombre());

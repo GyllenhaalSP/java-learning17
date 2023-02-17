@@ -1,5 +1,10 @@
 package EV2.OOP.C_20230217.EjercicioFigurasRedondas;
 
+/**
+ * Clase que simula un círculo.
+ * @author Daniel Alonso Lázaro - 2023
+ * @version 1.0
+ */
 public class Circulo {
     private final double RADIO;
 
