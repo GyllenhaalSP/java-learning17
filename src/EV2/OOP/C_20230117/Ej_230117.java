@@ -1,4 +1,4 @@
-package EV2.OOP.C_230117;
+package EV2.OOP.C_20230117;
 
 public class Ej_230117 {
     public static void main(String[] args) {

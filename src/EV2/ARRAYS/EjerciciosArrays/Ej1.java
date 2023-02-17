@@ -1,4 +1,4 @@
-package EV2.OOP.EjerciciosArrays;
+package EV2.ARRAYS.EjerciciosArrays;
 
 import java.util.Arrays;
 

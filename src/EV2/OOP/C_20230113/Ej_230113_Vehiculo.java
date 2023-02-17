@@ -1,6 +1,6 @@
-package EV2.OOP.C_230113;
+package EV2.OOP.C_20230113;
 
-import EV2.OOP.C_230112.Vehiculo;
+import EV2.OOP.C_20230112.Vehiculo;
 
 public class Ej_230113_Vehiculo {
     public static void main(String[] args) {

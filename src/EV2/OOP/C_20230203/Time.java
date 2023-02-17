@@ -1,4 +1,4 @@
-package EV2.OOP.C_230203;
+package EV2.OOP.C_20230203;
 
 /**
  * La clase Time representa una hora determinada, un momento de un día. Esta
