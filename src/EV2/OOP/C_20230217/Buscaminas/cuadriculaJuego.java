@@ -19,8 +19,6 @@ public class cuadriculaJuego {
     final int MINAS;
     boolean juegoTerminado = false;
     final int CELDAS_VECINAS = 8;
-    final String[] EMOJIS_DIGITOS_CELDAS = {"0️ ", "1️ ", "2️ ", "3️ ", "4️ ", "5️ ",
-            "6️ ", "7️ ", "8️ ", "9️ ", "\uD83D\uDD1F "};
 
     // Constructor
     public cuadriculaJuego(int filaX, int columnaY, int MINAS) {
@@ -59,6 +57,7 @@ public class cuadriculaJuego {
             int posTempY = rand.nextInt(celdas[0].length);
             if (!celdas[posTempX][posTempY].isMina()) {
                 celdas[posTempX][posTempY].setMina(true);
+                celdas[posTempX][posTempY].setEmoji(celdas[posTempX][posTempY].getEMOJI_BOMBA());
                 minasGeneradas++;
             }
         }
@@ -132,17 +131,17 @@ public class cuadriculaJuego {
      * @param posY Columna de la celda seleccionada.
      */
     public void actualizarTablero(int posX, int posY) {
-        if (this.celdas[posX][posY].isMina()) {
+        if (celdas[posX][posY].isMina()) {
             juegoTerminado = true;
-            this.celdas[posX][posY].setExplosion("\uD83D\uDCA5 ");
-            for (Celda[] celda : this.celdas) {
+            celdas[posX][posY].setEmoji(celdas[posX][posY].getEMOJI_BOMBA_EXPLOTADA());
+            for (Celda[] celda : celdas) {
                 for (Celda valor : celda) {
                     if (valor.isMina()) {
                         valor.setDescubierta(true);
                     }
                 }
             }
-        }else if (!this.celdas[posX][posY].isDescubierta()){
+        }else if (!celdas[posX][posY].isDescubierta()){
             abrirEnCascada(posX, posY);
         }
     }
@@ -152,23 +151,30 @@ public class cuadriculaJuego {
      */
     public void imprimirTablero() {
         System.out.print("    ");
+        // Imprime los números de las columnas con el array de emojis de dígitos
         for (int i = 0; i < celdas.length; i++){
-            System.out.printf("%s", EMOJIS_DIGITOS_CELDAS[i+1]);
+            System.out.printf("%s", celdas[i/celdas.length][i%celdas.length].getEMOJIS_DIGITOS_CELDAS()[i+1]);
         }
         System.out.println();
         for (int i = 0; i < celdas.length; i++) {
-            System.out.printf((i == 9?"%1d| ":"%2d| "), i+1);
+            System.out.printf((i == 9?"%1d| ":"%2d| "), i+1); // Imprime los números de las filas
             for (int j = 0; j < celdas[i].length; j++) {
+                //Si está descubierta y es una mina
                 if(celdas[i][j].isDescubierta() && celdas[i][j].isMina()) {
-                    if (celdas[i][j].getExplosion().equals("")) { // Si no es una mina explotada
-                        System.out.print("\uD83D\uDCA3 ");
+                    // Si el emoji es una bomba, imprime el emoji bomba, si no, imprime el emoji explosión
+                    if (celdas[i][j].getEmoji().equals(celdas[i][j].getEMOJI_BOMBA())) {
+                        System.out.print(celdas[i][j].getEmoji());
                     }else {
-                        System.out.print(celdas[i][j].getExplosion());
+                        System.out.print(celdas[i][j].getEmoji());
                     }
+                /*Si está descubierta y no es una mina, imprime el emoji con el número de minas alrededor
+                si no, imprime el emoji de la celda vacía.*/
                 }else if(celdas[i][j].isDescubierta() && !celdas[i][j].isMina()) {
-                    System.out.print(EMOJIS_DIGITOS_CELDAS[celdas[i][j].getNumeroMinasAlrededor()]);
+                        System.out.print(celdas[i][j]
+                                .getEMOJIS_DIGITOS_CELDAS()[celdas[i][j]
+                                .getNumeroMinasAlrededor()]);
                 }else {
-                    System.out.print("\uD83D\uDFE9 ");
+                    System.out.print(celdas[i][j].getEMOJI_CELDA_VACIA());
                 }
             }
             System.out.println(" ");
@@ -177,8 +183,8 @@ public class cuadriculaJuego {
 
     /**
      * Método que abre casillas a 0 automáticamente y se detiene en las casillas con un 1.
-     * @param posX - Posición X
-     * @param posY - Posición Y
+     * @param posX Posición de la fila elegida
+     * @param posY Posición de la columna elegida
      */
     public void abrirEnCascada(int posX, int posY){
         if (posX < 0 || posX >= celdas.length || posY < 0 || posY >= celdas[0].length) return;
@@ -198,7 +204,7 @@ public class cuadriculaJuego {
     }
 
     /**
-     * Método que imprime el campo de juego según la opción elegida:
+     * Método que imprime de forma básica el campo de juego para debugging según la opción elegida:
      *      <p style = "margin-top: 0em; text-indent: 1cm;">- "tablero" imprime el tablero con las posiciones vacías y las minas.</p>
      *      <p style = "margin-top: 0em; text-indent: 1cm;">- "pistas" imprime el tablero con las pistas de las casillas adyacentes a las minas.</p>
      *
