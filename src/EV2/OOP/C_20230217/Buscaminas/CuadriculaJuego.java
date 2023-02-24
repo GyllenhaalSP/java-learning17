@@ -10,7 +10,7 @@ import java.util.Random;
  * @author Daniel Alonso Lázaro - 2023
  * @version 1.0
  */
-public class cuadriculaJuego {
+public class CuadriculaJuego {
 
     // Atributos
     public final int CELDAS_VECINAS = 8;
@@ -22,7 +22,7 @@ public class cuadriculaJuego {
     static private int RECUENTO_CELDAS;
 
     // Constructor
-    public cuadriculaJuego(int FILA_X, int COLUMNA_Y, int MINAS) {
+    public CuadriculaJuego(int FILA_X, int COLUMNA_Y, int MINAS) {
         this.FILA_X = FILA_X;
         this.COLUMNA_Y = COLUMNA_Y;
         this.MINAS = MINAS;

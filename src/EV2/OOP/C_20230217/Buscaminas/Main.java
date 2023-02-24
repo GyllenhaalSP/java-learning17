@@ -10,7 +10,7 @@ public class Main {
         int fila;
         int columna;
         bienvenida();
-        cuadriculaJuego cuadriculaJuego = new cuadriculaJuego(10, 10, 10);
+        CuadriculaJuego cuadriculaJuego = new CuadriculaJuego(10, 10, 10);
         cuadriculaJuego.inicializarCeldas();
         long tiempoTranscurrido = System.currentTimeMillis();
         do{
