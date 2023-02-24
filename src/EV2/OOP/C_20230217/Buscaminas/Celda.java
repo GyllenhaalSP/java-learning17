@@ -13,13 +13,19 @@ public class Celda {
     private int numeroMinasAlrededor;
     private boolean mina;
     private boolean descubierta;
-    String explosion;
+    private String emoji;
+    static final private String EMOJI_BOMBA = "\uD83D\uDCA3 ";
+    static final private String EMOJI_BOMBA_EXPLOTADA = "\uD83D\uDCA5 ";
+    static final private String EMOJI_BANDERA = "\uD83D\uDEA9 ";
+    static final private String EMOJI_CELDA_VACIA = "\uD83D\uDFE9 ";
+    static final private String[] EMOJIS_DIGITOS_CELDAS = {"0️ ", "1️ ", "2️ ", "3️ ", "4️ ", "5️ ",
+            "6️ ", "7️ ", "8️ ", "9️ ", "\uD83D\uDD1F "};
 
     // Constructor
     public Celda(int filaX, int columnaY) {
         this.filaX = filaX;
         this.columnaY = columnaY;
-        this.explosion = "";
+        this.emoji = EMOJI_CELDA_VACIA;
     }
 
     // Getters
@@ -44,8 +50,28 @@ public class Celda {
         return descubierta;
     }
 
-    public String getExplosion() {
-        return explosion;
+    public String getEmoji() {
+        return emoji;
+    }
+
+    public String getEMOJI_BOMBA() {
+        return EMOJI_BOMBA;
+    }
+
+    public String getEMOJI_BOMBA_EXPLOTADA() {
+        return EMOJI_BOMBA_EXPLOTADA;
+    }
+
+    public String getEMOJI_BANDERA() {
+        return EMOJI_BANDERA;
+    }
+
+    public String getEMOJI_CELDA_VACIA() {
+        return EMOJI_CELDA_VACIA;
+    }
+
+    public String[] getEMOJIS_DIGITOS_CELDAS() {
+        return EMOJIS_DIGITOS_CELDAS;
     }
 
     // Setters
@@ -66,8 +92,8 @@ public class Celda {
         this.descubierta = descubierta;
     }
 
-    public void setExplosion(String explosion) {
-        this.explosion = explosion;
+    public void setEmoji(String emoji) {
+        this.emoji = emoji;
     }
 
     //Métodos
