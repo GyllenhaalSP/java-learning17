@@ -33,6 +33,7 @@ public class Main {
                 ? "\t¡Has perdido!\n"
                 : "\t¡HAS GANADO! ¡Enhorabuena!\n"
         );
+        cuadriculaJuego.actualizarTablero(fila, columna);
         cuadriculaJuego.imprimirTablero();
         System.out.printf("%nHas tardado: %02d minutos y %02d segundos.%n",
                 Math.abs(TimeUnit.MILLISECONDS.toMinutes(tiempoTranscurrido)),
@@ -46,8 +47,8 @@ public class Main {
 
     /**
      * Imprime el menú de bienvenida al juego.
-     * @throws IOException
-     * @throws InterruptedException
+     * @throws IOException lanza IOException
+     * @throws InterruptedException lanza InterruptedException
      */
     public static void bienvenida() throws IOException, InterruptedException {
         cls();
@@ -79,8 +80,8 @@ public class Main {
 
     /**
      * Limpia la consola.
-     * @throws IOException 
-     * @throws InterruptedException
+     * @throws IOException lanza IOException
+     * @throws InterruptedException lanza InterruptedException
      */
     public static void cls() throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
