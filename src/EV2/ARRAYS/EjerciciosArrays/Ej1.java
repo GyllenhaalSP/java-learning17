@@ -1,6 +1,7 @@
 package EV2.ARRAYS.EjerciciosArrays;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class Ej1 {
     public static void main(String[] args) {
@@ -9,24 +10,28 @@ public class Ej1 {
         int[][] array = new int[6][10];
         int max = 0;
         int min = 1000;
-        int posMax = 0;
-        int posMin = 0;
+        int[] posMax = new int[2];
+        int[] posMin = new int[2];
+
+        Random rand = new Random();
 
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
-                array[i][j] = (int) (Math.random() * 1001);
+                array[i][j] = rand.nextInt(50, 1001);
                 if (array[i][j] > max) {
                     max = array[i][j];
-                    posMax = i;
+                    posMax[0] = i;
+                    posMax[1] = j;
                 }
                 if (array[i][j] < min) {
                     min = array[i][j];
-                    posMin = i;
+                    posMin[0] = i;
+                    posMin[1] = j;
                 }
             }
         }
         System.out.println(Arrays.deepToString(array));
-        System.out.println("El máximo es " + max + " y está en la posición " + posMax);
-        System.out.println("El mínimo es " + min + " y está en la posición " + posMin);
+        System.out.println("El máximo es " + max + " y está en la posición " + posMax[0] + ", " + posMax[1]);
+        System.out.println("El mínimo es " + min + " y está en la posición " + posMin[0] + ", " + posMin[1]);
     }
 }
