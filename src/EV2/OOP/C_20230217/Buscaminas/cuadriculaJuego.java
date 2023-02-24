@@ -38,10 +38,6 @@ public class cuadriculaJuego {
         return RECUENTO_CELDAS == 0;
     }
 
-    public int getRecuentoCeldas() {
-        return RECUENTO_CELDAS;
-    }
-
     // Métodos
     /**
      * Método que inicializa las celdas del campo de juego.
@@ -144,15 +140,24 @@ public class cuadriculaJuego {
         if (celdas[posX][posY].isMina()) {
             haPerdido = true;
             celdas[posX][posY].setEmoji(celdas[posX][posY].getEMOJI_BOMBA_EXPLOTADA());
-            for (Celda[] celda : celdas) {
-                for (Celda valor : celda) {
-                    if (valor.isMina()) {
-                        valor.setDescubierta(true);
-                    }
-                }
-            }
+            loopSeteoMinas();
         }else if (!celdas[posX][posY].isDescubierta()){
             abrirEnCascada(posX, posY);
+        }else if(isGanado()){
+            loopSeteoMinas();
+        }
+    }
+
+    /**
+     * Itera sobre las celdas y descubre las que sean mina.
+     */
+    public void loopSeteoMinas(){
+        for (Celda[] celda : celdas) {
+            for (Celda valor : celda) {
+                if (valor.isMina()) {
+                    valor.setDescubierta(true);
+                }
+            }
         }
     }
 
@@ -227,17 +232,17 @@ public class cuadriculaJuego {
         StringBuilder resultado = new StringBuilder();
         switch (opt.toLowerCase()) {
             case "tablero" -> {
-                for (int i = 0; i < celdas.length; i++) {
-                    for (int j = 0; j < celdas[i].length; j++) {
-                        resultado.append((celdas[i][j].isMina() ? "☒ " : "☐ "));
+                for (Celda[] celda : celdas) {
+                    for (Celda valor : celda) {
+                        resultado.append((valor.isMina() ? "☒ " : "☐ "));
                     }
                     resultado.append(" \n");
                 }
             }
             case "pista" -> {
-                for (int i = 0; i < celdas.length; i++) {
-                    for (int j = 0; j < celdas[i].length; j++) {
-                        resultado.append(celdas[i][j].getNumeroMinasAlrededor());
+                for (Celda[] celda : celdas) {
+                    for (Celda valor : celda) {
+                        resultado.append(valor.getNumeroMinasAlrededor());
                         resultado.append(" ");
                     }
                     resultado.append(" \n");
