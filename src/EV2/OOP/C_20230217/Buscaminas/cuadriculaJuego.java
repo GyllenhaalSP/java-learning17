@@ -13,23 +13,33 @@ import java.util.Random;
 public class cuadriculaJuego {
 
     // Atributos
-    Celda[][] celdas;
-    int filaX;
-    int columnaY;
-    final int MINAS;
-    boolean juegoTerminado = false;
-    final int CELDAS_VECINAS = 8;
+    public final int CELDAS_VECINAS = 8;
+    private final int FILA_X;
+    private final int COLUMNA_Y;
+    private final int MINAS;
+    private Celda[][] celdas;
+    private boolean haPerdido = false;
+    static private int RECUENTO_CELDAS;
 
     // Constructor
-    public cuadriculaJuego(int filaX, int columnaY, int MINAS) {
-        this.filaX = filaX;
-        this.columnaY = columnaY;
+    public cuadriculaJuego(int FILA_X, int COLUMNA_Y, int MINAS) {
+        this.FILA_X = FILA_X;
+        this.COLUMNA_Y = COLUMNA_Y;
         this.MINAS = MINAS;
+        RECUENTO_CELDAS = FILA_X * COLUMNA_Y - MINAS;
     }
 
     // Getters
-    public boolean isJuegoTerminado() {
-        return juegoTerminado;
+    public boolean isPerdido() {
+        return haPerdido;
+    }
+
+    public boolean isGanado() {
+        return RECUENTO_CELDAS == 0;
+    }
+
+    public int getRecuentoCeldas() {
+        return RECUENTO_CELDAS;
     }
 
     // Métodos
@@ -37,7 +47,7 @@ public class cuadriculaJuego {
      * Método que inicializa las celdas del campo de juego.
      */
     public void inicializarCeldas() {
-        celdas = new Celda[this.filaX][this.columnaY];
+        celdas = new Celda[this.FILA_X][this.COLUMNA_Y];
         for (int i = 0; i < celdas.length; i++) {
             for (int j = 0; j < celdas[i].length; j++) {
                 celdas[i][j] = new Celda(i, j);
@@ -132,7 +142,7 @@ public class cuadriculaJuego {
      */
     public void actualizarTablero(int posX, int posY) {
         if (celdas[posX][posY].isMina()) {
-            juegoTerminado = true;
+            haPerdido = true;
             celdas[posX][posY].setEmoji(celdas[posX][posY].getEMOJI_BOMBA_EXPLOTADA());
             for (Celda[] celda : celdas) {
                 for (Celda valor : celda) {
@@ -192,9 +202,11 @@ public class cuadriculaJuego {
         else if (celdas[posX][posY].isDescubierta()) return;
         else if (celdas[posX][posY].getNumeroMinasAlrededor() > 0) {
             celdas[posX][posY].setDescubierta(true);
+            RECUENTO_CELDAS--;
             return;
         }else if (celdas[posX][posY].getNumeroMinasAlrededor() == 0){
             celdas[posX][posY].setDescubierta(true);
+            RECUENTO_CELDAS--;
             abrirEnCascada(posX + 1, posY);
             abrirEnCascada(posX - 1, posY);
             abrirEnCascada(posX, posY + 1);
