@@ -27,6 +27,7 @@ public class Main {
             columna = Integer.parseInt(sc.next()) - 1;
             cuadriculaJuego.actualizarTablero(fila, columna);
         }while(!cuadriculaJuego.isPerdido() && !cuadriculaJuego.isGanado());
+        cls();
         tiempoTranscurrido -= System.currentTimeMillis();
         System.out.println(cuadriculaJuego.isPerdido()
                 ? "\t¡Has perdido!\n"
