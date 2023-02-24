@@ -15,7 +15,7 @@ public class NumeroAleatorio {
         final int MAX_INTENTOS = 10;
         int numeroRandom = rand.nextInt(MAX_VALOR_RANDOM);
         int intentos = 10;
-        System.out.println(numeroRandom);
+        //System.out.println(numeroRandom);
         System.out.println("¡Adivina el número!");
         int numeroUsuario = getUserNumber(intentos);
 
