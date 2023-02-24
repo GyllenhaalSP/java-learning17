@@ -13,22 +13,24 @@ public class Main {
         cuadriculaJuego cuadriculaJuego = new cuadriculaJuego(10, 10, 10);
         cuadriculaJuego.inicializarCeldas();
         long tiempoTranscurrido = System.currentTimeMillis();
-        while (!cuadriculaJuego.isJuegoTerminado()){
+        do{
             cls();
-            System.out.println(cuadriculaJuego.toString("tablero"));
+            System.out.println();
+            //System.out.println(cuadriculaJuego.toString("tablero"));
             //System.out.println(cuadriculaJuego.toString("pista"));
-            System.out.println("-----------------------------------------\n");
+            //System.out.println("-----------------------------------------\n");
             cuadriculaJuego.imprimirTablero();
+            //System.out.println(cuadriculaJuego.getRecuentoCeldas());
             System.out.println("\n¿Qué posición quieres destapar?");
             System.out.println("Fila espacio Columna o Fila enter Columna");
             fila = Integer.parseInt(sc.next()) - 1;
             columna = Integer.parseInt(sc.next()) - 1;
             cuadriculaJuego.actualizarTablero(fila, columna);
-        }
+        }while(!cuadriculaJuego.isPerdido() && !cuadriculaJuego.isGanado());
         tiempoTranscurrido -= System.currentTimeMillis();
-        System.out.println(cuadriculaJuego.isJuegoTerminado()
-                ? "\n¡Has perdido!\n"
-                : "\n\t¡HAS GANADO! ¡Enhorabuena!"
+        System.out.println(cuadriculaJuego.isPerdido()
+                ? "\t¡Has perdido!\n"
+                : "\t¡HAS GANADO! ¡Enhorabuena!\n"
         );
         cuadriculaJuego.imprimirTablero();
         System.out.printf("%nHas tardado: %02d minutos y %02d segundos.%n",
@@ -41,14 +43,19 @@ public class Main {
         );
     }
 
+    /**
+     * Imprime el menú de bienvenida al juego.
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public static void bienvenida() throws IOException, InterruptedException {
         cls();
-        System.out.println("¡Bienvenido al Buscaminas!");
+        System.out.println("¡Bienvenido al Buscaminas!\n");
         System.out.println("¿Qué quieres hacer?");
         System.out.println("\t1. Jugar");
         System.out.println("\t2. Ayuda");
         System.out.println("\t3. Opciones");
-        System.out.println("\t4. Salir\n");
+        System.out.println("\t4. Salir");
         System.out.print("Escribe la opción que quieras: ");
         String opt = sc.nextLine().toLowerCase();
         switch (opt) {
@@ -69,8 +76,12 @@ public class Main {
         }
     }
 
+    /**
+     * Limpia la consola.
+     * @throws IOException 
+     * @throws InterruptedException
+     */
     public static void cls() throws IOException, InterruptedException {
-        //Limpia la consola.
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
     }
 }
