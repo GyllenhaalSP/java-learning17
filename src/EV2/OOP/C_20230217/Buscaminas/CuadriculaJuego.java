@@ -165,14 +165,14 @@ public class CuadriculaJuego {
      * Método que imprime el tablero por pantalla.
      */
     public void imprimirTablero() {
-        System.out.print("    ");
+        System.out.print("   \u2009");
         // Imprime los números de las columnas con el array de emojis de dígitos
         for (int i = 0; i < celdas.length; i++){
             System.out.printf("%s", celdas[i/celdas.length][i%celdas.length].getEMOJIS_DIGITOS_CELDAS()[i+1]);
         }
         System.out.println();
         for (int i = 0; i < celdas.length; i++) {
-            System.out.printf((i == 9?"%1d| ":"%2d| "), i+1); // Imprime los números de las filas
+            System.out.printf("%s", celdas[i/ celdas.length][i% celdas.length].getEMOJIS_DIGITOS_CELDAS()[i+1]); // Imprime los números de las filas
             for (int j = 0; j < celdas[i].length; j++) {
                 //Si está descubierta y es una mina
                 if(celdas[i][j].isDescubierta() && celdas[i][j].isMina()) {
@@ -202,10 +202,10 @@ public class CuadriculaJuego {
      * @param posY Posición de la columna elegida
      */
     public void abrirEnCascada(int posX, int posY){
-        if (posX < 0 || posX >= celdas.length || posY < 0 || posY >= celdas[0].length) return;
+        if ((posX < 0 || posX >= celdas.length) || (posY < 0 || posY >= celdas[0].length)) return;
         else if (celdas[posX][posY].isMina()) return;
         else if (celdas[posX][posY].isDescubierta()) return;
-        else if (celdas[posX][posY].getNumeroMinasAlrededor() > 0) {
+        else if (celdas[posX][posY].getNumeroMinasAlrededor() >= 1) {
             celdas[posX][posY].setDescubierta(true);
             RECUENTO_CELDAS--;
             return;
