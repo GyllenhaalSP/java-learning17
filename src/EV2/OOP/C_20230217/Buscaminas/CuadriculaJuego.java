@@ -213,8 +213,6 @@ public class CuadriculaJuego {
                     if (celdas[i][j].isBandera()){
                         if (celdas[i][j].isMina()) {
                             System.out.print(celdas[i][j].getEmoji());
-                        }else if(celdas[i][j].isVacia()){
-                            System.out.print(celdas[i][j].getEMOJI_NO_BOMBA());
                         }else{
                             System.out.print(celdas[i][j].getEMOJI_CELDA_VACIA());
                         }
@@ -261,6 +259,10 @@ public class CuadriculaJuego {
         return;
     }
 
+    /**
+     * Método que imprime los números de las columnas y filas.
+     * @param i Posición de la fila o columna elegida.
+     */
     private void imprimirDigitosCeldas(int i){
         System.out.printf("%s", celdas[i/celdas.length][i%celdas.length].getEMOJIS_DIGITOS_CELDAS()[i+1]);
     }
