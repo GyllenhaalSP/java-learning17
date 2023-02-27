@@ -7,17 +7,21 @@ package EV2.OOP.C_20230217.Buscaminas;
  * @version 1.0
  */
 public class Celda {
+
     // Atributos
-    private int filaX;
-    private int columnaY;
+    private final int filaX;
+    private final int columnaY;
     private int numeroMinasAlrededor;
     private boolean mina;
+    private boolean vacia;
+    private boolean bandera;
     private boolean descubierta;
     private String emoji;
     static final private String EMOJI_BOMBA = "\uD83D\uDCA3 ";
     static final private String EMOJI_BOMBA_EXPLOTADA = "\uD83D\uDCA5 ";
-    static final private String EMOJI_BANDERA = "\uD83D\uDEA9 ";
+    static final private String EMOJI_BANDERA = "\uD83C\uDFF4\u200D☠️ ";
     static final private String EMOJI_CELDA_VACIA = "\uD83D\uDFE9 ";
+    static final private String EMOJI_NO_BOMBA = "❌ ";
     static final private String[] EMOJIS_DIGITOS_CELDAS = {"0️ ", "1️ ", "2️ ", "3️ ", "4️ ", "5️ ",
             "6️ ", "7️ ", "8️ ", "9️ ", "\uD83D\uDD1F "};
 
@@ -26,17 +30,10 @@ public class Celda {
         this.filaX = filaX;
         this.columnaY = columnaY;
         this.emoji = EMOJI_CELDA_VACIA;
+        this.vacia = true;
     }
 
     // Getters
-
-    public int getFilaX() {
-        return filaX;
-    }
-
-    public int getColumnaY() {
-        return columnaY;
-    }
 
     public int getNumeroMinasAlrededor() {
         return numeroMinasAlrededor;
@@ -48,6 +45,14 @@ public class Celda {
 
     public boolean isDescubierta() {
         return descubierta;
+    }
+
+    public boolean isVacia() {
+        return vacia;
+    }
+
+    public boolean isBandera() {
+        return bandera;
     }
 
     public String getEmoji() {
@@ -70,26 +75,30 @@ public class Celda {
         return EMOJI_CELDA_VACIA;
     }
 
+    public String getEMOJI_NO_BOMBA() {
+        return EMOJI_NO_BOMBA;
+    }
+
     public String[] getEMOJIS_DIGITOS_CELDAS() {
         return EMOJIS_DIGITOS_CELDAS;
     }
 
     // Setters
 
-    public void setFilaX(int filaX) {
-        this.filaX = filaX;
-    }
-
-    public void setColumnaY(int columnaY) {
-        this.columnaY = columnaY;
-    }
-
     public void setMina(boolean mina) {
         this.mina = mina;
     }
 
+    public void setVacia(boolean vacia) {
+        this.vacia = vacia;
+    }
+
     public void setDescubierta(boolean descubierta) {
         this.descubierta = descubierta;
+    }
+
+    public void setBandera(boolean bandera) {
+        this.bandera = bandera;
     }
 
     public void setEmoji(String emoji) {
