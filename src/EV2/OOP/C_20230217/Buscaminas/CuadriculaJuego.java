@@ -38,6 +38,10 @@ public class CuadriculaJuego {
         return RECUENTO_CELDAS == 0;
     }
 
+    public Celda[][] getCeldas() {
+        return celdas;
+    }
+
     // Métodos
     /**
      * Método que inicializa las celdas del campo de juego.
@@ -63,6 +67,7 @@ public class CuadriculaJuego {
             int posTempY = rand.nextInt(celdas[0].length);
             if (!celdas[posTempX][posTempY].isMina()) {
                 celdas[posTempX][posTempY].setMina(true);
+                celdas[posTempX][posTempY].setVacia(false);
                 celdas[posTempX][posTempY].setEmoji(celdas[posTempX][posTempY].getEMOJI_BOMBA());
                 minasGeneradas++;
             }
@@ -137,25 +142,55 @@ public class CuadriculaJuego {
      * @param posY Columna de la celda seleccionada.
      */
     public void actualizarTablero(int posX, int posY) {
-        if (celdas[posX][posY].isMina()) {
+        if (celdas[posX][posY].isMina()){
             haPerdido = true;
+            loopSeteoFinDeJuego();
             celdas[posX][posY].setEmoji(celdas[posX][posY].getEMOJI_BOMBA_EXPLOTADA());
-            loopSeteoMinas();
         }else if (!celdas[posX][posY].isDescubierta()){
             abrirEnCascada(posX, posY);
         }else if(isGanado()){
-            loopSeteoMinas();
+            loopSeteoFinDeJuego();
+        }
+    }
+
+    public void actualizarTablero(int posX, int posY, int opt){
+        if (opt == 2 && !celdas[posX][posY].isDescubierta()
+                && (celdas[posX][posY].isVacia() || celdas[posX][posY].isMina())){
+            celdas[posX][posY].setEmoji(celdas[posX][posY].getEMOJI_BANDERA());
+            celdas[posX][posY].setBandera(true);
+        }else if (opt == 3 && celdas[posX][posY].isBandera()){
+            if(celdas[posX][posY].isVacia()){
+                celdas[posX][posY].setEmoji(celdas[posX][posY].getEMOJI_CELDA_VACIA());
+            }else{
+                celdas[posX][posY].setEmoji(celdas[posX][posY].getEMOJI_BOMBA());
+            }
+            celdas[posX][posY].setBandera(false);
         }
     }
 
     /**
-     * Itera sobre las celdas y descubre las que sean mina.
+     * Itera sobre las celdas, si son minas, las descubre y setea el emoji de bomba.
+     * Si es una celda vacía y tiene una bandera, setea el emoji de no bomba.
      */
-    public void loopSeteoMinas(){
+    public void loopSeteoFinDeJuego(){
         for (Celda[] celda : celdas) {
             for (Celda valor : celda) {
-                if (valor.isMina()) {
+                if (valor.isMina()){
                     valor.setDescubierta(true);
+                    valor.setEmoji(valor.getEMOJI_BOMBA());
+                }
+                if (valor.isVacia() && valor.isBandera() && !valor.isMina()){
+                    valor.setEmoji(valor.getEMOJI_NO_BOMBA());
+                }
+            }
+        }
+    }
+
+    public void loopSeteoVecinos(){
+        for (Celda[] celda : celdas) {
+            for (Celda valor : celda) {
+                if (!valor.isBandera() && !valor.isMina()){
+                    valor.setEmoji(valor.getEMOJIS_DIGITOS_CELDAS()[valor.getNumeroMinasAlrededor()]);
                 }
             }
         }
@@ -166,30 +201,36 @@ public class CuadriculaJuego {
      */
     public void imprimirTablero() {
         System.out.print("   \u2009");
-        // Imprime los números de las columnas con el array de emojis de dígitos
+        // Imprime los números de las columnas
         for (int i = 0; i < celdas.length; i++){
-            System.out.printf("%s", celdas[i/celdas.length][i%celdas.length].getEMOJIS_DIGITOS_CELDAS()[i+1]);
+            imprimirDigitosCeldas(i);
         }
         System.out.println();
         for (int i = 0; i < celdas.length; i++) {
-            System.out.printf("%s", celdas[i/ celdas.length][i% celdas.length].getEMOJIS_DIGITOS_CELDAS()[i+1]); // Imprime los números de las filas
+            imprimirDigitosCeldas(i);
             for (int j = 0; j < celdas[i].length; j++) {
-                //Si está descubierta y es una mina
-                if(celdas[i][j].isDescubierta() && celdas[i][j].isMina()) {
-                    // Si el emoji es una bomba, imprime el emoji bomba, si no, imprime el emoji explosión
-                    if (celdas[i][j].getEmoji().equals(celdas[i][j].getEMOJI_BOMBA())) {
-                        System.out.print(celdas[i][j].getEmoji());
-                    }else {
-                        System.out.print(celdas[i][j].getEmoji());
+                if (celdas[i][j].isDescubierta()){
+                    if (celdas[i][j].isBandera()){
+                        if (celdas[i][j].isMina()) {
+                            System.out.print(celdas[i][j].getEmoji());
+                        }else if(celdas[i][j].isVacia()){
+                            System.out.print(celdas[i][j].getEMOJI_NO_BOMBA());
+                        }else{
+                            System.out.print(celdas[i][j].getEMOJI_CELDA_VACIA());
+                        }
+                    }else{
+                        if (celdas[i][j].isMina()){
+                            System.out.print(celdas[i][j].getEmoji());
+                        }else {
+                            System.out.print(celdas[i][j].getEMOJIS_DIGITOS_CELDAS()[celdas[i][j].getNumeroMinasAlrededor()]);
+                        }
                     }
-                /*Si está descubierta y no es una mina, imprime el emoji con el número de minas alrededor
-                si no, imprime el emoji de la celda vacía.*/
-                }else if(celdas[i][j].isDescubierta() && !celdas[i][j].isMina()) {
-                        System.out.print(celdas[i][j]
-                                .getEMOJIS_DIGITOS_CELDAS()[celdas[i][j]
-                                .getNumeroMinasAlrededor()]);
-                }else {
-                    System.out.print(celdas[i][j].getEMOJI_CELDA_VACIA());
+                }else{
+                    if(celdas[i][j].isBandera()) {
+                        System.out.print(celdas[i][j].getEmoji());
+                    }else{
+                        System.out.print(celdas[i][j].getEMOJI_CELDA_VACIA());
+                    }
                 }
             }
             System.out.println(" ");
@@ -220,34 +261,24 @@ public class CuadriculaJuego {
         return;
     }
 
+    private void imprimirDigitosCeldas(int i){
+        System.out.printf("%s", celdas[i/celdas.length][i%celdas.length].getEMOJIS_DIGITOS_CELDAS()[i+1]);
+    }
+
     /**
      * Método que imprime de forma básica el campo de juego para debugging según la opción elegida:
      *      <p style = "margin-top: 0em; text-indent: 1cm;">- "tablero" imprime el tablero con las posiciones vacías y las minas.</p>
      *      <p style = "margin-top: 0em; text-indent: 1cm;">- "pistas" imprime el tablero con las pistas de las casillas adyacentes a las minas.</p>
      *
-     * @param opt Opción para formatear y mostrar diferentes estados del campo de juego.
      * @return String con el campo de juego.
      */
-    public String toString(String opt) {
+    public String toString() {
         StringBuilder resultado = new StringBuilder();
-        switch (opt.toLowerCase()) {
-            case "tablero" -> {
-                for (Celda[] celda : celdas) {
-                    for (Celda valor : celda) {
-                        resultado.append((valor.isMina() ? "☒ " : "☐ "));
-                    }
-                    resultado.append(" \n");
-                }
+        for (Celda[] celda : celdas) {
+            for (Celda valor : celda) {
+                resultado.append((valor.isMina() ? "☒ " : "☐ "));
             }
-            case "pista" -> {
-                for (Celda[] celda : celdas) {
-                    for (Celda valor : celda) {
-                        resultado.append(valor.getNumeroMinasAlrededor());
-                        resultado.append(" ");
-                    }
-                    resultado.append(" \n");
-                }
-            }
+            resultado.append(" \n");
         }
         return resultado.toString();
     }
