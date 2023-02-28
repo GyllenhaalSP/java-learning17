@@ -12,10 +12,13 @@ import java.util.concurrent.TimeUnit;
 public class Main {
     static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) throws IOException, InterruptedException {
+        int opcionPorDefectoCuadricula = 10;
+        int opcionPorDefectoMinas = 5;
         int[] opciones = bienvenida();
         CuadriculaJuego cuadriculaJuego;
         if (opciones == null) {
-            cuadriculaJuego = new CuadriculaJuego(10, 10, 10);
+            cuadriculaJuego = new CuadriculaJuego(opcionPorDefectoCuadricula,
+                    opcionPorDefectoCuadricula, opcionPorDefectoMinas);
         } else {
             cuadriculaJuego = new CuadriculaJuego(opciones[0], opciones[1], opciones[2]);
         }
@@ -93,7 +96,7 @@ public class Main {
                 System.out.println("No puedes destapar una casilla con una bandera.\n");
             }
             cuadriculaJuego.imprimirTablero();
-            posiciones = eleccionPosicionOBandera(cuadriculaJuego);
+            posiciones = seleccionPosicionOBandera(cuadriculaJuego);
         }while(!cuadriculaJuego.isPerdido() && !cuadriculaJuego.isGanado());
         cuadriculaJuego.actualizarTablero(posiciones[0], posiciones[1]);
     }
@@ -102,8 +105,9 @@ public class Main {
      * Menú principal del juego para elegir la acción a realizar sobre una casilla en concreto.
      * @param cuadriculaJuego Se le pasa una instancia de CuadriculaJuego para poder acceder a sus métodos.
      * @return Devuelve un array de enteros con la fila, la columna y si la casilla tiene una bandera devuelve -1.
+     * @throws InterruptedException - lanza InterruptedException.
      */
-    public static int[] eleccionPosicionOBandera(CuadriculaJuego cuadriculaJuego){
+    public static int[] seleccionPosicionOBandera(CuadriculaJuego cuadriculaJuego) throws InterruptedException {
         int fila;
         int columna;
         System.out.println("¿Qué quieres hacer?");
@@ -144,7 +148,7 @@ public class Main {
             case "salir", "4" -> System.exit(0);
             default -> {
                 System.out.println("\nOpción no válida\n");
-                eleccionPosicionOBandera(cuadriculaJuego);
+                seleccionPosicionOBandera(cuadriculaJuego);
             }
         }
         return new int[]{0, 0, 0};
