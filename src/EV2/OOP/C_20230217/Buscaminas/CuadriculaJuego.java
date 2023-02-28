@@ -230,7 +230,8 @@ public class CuadriculaJuego {
                         if (celdas[i][j].isMina()){
                             System.out.print(celdas[i][j].getEmoji());
                         }else {
-                            System.out.print(celdas[i][j].getEMOJIS_DIGITOS_CELDAS()[celdas[i][j].getNumeroMinasAlrededor()]);
+                            System.out.print(celdas[i][j].getEMOJIS_DIGITOS_CELDAS()[celdas[i][j]
+                                    .getNumeroMinasAlrededor()]);
                         }
                     }
                 }else{
