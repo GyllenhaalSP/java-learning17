@@ -14,24 +14,24 @@ public class CuadriculaJuego {
 
     // Atributos
     public final int CELDAS_VECINAS = 8;
-    private final int FILA_X;
-    private final int COLUMNA_Y;
+    private final int FILAS;
+    private final int COLUMNAS;
     private final int MINAS;
     private Celda[][] celdas;
-    private boolean haPerdido = false;
+    private boolean perdido = false;
     static private int RECUENTO_CELDAS;
 
     // Constructor
-    public CuadriculaJuego(int FILA_X, int COLUMNA_Y, int MINAS) {
-        this.FILA_X = FILA_X;
-        this.COLUMNA_Y = COLUMNA_Y;
+    public CuadriculaJuego(int FILAS, int COLUMNAS, int MINAS) {
+        this.FILAS = FILAS;
+        this.COLUMNAS = COLUMNAS;
         this.MINAS = MINAS;
-        RECUENTO_CELDAS = FILA_X * COLUMNA_Y - MINAS;
+        RECUENTO_CELDAS = FILAS * COLUMNAS - MINAS;
     }
 
     // Getters
     public boolean isPerdido() {
-        return haPerdido;
+        return perdido;
     }
 
     public boolean isGanado() {
@@ -47,7 +47,7 @@ public class CuadriculaJuego {
      * Método que inicializa las celdas del campo de juego.
      */
     public void inicializarCeldas() {
-        celdas = new Celda[this.FILA_X][this.COLUMNA_Y];
+        celdas = new Celda[this.FILAS][this.COLUMNAS];
         for (int i = 0; i < celdas.length; i++) {
             for (int j = 0; j < celdas[i].length; j++) {
                 celdas[i][j] = new Celda(i, j);
@@ -101,33 +101,33 @@ public class CuadriculaJuego {
     private List<Celda> getCeldasVecinas(int filaX, int columnaY) {
         List<Celda> listaCeldasVecinas = new LinkedList<>();
         for (int i = 0; i < CELDAS_VECINAS; i++) {
-            int tempX = filaX;
-            int tempY = columnaY;
+            int fila = filaX;
+            int columna = columnaY;
             switch (i) {
                 case 0 -> { // Arriba izquierda
-                    tempX--;
-                    tempY--;
+                    fila--;
+                    columna--;
                 }
-                case 1 -> tempX--; // Izquierda
+                case 1 -> fila--; // Izquierda
                 case 2 -> { // Abajo izquierda
-                    tempX--;
-                    tempY++;
+                    fila--;
+                    columna++;
                 }
-                case 3 -> tempY--; // Arriba
-                case 4 -> tempY++; // Abajo
+                case 3 -> columna--; // Arriba
+                case 4 -> columna++; // Abajo
                 case 5 -> { // Arriba derecha
-                    tempX++;
-                    tempY--;
+                    fila++;
+                    columna--;
                 }
-                case 6 -> tempX++; // Derecha
+                case 6 -> fila++; // Derecha
                 case 7 -> { // Abajo derecha
-                    tempX++;
-                    tempY++;
+                    fila++;
+                    columna++;
                 }
             }
-            if (tempX >= 0 && tempX < this.celdas.length && tempY >= 0 && tempY < this.celdas[0].length) {
-                if (!this.celdas[tempX][tempY].isMina()) {
-                    listaCeldasVecinas.add(this.celdas[tempX][tempY]);
+            if (fila >= 0 && fila < this.celdas.length && columna >= 0 && columna < this.celdas[0].length) {
+                if (!this.celdas[fila][columna].isMina()) {
+                    listaCeldasVecinas.add(this.celdas[fila][columna]);
                 }
             }
         }
@@ -143,7 +143,7 @@ public class CuadriculaJuego {
      */
     public void actualizarTablero(int posX, int posY) {
         if (celdas[posX][posY].isMina()){
-            haPerdido = true;
+            perdido = true;
             loopSeteoFinDeJuego();
             celdas[posX][posY].setEmoji(celdas[posX][posY].getEMOJI_BOMBA_EXPLOTADA());
         }else if (!celdas[posX][posY].isDescubierta()){
@@ -153,7 +153,27 @@ public class CuadriculaJuego {
         }
     }
 
-    public void actualizarTablero(int posX, int posY, int opt){
+    /**
+     * Método sobrecargado que actualiza la posición introducida por el usuario según la opción seleccionada en
+     * el menú de juego. Si la opción es 2, se pone una bandera en la celda y se setea su Emoji.
+     * Si la opción es 3, se quita la bandera y se restaura el Emoji original. Imprime un mensaje de error si al poner
+     * la bandera la celda ya está descubierta o si al quitarla la celda no tiene bandera.
+     * @param posX - Fila de la celda seleccionada.
+     * @param posY - Columna de la celda seleccionada.
+     * @param opt - Opción seleccionada en el menú de juego.
+     * @throws InterruptedException - lanza InterruptedException.
+     */
+    public void actualizarTablero(int posX, int posY, int opt) throws InterruptedException {
+        if (opt == 2 && celdas[posX][posY].isDescubierta()) {
+            System.out.println("No puedes poner una bandera en una celda ya descubierta.");
+            Thread.sleep(2500);
+            return;
+        }else if(opt == 3 && !celdas[posX][posY].isBandera()){
+            System.out.println("No puedes quitar una bandera de una celda que no tiene bandera.");
+            Thread.sleep(2500);
+            return;
+        }
+
         if (opt == 2 && !celdas[posX][posY].isDescubierta()
                 && (celdas[posX][posY].isVacia() || celdas[posX][posY].isMina())){
             celdas[posX][posY].setEmoji(celdas[posX][posY].getEMOJI_BANDERA());
@@ -181,16 +201,6 @@ public class CuadriculaJuego {
                 }
                 if (valor.isVacia() && valor.isBandera() && !valor.isMina()){
                     valor.setEmoji(valor.getEMOJI_NO_BOMBA());
-                }
-            }
-        }
-    }
-
-    public void loopSeteoVecinos(){
-        for (Celda[] celda : celdas) {
-            for (Celda valor : celda) {
-                if (!valor.isBandera() && !valor.isMina()){
-                    valor.setEmoji(valor.getEMOJIS_DIGITOS_CELDAS()[valor.getNumeroMinasAlrededor()]);
                 }
             }
         }
