@@ -62,9 +62,9 @@ public class Main {
             case "opciones", "3" -> {
                 System.out.println("¿De cuántas casillas quieres el tablero?");
                 System.out.print("Filas: ");
-                int filas = Integer.parseInt(sc.nextLine());
+                int filas = getFilaOColumna();
                 System.out.print("Columnas: ");
-                int columnas = Integer.parseInt(sc.nextLine());
+                int columnas = getFilaOColumna();
                 System.out.println("¿Cuántas minas quieres en el tablero?");
                 System.out.print("Minas: ");
                 int minas = Integer.parseInt(sc.nextLine());
@@ -120,8 +120,8 @@ public class Main {
         switch (opcion) {
             case "destapar", "1" -> {
                 System.out.println("Introduce la fila y la columna de la casilla que quieras destapar: ");
-                fila = getFila();
-                columna = getColumna();
+                fila = getFilaOColumna();
+                columna = getFilaOColumna();
                 if (cuadriculaJuego.getCeldas()[fila][columna].isBandera()){
                     return new int[]{fila, columna, -1};
                 }else{
@@ -132,16 +132,16 @@ public class Main {
             case "ponerbandera", "2" -> {
                 System.out.println("Introduce la fila y la columna de la casilla " +
                         "en la que quieras poner una bandera: ");
-                fila = getFila();
-                columna = getColumna();
+                fila = getFilaOColumna();
+                columna = getFilaOColumna();
                 cuadriculaJuego.actualizarTablero(fila, columna, Integer.parseInt(opcion));
                 return new int[]{fila, columna, 0};
             }
             case "quitarbandera", "3" -> {
                 System.out.println("Introduce la fila y la columna de la casilla " +
                         "de la que quieras quitar una bandera: ");
-                fila = getFila();
-                columna = getColumna();
+                fila = getFilaOColumna();
+                columna = getFilaOColumna();
                 cuadriculaJuego.actualizarTablero(fila, columna, Integer.parseInt(opcion));
                 return new int[]{fila, columna, 0};
             }
@@ -158,20 +158,10 @@ public class Main {
      * Pide al usuario la fila de la casilla que quiere destapar.
      * @return Devuelve el número de la fila que ha introducido el usuario.
      */
-    public static int getFila(){
-        int fila = Integer.parseInt(sc.next()) - 1;
+    public static int getFilaOColumna(){
+        int filaOColumna = Integer.parseInt(sc.next()) - 1;
         sc.nextLine();
-        return fila;
-    }
-
-    /**
-     * Pide al usuario la columna de la casilla que quiere destapar.
-     * @return Devuelve el número de la columna que ha introducido el usuario.
-     */
-    public static int getColumna(){
-        int columna = Integer.parseInt(sc.next()) - 1;
-        sc.nextLine();
-        return columna;
+        return filaOColumna;
     }
 
     /**
