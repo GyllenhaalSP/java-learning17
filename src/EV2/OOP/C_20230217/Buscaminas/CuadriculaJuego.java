@@ -92,7 +92,8 @@ public class CuadriculaJuego {
     }
 
     /**
-     * Método que devuelve una lista con las celdas vecinas a la celda que se le pasa como parámetro.
+     * Método que devuelve una lista de objetos de tipo Celda con las celdas vecinas a la celda que se le pasa
+     * como parámetro.
      *
      * @param filaX    Fila de la celda.
      * @param columnaY Columna de la celda.
