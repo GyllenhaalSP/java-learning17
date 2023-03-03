@@ -137,8 +137,10 @@ public class CuadriculaJuego {
 
     /**
      * Método que actualiza la posición introducida por el usuario y comprueba si es una mina o no.
-     * Si es una mina, setea el atributo perdido a true y descubre todas las minas.
-     * Si no es una mina, setea la celda a descubierta.
+     * Si es una mina, setea el atributo perdido a true, descubre todas las minas y setea el emoji de la celda
+     * seleccionada al emoji de mina explotada.
+     * Si no es una mina, llama al método abrirEnCascada().
+     * Si isGanado() es true, llama al método loopSeteoFinDeJuego() y el juego acaba.
      * @param posX Fila de la celda seleccionada.
      * @param posY Columna de la celda seleccionada.
      */
