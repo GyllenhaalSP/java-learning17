@@ -18,7 +18,7 @@ public class CuadriculaJuego {
     private final int COLUMNAS;
     private final int MINAS;
     private Celda[][] celdas;
-    private boolean perdido = false;
+    private boolean perdido;
     static private int RECUENTO_CELDAS;
 
     // Constructor
