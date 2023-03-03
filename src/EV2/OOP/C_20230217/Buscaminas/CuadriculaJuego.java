@@ -137,7 +137,7 @@ public class CuadriculaJuego {
 
     /**
      * Método que actualiza la posición introducida por el usuario y comprueba si es una mina o no.
-     * Si es una mina, setea el atributo juegoTerminado a true y descubre todas las minas.
+     * Si es una mina, setea el atributo perdido a true y descubre todas las minas.
      * Si no es una mina, setea la celda a descubierta.
      * @param posX Fila de la celda seleccionada.
      * @param posY Columna de la celda seleccionada.
@@ -231,8 +231,8 @@ public class CuadriculaJuego {
                         if (celdas[i][j].isMina()){
                             System.out.print(celdas[i][j].getEmoji());
                         }else {
-                            System.out.print(celdas[i][j].getEMOJIS_DIGITOS_CELDAS()[celdas[i][j]
-                                    .getNumeroMinasAlrededor()]);
+                            System.out.print(celdas[i][j].getEMOJIS_DIGITOS_CELDAS()[
+                                    celdas[i][j].getNumeroMinasAlrededor()]);
                         }
                     }
                 }else{
