@@ -192,7 +192,7 @@ public class Metodos {
         //La variable "separador" indica cada cuántos elementos se imprime un salto de línea.
         System.out.println(mensaje);
         for(int i = 0, j = 1; i < v.length; i++, j++){
-            System.out.print(v[i]+"\t");
+            System.out.print(v[i]+" ");
             if(j%separador==0)System.out.println();
         }
         System.out.println();
@@ -204,7 +204,7 @@ public class Metodos {
         System.out.println(mensaje);
         for (Object[] objects : v) {
             for(int i = 0, j = 1; i < v.length; i++, j++){
-                System.out.print(objects[i]+"\t");
+                System.out.print(objects[i] + " ");
                 if(j%separador==0)System.out.println();
             }
             System.out.println();
@@ -217,7 +217,7 @@ public class Metodos {
         //La variable "separador" indica cada cuántos elementos se imprime un salto de línea.
         System.out.println(mensaje);
         for(int i = 0, j = 1; i < v.length; i++, j++){
-            System.out.print(v[i]+"\t");
+            System.out.printf("%5d ", v[i]);
             if(j%separador==0)System.out.println();
         }
         System.out.println();
@@ -229,7 +229,7 @@ public class Metodos {
         System.out.println(mensaje);
         for (int[] nums : v) {
             for(int i = 0, j = 1; i < nums.length; i++, j++){
-                System.out.print(nums[i]+"\t");
+                System.out.printf("%5d ", nums[i]);
                 if(j%separador==0)System.out.println();
             }
             System.out.println();
