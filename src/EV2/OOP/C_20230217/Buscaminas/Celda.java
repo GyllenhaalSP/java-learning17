@@ -9,8 +9,6 @@ package EV2.OOP.C_20230217.Buscaminas;
 public class Celda {
 
     // Atributos
-    private final int filaX;
-    private final int columnaY;
     private int numeroMinasAlrededor;
     private boolean mina;
     private boolean vacia;
@@ -26,9 +24,7 @@ public class Celda {
             "6️ ", "7️ ", "8️ ", "9️ ", "\uD83D\uDD1F "};
 
     // Constructor
-    public Celda(int filaX, int columnaY) {
-        this.filaX = filaX;
-        this.columnaY = columnaY;
+    public Celda() {
         this.emoji = EMOJI_CELDA_VACIA;
         this.vacia = true;
     }

@@ -50,7 +50,7 @@ public class CuadriculaJuego {
         celdas = new Celda[this.FILAS][this.COLUMNAS];
         for (int i = 0; i < celdas.length; i++) {
             for (int j = 0; j < celdas[i].length; j++) {
-                celdas[i][j] = new Celda(i, j);
+                celdas[i][j] = new Celda();
             }
         }
         generarMinas();
