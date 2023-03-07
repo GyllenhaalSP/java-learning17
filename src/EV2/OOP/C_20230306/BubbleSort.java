@@ -3,6 +3,11 @@ package EV2.OOP.C_20230306;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Clase contenedora de los diferentes métodos para implementar el algoritmo de ordenación por burbuja.
+ * @author Daniel Alonso Lázaro - 2023
+ * @version 1.0
+ */
 public class BubbleSort {
     public static void main(String[] args) {
         final int MAX_NUMEROS = 10_000;
