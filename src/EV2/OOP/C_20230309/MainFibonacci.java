@@ -2,8 +2,8 @@ package EV2.OOP.C_20230309;
 
 public class MainFibonacci {
     public static void main(String[] args) {
-        System.out.print("Introduce el número de iteraciones Fibonacci: ");
         int numero = Integer.parseInt(args[0]);
+        System.out.print("El número de iteraciones Fibonacci encontrado en 'args[0]' es: "+numero);
         for (int i = 1; i < numero; i++) {
             System.out.println("El número Fibonacci es: " + fibonacciRecursivo(i) + " en la iteración " + (i) + ".");
         }
