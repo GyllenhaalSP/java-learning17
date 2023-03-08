@@ -47,7 +47,7 @@ public class BubbleSort {
 
     /**
      * Implementación del algoritmo Bubble Sort.
-     * @param array - Array unidimensional que se va a ordenar.
+     * @param array Array unidimensional que se va a ordenar.
      */
     public static void bubbleSort(int[] array) {
         int aux;
@@ -64,7 +64,7 @@ public class BubbleSort {
 
     /**
      * Segunda mejora del algoritmo Bubble Sort.
-     * @param array - Array unidimensional que se va a ordenar.
+     * @param array Array unidimensional que se va a ordenar.
      */
     public static void bubbleSortMejorado(int[] array){
         int aux;
@@ -84,7 +84,7 @@ public class BubbleSort {
 
     /**
      * Tercera mejora del algoritmo Bubble Sort.
-     * @param array - Array unidimensional que se va a ordenar.
+     * @param array Array unidimensional que se va a ordenar.
      */
     public static void bubbleSortMasMejorado(int[] array){
         int aux;
@@ -105,10 +105,10 @@ public class BubbleSort {
 
     /**
      * Carga un array unidimensional de enteros con números aleatorios entre min inclusive y max inclusive.
-     * @param v - Array unidimensional que recibe.
-     * @param min - Mínimo inclusive del rango de números que se generarán.
-     * @param max - Máximo inclusive del rango de números que se generarán.
-     * @return - Array unidimensional cargado con números enteros aleatorios entre min inclusive y max inclusive.
+     * @param v Array unidimensional que recibe.
+     * @param min Mínimo inclusive del rango de números que se generarán.
+     * @param max Máximo inclusive del rango de números que se generarán.
+     * @return Array unidimensional cargado con números enteros aleatorios entre min inclusive y max inclusive.
      */
     public static int[] cargarArray(int[] v, int min, int max){
         return new Random().ints(v.length, min, max + 1).toArray();
@@ -116,9 +116,9 @@ public class BubbleSort {
 
     /**
      * Imprime el array unidimensional de enteros que recibe y un mensaje junto con él.
-     * @param mensaje - Mensaje que se imprime antes de la impresión del array.
-     * @param v - Array unidimensional que se va a imprimir.
-     * @param separador - Indica cada cuántos elementos se imprime un salto de línea.
+     * @param mensaje Mensaje que se imprime antes de la impresión del array.
+     * @param v Array unidimensional que se va a imprimir.
+     * @param separador Indica cada cuántos elementos se imprime un salto de línea.
      */
     public static void mostrarArray(String mensaje, int[] v, int separador){
         System.out.println(mensaje);
@@ -131,7 +131,7 @@ public class BubbleSort {
 
     /**
      * Imprime el tiempo transcurrido entre dos momentos en segundos, milisegundos, microsegundos y nanosegundos.
-     * @param inicio - variable que contiene el inicio del contador en nanosegundos.
+     * @param inicio variable que contiene el inicio del contador en nanosegundos.
      */
     public static void tiempoToString(long inicio){
         System.out.println("Ha tardado: " + TimeUnit.NANOSECONDS.toSeconds(System.nanoTime() - inicio) + " segundos");
