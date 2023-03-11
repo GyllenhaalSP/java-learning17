@@ -223,6 +223,17 @@ public class Metodos {
         System.out.println();
     }
 
+    public static void mostrarArray(String mensaje, long[] v, int separador){
+        //Imprime el array de enteros que recibe y un mensaje junto con él.
+        //La variable "separador" indica cada cuántos elementos se imprime un salto de línea.
+        System.out.println(mensaje);
+        for(int i = 0, j = 1; i < v.length; i++, j++){
+            System.out.printf("%5d ", v[i]);
+            if(j%separador==0)System.out.println();
+        }
+        System.out.println();
+    }
+
     public static void mostrarArray(String mensaje, int[][] v, int separador){
         //Imprime el array bidimensional de enteros que recibe y un mensaje junto con él.
         //La variable "separador" indica cada cuántos elementos se imprime un salto de línea.
