@@ -12,16 +12,19 @@ import java.util.concurrent.TimeUnit;
 public class Main {
     static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) throws IOException, InterruptedException {
-        int opcionPorDefectoCuadricula = 10;
-        int opcionPorDefectoMinas = 5;
+        final int opcionPorDefectoCuadricula = 10;
+        final int opcionPorDefectoMinas = 8;
+
         int[] opciones = bienvenida();
         CuadriculaJuego cuadriculaJuego;
+
         if (opciones == null) {
             cuadriculaJuego = new CuadriculaJuego(opcionPorDefectoCuadricula,
                     opcionPorDefectoCuadricula, opcionPorDefectoMinas);
         } else {
             cuadriculaJuego = new CuadriculaJuego(opciones[0], opciones[1], opciones[2]);
         }
+
         cuadriculaJuego.inicializarCeldas();
         long tiempoTranscurrido = System.currentTimeMillis();
         start(cuadriculaJuego);
@@ -60,14 +63,51 @@ public class Main {
                 bienvenida();
             }
             case "opciones", "3" -> {
-                System.out.println("¿De cuántas casillas quieres el tablero?");
+                boolean minasValidas = false;
+                int filas;
+                int columnas;
+                int minas = 0;
+
+                System.out.println("\n¿De cuántas casillas quieres el tablero?");
+
                 System.out.print("Filas: ");
-                int filas = getFilaOColumna();
+                filas = getFilaOColumna(true);
                 System.out.print("Columnas: ");
-                int columnas = getFilaOColumna();
+                columnas = getFilaOColumna(false);
+
+                System.out.println("\nEl número de filas se ha establecido en "
+                        + filas
+                        + " y el número de columnas en "
+                        + columnas
+                        + ".\n");
+
+                final int MINIMO_MINAS = filas - 2;
+                final int MAXIMO_MINAS = filas + 2;
+
                 System.out.println("¿Cuántas minas quieres en el tablero?");
-                System.out.print("Minas: ");
-                int minas = Integer.parseInt(sc.nextLine());
+
+                do{
+                    try {
+                        System.out.println("El número de minas debe estar entre "
+                                + MINIMO_MINAS + " y "
+                                + MAXIMO_MINAS + ".");
+                        System.out.print("Minas: ");
+                        minas = Integer.parseInt(sc.nextLine());
+                        if(minas >= MINIMO_MINAS && minas <= MAXIMO_MINAS) {
+                            minasValidas = true;
+                        } else {
+                            System.out.println("El número de minas se encuentra fuera del rango permitido.\n");
+                        }
+                    }catch(NumberFormatException e){
+                        System.out.println("El valor introducido no es un número o es incorrecto.");
+                    }
+                } while(!minasValidas);
+
+                System.out.println("\nEl número de minas se ha establecido en "
+                        + minas
+                        + ".\n");
+
+                Thread.sleep(1500);
 
                 return new int[]{filas, columnas, minas};
             }
@@ -120,8 +160,8 @@ public class Main {
         switch (opcion) {
             case "destapar", "1" -> {
                 System.out.println("Introduce la fila y la columna de la casilla que quieras destapar: ");
-                fila = getFilaOColumna();
-                columna = getFilaOColumna();
+                fila = getFilaOColumna(true);
+                columna = getFilaOColumna(false);
                 if (cuadriculaJuego.getCeldas()[fila][columna].isBandera()){
                     return new int[]{fila, columna, -1};
                 }else{
@@ -132,16 +172,16 @@ public class Main {
             case "ponerbandera", "2" -> {
                 System.out.println("Introduce la fila y la columna de la casilla " +
                         "en la que quieras poner una bandera: ");
-                fila = getFilaOColumna();
-                columna = getFilaOColumna();
+                fila = getFilaOColumna(true);
+                columna = getFilaOColumna(false);
                 cuadriculaJuego.actualizarTablero(fila, columna, Integer.parseInt(opcion));
                 return new int[]{fila, columna, 0};
             }
             case "quitarbandera", "3" -> {
                 System.out.println("Introduce la fila y la columna de la casilla " +
                         "de la que quieras quitar una bandera: ");
-                fila = getFilaOColumna();
-                columna = getFilaOColumna();
+                fila = getFilaOColumna(true);
+                columna = getFilaOColumna(false);
                 cuadriculaJuego.actualizarTablero(fila, columna, Integer.parseInt(opcion));
                 return new int[]{fila, columna, 0};
             }
@@ -158,9 +198,60 @@ public class Main {
      * Pide al usuario la fila de la casilla que quiere destapar.
      * @return Devuelve el número de la fila que ha introducido el usuario.
      */
-    public static int getFilaOColumna(){
-        int filaOColumna = Integer.parseInt(sc.next()) - 1;
-        sc.nextLine();
+    public static int getFilaOColumna(boolean esFilaOColumna){
+        final int MINIMO_FILAS_COLUMNAS = 5;
+        final int MAXIMO_FILAS_COLUMNAS = 15;
+        boolean valorValido = false;
+        int filaOColumna = 0;
+
+        do{
+            try{
+                filaOColumna = Integer.parseInt(sc.nextLine());
+                if(filaOColumna >= MINIMO_FILAS_COLUMNAS && filaOColumna <= MAXIMO_FILAS_COLUMNAS){
+                    valorValido = true;
+                }else{
+                    System.out.println("El número de filas o columnas debe estar entre 5 y 15.");
+                    System.out.print((esFilaOColumna
+                            ? "Introduce el número de filas: "
+                            : "Introduce el número de columnas: "));
+                }
+            }catch (NumberFormatException e){
+                System.out.println("El valor introducido no es un número o es incorrecto.");
+                System.out.println("Introduce un número entre 5 y 15.");
+                System.out.print((esFilaOColumna
+                        ? "Introduce el número de filas: "
+                        : "Introduce el número de columnas: "));
+            }
+        }while(!valorValido);
+        return filaOColumna;
+    }
+
+    /**
+     * Pide al usuario la fila o la columna de la casilla en la que quiere poner una bandera.
+     * @return Devuelve el número de la fila o la columna que ha introducido el usuario.
+     */
+    public static int getFilaOColumnaBandera(boolean esFilaOColumna){
+        final int MINIMO_FILAS_COLUMNAS = 0;
+        final int MAXIMO_FILAS_COLUMNAS = 0;
+        boolean valorValido = false;
+        int filaOColumna = 0;
+
+        do{
+            try{
+                filaOColumna = Integer.parseInt(sc.nextLine()) - 1;
+                if(filaOColumna >= MINIMO_FILAS_COLUMNAS && filaOColumna <= MAXIMO_FILAS_COLUMNAS){
+                    valorValido = true;
+                }else{
+                    System.out.println("El número de filas o columnas debe estar entre 5 y 15.");
+                }
+            }catch (NumberFormatException e){
+                System.out.println("El valor introducido no es un número o es incorrecto.");
+                System.out.println("Introduce un número entre 5 y 15.");
+                System.out.print((esFilaOColumna ? "Introduce el número de filas: " : "Introduce el número de columnas: "));
+            }
+
+        }while(!valorValido);
+
         return filaOColumna;
     }
 
