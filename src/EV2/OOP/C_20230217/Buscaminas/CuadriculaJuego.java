@@ -213,7 +213,7 @@ public class CuadriculaJuego {
      * Método que imprime el tablero por pantalla.
      */
     public void imprimirTablero() {
-        System.out.print("   \u2009");
+        System.out.print("   ");
         // Imprime los números de las columnas
         for (int i = 0; i < celdas.length; i++){
             imprimirDigitosCeldas(i);
