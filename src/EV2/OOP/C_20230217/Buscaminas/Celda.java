@@ -17,11 +17,12 @@ public class Celda {
     private String emoji;
     static final private String EMOJI_BOMBA = "\uD83D\uDCA3 ";
     static final private String EMOJI_BOMBA_EXPLOTADA = "\uD83D\uDCA5 ";
-    static final private String EMOJI_BANDERA = "\uD83C\uDFF4\u200D☠️ ";
+    static final private String EMOJI_BANDERA = "\uD83C\uDFF4\u200D ";
     static final private String EMOJI_CELDA_VACIA = "\uD83D\uDFE9 ";
     static final private String EMOJI_NO_BOMBA = "❌ ";
-    static final private String[] EMOJIS_DIGITOS_CELDAS = {"0️ ", "1️ ", "2️ ", "3️ ", "4️ ", "5️ ",
-            "6️ ", "7️ ", "8️ ", "9️ ", "\uD83D\uDD1F "};
+    static final private String[] EMOJIS_DIGITOS_CELDAS = {"0\uFE0F\u20E3 ", "1\uFE0F\u20E3 ", "2\uFE0F\u20E3 ",
+            "3\uFE0F\u20E3 ", "4\uFE0F\u20E3 ", "5\uFE0F\u20E3 ", "6\uFE0F\u20E3 ", "7\uFE0F\u20E3 ",
+            "8\uFE0F\u20E3 ", "9\uFE0F\u20E3 ", "\uD83D\uDD1F "};
 
     // Constructor
     public Celda() {
