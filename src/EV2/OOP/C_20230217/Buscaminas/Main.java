@@ -5,20 +5,20 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Clase principal del juego.
+ * Clase principal del juego Buscaminas.
  * @author Daniel Alonso Lázaro - 2023
  * @version 1.0
  */
 public class Main {
     static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) throws IOException, InterruptedException {
-        final int opcionPorDefectoCuadricula = 10;
-        final int opcionPorDefectoMinas = 8;
 
         int[] opciones = bienvenida();
         CuadriculaJuego cuadriculaJuego;
 
         if (opciones == null) {
+            final int opcionPorDefectoCuadricula = 10;
+            final int opcionPorDefectoMinas = 8;
             cuadriculaJuego = new CuadriculaJuego(opcionPorDefectoCuadricula,
                     opcionPorDefectoCuadricula, opcionPorDefectoMinas);
         } else {
@@ -45,23 +45,21 @@ public class Main {
      */
     public static int[] bienvenida() throws IOException, InterruptedException {
         cls();
-        System.out.println("¡Bienvenido al Buscaminas!\n");
-        System.out.println("¿Qué quieres hacer?");
+        System.out.println("¡Bienvenido al Buscaminas!");
+        System.out.println("\n¿Qué quieres hacer?");
         System.out.println("\t1. Jugar");
         System.out.println("\t2. Ayuda");
         System.out.println("\t3. Opciones");
         System.out.println("\t4. Salir");
-        System.out.print("Escribe la opción que quieras: ");
+        System.out.print("\nElige la opción: ");
         switch (sc.nextLine().toLowerCase()) {
             case "jugar", "1" -> {
                 System.out.println("\n¡Vamos a jugar!\n");
                 Thread.sleep(1000);
                 return null;
             }
-            case "ayuda", "2" -> {
-                System.out.println("\nEl menú de ayuda aún no está disponible\n");
-                bienvenida();
-            }
+            case "ayuda", "2" -> ayuda();
+
             case "opciones", "3" -> {
                 boolean minasValidas = false;
                 int filas;
@@ -113,7 +111,7 @@ public class Main {
             }
             case "salir", "4" -> System.exit(0);
             default -> {
-                System.out.println("\nOpción no válida\n");
+                System.out.println("\nLa opción elegida no existe.\n");
                 bienvenida();
             }
         }
@@ -121,12 +119,73 @@ public class Main {
     }
 
     /**
+     * Método que imprime una pequeña guía sobre el juego.
+     * @throws IOException lanza IOException.
+     * @throws InterruptedException lanza InterruptedException.
+     */
+    private static void ayuda() throws IOException, InterruptedException {
+        System.out.println("""
+                
+                El objetivo del buscaminas es descubrir todo el área de juego.
+                Para ello, se deben descubrir todas las casillas que NO contienen minas.
+                """);
+        limpiarLineas();
+        System.out.print("""
+                
+                Al introducir la coordenada de una casilla, se descubrirá su contenido.
+                Si la celda está vacía, se descubrirán las casillas adyacentes.
+                El número que se revela en estas celdas adyacentes indica las minas que
+                hay en las ocho casillas inmediatamente adyacentes a la celda descubierta.
+                
+                """);
+        limpiarLineas();
+        System.out.print("""
+                
+                Si se descubre una casilla con una mina, se pierde automáticamente
+                la partida.
+                
+                """);
+        limpiarLineas();
+        System.out.print("""
+                
+                Si se está seguro de que una casilla contiene una mina, se puede marcar
+                con una bandera. Para marcar una celda con una bandera, se tiene que
+                introducir su coordenada. No se puede poner una bandera en una celda
+                que ya esté descubierta ni en una casilla que ya tenga una bandera.
+                
+                """);
+        limpiarLineas();
+        System.out.print("""
+                
+                Lo más sencillo es empezar por las esquinas e ir avanzando desde ahí.
+                
+                ¡Buena suerte!
+                
+                """);
+        limpiarLineas();
+        bienvenida();
+    }
+
+    /**
+     * Método que imprime un mensaje, limpia la línea anterior y avanza el texto.
+     */
+    private static void limpiarLineas() {
+        String enterParaContinuar = "Presiona Enter para continuar...";
+        System.out.print(enterParaContinuar);
+        sc.nextLine();
+        System.out.print("\033[A \033[A");
+        for (int i = 0; i < enterParaContinuar.length(); i++) {
+            System.out.print("\b");
+        }
+    }
+
+    /**
      * Lanza el bucle principal del juego.
      * @param cuadriculaJuego - Objeto de la clase CuadriculaJuego que contiene el tablero.
      * @throws IOException - lanza IOException.
-     * @throws InterruptedException - lanza InterruptedException.
+     * @throws InterruptedException lanza InterruptedException.
      */
-    public static void start(CuadriculaJuego cuadriculaJuego) throws IOException, InterruptedException {
+    private static void start(CuadriculaJuego cuadriculaJuego) throws IOException, InterruptedException {
         int[] posiciones = {0, 0, 0};
         do{
             cls();
@@ -145,23 +204,25 @@ public class Main {
      * Menú principal del juego para elegir la acción a realizar sobre una casilla en concreto.
      * @param cuadriculaJuego Se le pasa una instancia de CuadriculaJuego para poder acceder a sus métodos.
      * @return Devuelve un array de enteros con la fila, la columna y si la casilla tiene una bandera devuelve -1.
-     * @throws InterruptedException - lanza InterruptedException.
+     * @throws InterruptedException lanza InterruptedException.
      */
-    public static int[] seleccionPosicionOBandera(CuadriculaJuego cuadriculaJuego) throws InterruptedException {
+    private static int[] seleccionPosicionOBandera(CuadriculaJuego cuadriculaJuego) throws InterruptedException {
         int fila;
         int columna;
-        System.out.println("¿Qué quieres hacer?");
+        System.out.println("\n¿Qué quieres hacer?");
         System.out.println("\t1. Destapar casilla");
         System.out.println("\t2. Poner bandera");
         System.out.println("\t3. Quitar bandera");
         System.out.println("\t4. Salir");
-        System.out.print("Escribe la opción que quieras: ");
+        System.out.print("\nElige la opción: ");
         String opcion = sc.nextLine().toLowerCase();
         switch (opcion) {
             case "destapar", "1" -> {
-                System.out.println("Introduce la fila y la columna de la casilla que quieras destapar: ");
-                fila = getFilaOColumna(true);
-                columna = getFilaOColumna(false);
+                System.out.println("\nIntroduce la fila y la columna de la casilla que quieras destapar: ");
+                System.out.print("Fila: ");
+                fila = getFilaOColumna(true, cuadriculaJuego);
+                System.out.print("Columna: ");
+                columna = getFilaOColumna(false, cuadriculaJuego);
                 if (cuadriculaJuego.getCeldas()[fila][columna].isBandera()){
                     return new int[]{fila, columna, -1};
                 }else{
@@ -170,18 +231,22 @@ public class Main {
                 return new int[]{fila, columna, 0};
             }
             case "ponerbandera", "2" -> {
-                System.out.println("Introduce la fila y la columna de la casilla " +
+                System.out.println("\nIntroduce la fila y la columna de la casilla " +
                         "en la que quieras poner una bandera: ");
-                fila = getFilaOColumna(true);
-                columna = getFilaOColumna(false);
+                System.out.print("Fila: ");
+                fila = getFilaOColumna(true, cuadriculaJuego);
+                System.out.print("Columna: ");
+                columna = getFilaOColumna(false, cuadriculaJuego);
                 cuadriculaJuego.actualizarTablero(fila, columna, Integer.parseInt(opcion));
                 return new int[]{fila, columna, 0};
             }
             case "quitarbandera", "3" -> {
-                System.out.println("Introduce la fila y la columna de la casilla " +
+                System.out.println("\nIntroduce la fila y la columna de la casilla " +
                         "de la que quieras quitar una bandera: ");
-                fila = getFilaOColumna(true);
-                columna = getFilaOColumna(false);
+                System.out.print("Fila: ");
+                fila = getFilaOColumna(true, cuadriculaJuego);
+                System.out.print("Columna: ");
+                columna = getFilaOColumna(false, cuadriculaJuego);
                 cuadriculaJuego.actualizarTablero(fila, columna, Integer.parseInt(opcion));
                 return new int[]{fila, columna, 0};
             }
@@ -195,10 +260,10 @@ public class Main {
     }
 
     /**
-     * Pide al usuario la fila de la casilla que quiere destapar.
-     * @return Devuelve el número de la fila que ha introducido el usuario.
+     * Pide al usuario el número de filas y de columnas que tendrá el tablero.
+     * @return Devuelve el número de la fila o de la columna que ha introducido el usuario.
      */
-    public static int getFilaOColumna(boolean esFilaOColumna){
+    private static int getFilaOColumna(boolean esFilaOColumna){
         final int MINIMO_FILAS_COLUMNAS = 5;
         final int MAXIMO_FILAS_COLUMNAS = 15;
         boolean valorValido = false;
@@ -227,27 +292,33 @@ public class Main {
     }
 
     /**
-     * Pide al usuario la fila o la columna de la casilla en la que quiere poner una bandera.
+     * Método sobrecargado que pide al usuario la fila o la columna para abrir una casilla,
+     * poner una bandera o quitarla.
      * @return Devuelve el número de la fila o la columna que ha introducido el usuario.
      */
-    public static int getFilaOColumnaBandera(boolean esFilaOColumna){
+    private static int getFilaOColumna(boolean esFilaOColumna, CuadriculaJuego cuadriculaJuego){
         final int MINIMO_FILAS_COLUMNAS = 0;
-        final int MAXIMO_FILAS_COLUMNAS = 0;
+        final int MAXIMO_FILAS_COLUMNAS = cuadriculaJuego.getCeldas().length;
         boolean valorValido = false;
         int filaOColumna = 0;
 
         do{
             try{
                 filaOColumna = Integer.parseInt(sc.nextLine()) - 1;
-                if(filaOColumna >= MINIMO_FILAS_COLUMNAS && filaOColumna <= MAXIMO_FILAS_COLUMNAS){
+                if(filaOColumna >= MINIMO_FILAS_COLUMNAS && filaOColumna < MAXIMO_FILAS_COLUMNAS){
                     valorValido = true;
                 }else{
-                    System.out.println("El número de filas o columnas debe estar entre 5 y 15.");
+                    System.out.println("El número de filas o columnas debe estar entre 1 y "
+                            + MAXIMO_FILAS_COLUMNAS
+                            + ".");
+                    System.out.print((esFilaOColumna ? "Fila: " : "Columna: "));
                 }
             }catch (NumberFormatException e){
-                System.out.println("El valor introducido no es un número o es incorrecto.");
-                System.out.println("Introduce un número entre 5 y 15.");
-                System.out.print((esFilaOColumna ? "Introduce el número de filas: " : "Introduce el número de columnas: "));
+                System.out.println("\nEl valor introducido no es un número o es incorrecto.");
+                System.out.println("Introduce un número entre 1 y "
+                        + MAXIMO_FILAS_COLUMNAS
+                        + ".\n");
+                System.out.print((esFilaOColumna ? "Fila: " : "Columna: "));
             }
 
         }while(!valorValido);
@@ -260,7 +331,7 @@ public class Main {
      * @throws IOException lanza IOException.
      * @throws InterruptedException lanza InterruptedException.
      */
-    public static void cls() throws IOException, InterruptedException {
+    private static void cls() throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
     }
 }
