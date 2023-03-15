@@ -14,7 +14,6 @@ public class Esfera extends Figura{
                 + " ...");
     }
 
-
     @Override
     public double getArea() {
         final int MULTIPLICADOR_AREA = 4;
