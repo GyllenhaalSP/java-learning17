@@ -599,4 +599,15 @@ public class Metodos {
         String toString = Character.toString(newCompleteCode.charAt(newCompleteCode.length() - 1));
         return ((Integer.parseInt(toString) + suma8) % 10 == 0) || ((Integer.parseInt(toString) + suma13) % 10 == 0);
     }
+
+    public static void limpiarLineas() {
+        Scanner sc = new Scanner(System.in);
+        String enterParaContinuar = "Presiona Enter para continuar...";
+        System.out.print(enterParaContinuar);
+        sc.nextLine();
+        System.out.print("\033[A \033[A");
+        for (int i = 0; i < enterParaContinuar.length(); i++) {
+            System.out.print("\b");
+        }
+    }
 }
