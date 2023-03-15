@@ -1,6 +1,6 @@
 package EV2.OOP.C_20230217.EjercicioFigurasRedondasHerencia;
 
-public abstract class Figura {
+public class Figura {
     private final String nombre;
     private final double RADIO;
 
@@ -9,11 +9,25 @@ public abstract class Figura {
         this.RADIO = radio;
     }
 
-    abstract public double getArea();
+    protected double getArea(){
+        final int MULTIPLICADOR_AREA = 4;
+        final int EXPONENTE = 2;
+        return MULTIPLICADOR_AREA * Math.PI * Math.pow(getRadio(), EXPONENTE);
+    }
 
-    abstract public double getPerimetro();
+    protected double getPerimetro(){
+        final int MULTIPLICADOR_PERIMETRO = 2;
+        return this.getRadio() * MULTIPLICADOR_PERIMETRO * Math.PI;
+    }
 
-    abstract public double getVolumen();
+    protected double getVolumen(){
+        if (this instanceof Circulo || this instanceof Circunferencia) {
+            return 0;
+        }
+        final double MULTIPLICADOR_VOLUMEN = 4.0 / 3.0;
+        final int EXPONENTE = 3;
+        return MULTIPLICADOR_VOLUMEN * Math.PI * Math.pow(getRadio(), EXPONENTE);
+    }
 
     protected double getRadio() {
         return RADIO;
