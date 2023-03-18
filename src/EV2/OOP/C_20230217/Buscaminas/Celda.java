@@ -9,20 +9,19 @@ package EV2.OOP.C_20230217.Buscaminas;
 public class Celda {
 
     // Atributos
+    static final private String EMOJI_BOMBA = "\uD83D\uDCA3 ";
+    static final private String EMOJI_BOMBA_EXPLOTADA = "\uD83D\uDCA5 ";
+    static final private String EMOJI_BANDERA = "\uD83C\uDFF4\u200D ";
+    static final private String EMOJI_CELDA_VACIA = "\uD83D\uDFE9 ";
+    static final private String[] EMOJIS_DIGITOS_CELDAS = {"0️⃣ ", "1️⃣ ", "2️⃣ ", "3️⃣ ", "4️⃣ ", "5️⃣ ", "6️⃣ ", "7️⃣ ",
+            "8️⃣ ", "9️⃣ ", "\uD83D\uDD1F "};
+    static final private String EMOJI_NO_BOMBA = "❌ ";
     private int numeroMinasAlrededor;
     private boolean mina;
     private boolean vacia;
     private boolean bandera;
     private boolean descubierta;
     private String emoji;
-    static final private String EMOJI_BOMBA = "\uD83D\uDCA3 ";
-    static final private String EMOJI_BOMBA_EXPLOTADA = "\uD83D\uDCA5 ";
-    static final private String EMOJI_BANDERA = "\uD83C\uDFF4\u200D ";
-    static final private String EMOJI_CELDA_VACIA = "\uD83D\uDFE9 ";
-    static final private String EMOJI_NO_BOMBA = "❌ ";
-    static final private String[] EMOJIS_DIGITOS_CELDAS = {"0\uFE0F\u20E3 ", "1\uFE0F\u20E3 ", "2\uFE0F\u20E3 ",
-            "3\uFE0F\u20E3 ", "4\uFE0F\u20E3 ", "5\uFE0F\u20E3 ", "6\uFE0F\u20E3 ", "7\uFE0F\u20E3 ",
-            "8\uFE0F\u20E3 ", "9\uFE0F\u20E3 ", "\uD83D\uDD1F "};
 
     // Constructor
     public Celda() {
@@ -30,7 +29,7 @@ public class Celda {
         this.vacia = true;
     }
 
-    // Getters
+    // Getters y setters
 
     public int getNumeroMinasAlrededor() {
         return numeroMinasAlrededor;
@@ -40,20 +39,40 @@ public class Celda {
         return mina;
     }
 
+    public void setMina(boolean mina) {
+        this.mina = mina;
+    }
+
     public boolean isDescubierta() {
         return descubierta;
+    }
+
+    public void setDescubierta(boolean descubierta) {
+        this.descubierta = descubierta;
     }
 
     public boolean isVacia() {
         return vacia;
     }
 
+    public void setVacia(boolean vacia) {
+        this.vacia = vacia;
+    }
+
     public boolean isBandera() {
         return bandera;
     }
 
+    public void setBandera(boolean bandera) {
+        this.bandera = bandera;
+    }
+
     public String getEmoji() {
         return emoji;
+    }
+
+    public void setEmoji(String emoji) {
+        this.emoji = emoji;
     }
 
     public String getEMOJI_BOMBA() {
@@ -78,28 +97,6 @@ public class Celda {
 
     public String[] getEMOJIS_DIGITOS_CELDAS() {
         return EMOJIS_DIGITOS_CELDAS;
-    }
-
-    // Setters
-
-    public void setMina(boolean mina) {
-        this.mina = mina;
-    }
-
-    public void setVacia(boolean vacia) {
-        this.vacia = vacia;
-    }
-
-    public void setDescubierta(boolean descubierta) {
-        this.descubierta = descubierta;
-    }
-
-    public void setBandera(boolean bandera) {
-        this.bandera = bandera;
-    }
-
-    public void setEmoji(String emoji) {
-        this.emoji = emoji;
     }
 
     //Métodos
