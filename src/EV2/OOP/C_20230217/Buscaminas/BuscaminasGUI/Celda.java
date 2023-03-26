@@ -7,23 +7,19 @@ package EV2.OOP.C_20230217.Buscaminas.BuscaminasGUI;
  * @version 2.0
  */
 public class Celda {
-
     // Atributos
+    static final private String BOMBA = "resources/buscaminas/BOMBA.png";
+    static final private String BOMBA_EXPLOTADA = "resources/buscaminas/BOMBA_EXPLOTADA.png";
+    static final private String BANDERA = "resources/buscaminas/BANDERA.png";
+    static final private String NO_BOMBA = "resources/buscaminas/NO_BOMBA.png";
+    static final private String VACIA = "resources/buscaminas/VACIA.png";
+    static final private String[] DIGITOS_CELDAS = {"resources/buscaminas/VACIA.png", "resources/buscaminas/UNO.png", "resources/buscaminas/DOS.png", "resources/buscaminas/TRES.png", "resources/buscaminas/CUATRO.png", "resources/buscaminas/CINCO.png", "resources/buscaminas/SEIS.png", "resources/buscaminas/SIETE.png", "resources/buscaminas/OCHO.png"};
     private int numeroMinasAlrededor;
     private boolean mina;
     private boolean vacia;
     private boolean bandera;
     private boolean descubierta;
     private String imagen;
-    static final private String BOMBA = "resources/buscaminas/BOMBA.png";
-    static final private String BOMBA_EXPLOTADA = "resources/buscaminas/BOMBA_EXPLOTADA.png";
-    static final private String BANDERA = "resources/buscaminas/BANDERA.png";
-    static final private String NO_BOMBA = "resources/buscaminas/NO_BOMBA.png";
-    static final private String VACIA = "resources/buscaminas/VACIA.png";
-    static final private String[] DIGITOS_CELDAS = {"resources/buscaminas/VACIA.png",
-            "resources/buscaminas/UNO.png", "resources/buscaminas/DOS.png", "resources/buscaminas/TRES.png",
-            "resources/buscaminas/CUATRO.png", "resources/buscaminas/CINCO.png", "resources/buscaminas/SEIS.png",
-            "resources/buscaminas/SIETE.png", "resources/buscaminas/OCHO.png"};
 
     // Constructor
     public Celda() {
@@ -31,7 +27,7 @@ public class Celda {
         this.vacia = true;
     }
 
-    // Getters
+    // Getters y setters
     public int getNumeroMinasAlrededor() {
         return numeroMinasAlrededor;
     }
@@ -40,20 +36,36 @@ public class Celda {
         return mina;
     }
 
+    public void setMina(boolean mina) {
+        this.mina = mina;
+    }
+
     public boolean isDescubierta() {
         return descubierta;
     }
 
-    public boolean isVacia() {
-        return vacia;
+    public void setDescubierta(boolean descubierta) {
+        this.descubierta = descubierta;
+    }
+
+    public void setVacia(boolean vacia) {
+        this.vacia = vacia;
     }
 
     public boolean isBandera() {
         return bandera;
     }
 
+    public void setBandera(boolean bandera) {
+        this.bandera = bandera;
+    }
+
     public String getImagen() {
         return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
     public String getBOMBA() {
@@ -76,28 +88,8 @@ public class Celda {
         return DIGITOS_CELDAS;
     }
 
-    // Setters
-    public void setMina(boolean mina) {
-        this.mina = mina;
-    }
-
-    public void setVacia(boolean vacia) {
-        this.vacia = vacia;
-    }
-
-    public void setDescubierta(boolean descubierta) {
-        this.descubierta = descubierta;
-    }
-
-    public void setBandera(boolean bandera) {
-        this.bandera = bandera;
-    }
-
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
-    }
-
     //Métodos
+
     /**
      * Método que incrementa el número de minas cercanas de las celdas vecinas.
      */
