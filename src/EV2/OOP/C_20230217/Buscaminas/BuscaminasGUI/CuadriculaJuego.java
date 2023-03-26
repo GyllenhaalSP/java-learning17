@@ -1,5 +1,6 @@
 package EV2.OOP.C_20230217.Buscaminas.BuscaminasGUI;
 
+import javax.swing.*;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -31,7 +32,6 @@ public class CuadriculaJuego {
     private static boolean pro;
     private static int recuentoCeldas;
     private static int recuentoBanderas;
-    private final int CELDAS_VECINAS = 8;
     private final int FILAS;
     private final int COLUMNAS;
     private final int MINAS;
@@ -49,140 +49,116 @@ public class CuadriculaJuego {
     }
 
     // Getters
-    public static int getDIMENSION_POR_DEFECTO() {
-        return DIMENSION_POR_DEFECTO;
-    }
-
-    public static int getNUMERO_MINAS_POR_DEFECTO() {
-        return NUMERO_MINAS_POR_DEFECTO;
-    }
-
-    public static int getDIMENSION_FACIL() {
-        return DIMENSION_FACIL;
-    }
-
-    public static int getNUMERO_MINAS_FACIL() {
-        return NUMERO_MINAS_FACIL;
-    }
-
-    public static int getDIMENSION_MEDIO() {
-        return DIMENSION_MEDIO;
-    }
-
-    public static int getNUMERO_MINAS_MEDIO() {
-        return NUMERO_MINAS_MEDIO;
-    }
-
-    public static int getDIMENSION_DIFICIL() {
-        return DIMENSION_DIFICIL;
-    }
-
-    public static int getNUMERO_MINAS_DIFICIL() {
-        return NUMERO_MINAS_DIFICIL;
-    }
-
-    public static int getDIMENSION_PRO() {
-        return DIMENSION_PRO;
-    }
-
-    public static int getNUMERO_MINAS_PRO() {
-        return NUMERO_MINAS_PRO;
-    }
-
     public static int getDimensionUsuario() {
         return dimensionUsuario;
-    }
-
-    public static int getNumeroMinasUsuario() {
-        return numeroMinasUsuario;
-    }
-
-    public boolean isGanado() {
-        return recuentoCeldas == 0;
-    }
-
-    public int getRecuentoBanderas() {
-        return recuentoBanderas;
-    }
-
-    public int getCELDAS_VECINAS() {
-        return CELDAS_VECINAS;
-    }
-
-    public int getFILAS() {
-        return FILAS;
-    }
-
-    public int getCOLUMNAS() {
-        return COLUMNAS;
-    }
-
-    public int getMINAS() {
-        return MINAS;
-    }
-
-    public Celda[][] getCeldas() {
-        return celdas;
-    }
-
-    public boolean isPerdido() {
-        return perdido;
-    }
-
-    public static boolean isFacil() {
-        return facil;
-    }
-
-    public static boolean isMedio() {
-        return medio;
-    }
-
-    public static boolean isDificil() {
-        return dificil;
-    }
-
-    public static boolean isPro() {
-        return pro;
-    }
-
-    // Setters
-    public void setRecuentoBanderas(int recuento){
-        recuentoBanderas = recuento;
-    }
-
-    public void setRecuentoCeldas(int recuento){
-        recuentoCeldas = recuento;
     }
 
     public static void setDimensionUsuario(int dimensionUsuario) {
         CuadriculaJuego.dimensionUsuario = dimensionUsuario;
     }
 
+    public static int getNumeroMinasUsuario() {
+        return numeroMinasUsuario;
+    }
+
     public static void setNumeroMinasUsuario(int numeroMinasUsuario) {
         CuadriculaJuego.numeroMinasUsuario = numeroMinasUsuario;
+    }
+
+    public static boolean isFacil() {
+        return facil;
     }
 
     public static void setFacil(boolean facil) {
         CuadriculaJuego.facil = facil;
     }
 
+    public static boolean isMedio() {
+        return medio;
+    }
+
     public static void setMedio(boolean medio) {
         CuadriculaJuego.medio = medio;
+    }
+
+    public static boolean isDificil() {
+        return dificil;
     }
 
     public static void setDificil(boolean dificil) {
         CuadriculaJuego.dificil = dificil;
     }
 
+    public static boolean isPro() {
+        return pro;
+    }
+
     public static void setPro(boolean pro) {
         CuadriculaJuego.pro = pro;
     }
 
-    public void setPerdido(boolean perdido) {
-        this.perdido = perdido;
+    /**
+     * Selecciona el modo de juego que se va a jugar según la dificultad seleccionada.
+     *
+     * @param frame El frame que se va a cerrar.
+     * @return CuadriculaJuego El campo de juego.
+     */
+    public static CuadriculaJuego seleccionModoJuego(JFrame frame) {
+        if (CuadriculaJuego.getDimensionUsuario() != 0 && CuadriculaJuego.getNumeroMinasUsuario() != 0) {
+            frame.dispose();
+            return new CuadriculaJuego(CuadriculaJuego.getDimensionUsuario(), CuadriculaJuego.getDimensionUsuario(), CuadriculaJuego.getNumeroMinasUsuario());
+        } else if (CuadriculaJuego.isFacil()) {
+            frame.dispose();
+            return new CuadriculaJuego(CuadriculaJuego.DIMENSION_FACIL, CuadriculaJuego.DIMENSION_FACIL, CuadriculaJuego.NUMERO_MINAS_FACIL);
+        } else if (CuadriculaJuego.isMedio()) {
+            frame.dispose();
+            return new CuadriculaJuego(CuadriculaJuego.DIMENSION_MEDIO, CuadriculaJuego.DIMENSION_MEDIO, CuadriculaJuego.NUMERO_MINAS_MEDIO);
+        } else if (CuadriculaJuego.isDificil()) {
+            frame.dispose();
+            return new CuadriculaJuego(CuadriculaJuego.DIMENSION_DIFICIL, CuadriculaJuego.DIMENSION_DIFICIL, CuadriculaJuego.NUMERO_MINAS_DIFICIL);
+        } else if (CuadriculaJuego.isPro()) {
+            frame.dispose();
+            return new CuadriculaJuego(CuadriculaJuego.DIMENSION_PRO, CuadriculaJuego.DIMENSION_PRO, CuadriculaJuego.NUMERO_MINAS_PRO);
+        } else {
+            frame.dispose();
+            return new CuadriculaJuego(CuadriculaJuego.DIMENSION_POR_DEFECTO, CuadriculaJuego.DIMENSION_POR_DEFECTO, CuadriculaJuego.NUMERO_MINAS_POR_DEFECTO);
+        }
+    }
+
+    /**
+     * Setea la dificultad de todas las variables que controlan la dificultad.
+     */
+    public static void setDificultad(boolean... dificultades) {
+        CuadriculaJuego.setFacil(dificultades[0]);
+        CuadriculaJuego.setMedio(dificultades[1]);
+        CuadriculaJuego.setDificil(dificultades[2]);
+        CuadriculaJuego.setPro(dificultades[3]);
+    }
+
+    public boolean isGanado() {
+        return recuentoCeldas == 0;
+    }
+
+    public boolean isPerdido() {
+        return perdido;
+    }
+
+    // Setters
+
+    public int getRecuentoBanderas() {
+        return recuentoBanderas;
+    }
+
+    public void setRecuentoBanderas(int recuento) {
+        recuentoBanderas = recuento;
+    }
+
+    public Celda[][] getCeldas() {
+        return celdas;
     }
 
     // Métodos
+
     /**
      * Método que inicializa las celdas del campo de juego.
      */
@@ -241,29 +217,30 @@ public class CuadriculaJuego {
      */
     private List<Celda> getCeldasVecinas(int filaX, int columnaY) {
         List<Celda> listaCeldasVecinas = new LinkedList<>();
+        int CELDAS_VECINAS = 8;
         for (int i = 0; i < CELDAS_VECINAS; i++) {
             int fila = filaX;
             int columna = columnaY;
             switch (i) {
-                case 0 -> { // Arriba izquierda
-                    fila--;
-                    columna--;
+                case 0 -> {
+                    fila--; // Izquierda
+                    columna--; // Arriba
                 }
                 case 1 -> fila--; // Izquierda
-                case 2 -> { // Abajo izquierda
-                    fila--;
-                    columna++;
+                case 2 -> {
+                    fila--; // Izquierda
+                    columna++; // Abajo
                 }
                 case 3 -> columna--; // Arriba
                 case 4 -> columna++; // Abajo
-                case 5 -> { // Arriba derecha
-                    fila++;
-                    columna--;
+                case 5 -> {
+                    fila++; // Derecha
+                    columna--; // Arriba
                 }
                 case 6 -> fila++; // Derecha
-                case 7 -> { // Abajo derecha
-                    fila++;
-                    columna++;
+                case 7 -> {
+                    fila++; // Derecha
+                    columna++; // Abajo
                 }
             }
             if (fila >= 0 && fila < this.celdas.length && columna >= 0 && columna < this.celdas[0].length) {
@@ -281,120 +258,29 @@ public class CuadriculaJuego {
      * seleccionada al emoji de mina explotada.
      * Si no es una mina, llama al método abrirEnCascada().
      * Si isGanado() es true, llama al método loopSeteoFinDeJuego() y el juego acaba.
+     *
      * @param posX Fila de la celda seleccionada.
      * @param posY Columna de la celda seleccionada.
      */
     public void actualizarTablero(int posX, int posY) {
-        if (celdas[posX][posY].isMina()){
+        if (celdas[posX][posY].isMina()) {
             perdido = true;
             loopSeteoFinDeJuego();
             celdas[posX][posY].setImagen(celdas[posX][posY].getBOMBA_EXPLOTADA());
-        }else if (!celdas[posX][posY].isDescubierta()){
+        } else if (!celdas[posX][posY].isDescubierta()) {
             abrirEnCascada(posX, posY);
-        }else if(isGanado()){
+        } else if (isGanado()) {
             loopSeteoFinDeJuego();
         }
     }
 
     /**
-     * Método sobrecargado que actualiza la posición introducida por el usuario según la opción seleccionada en
-     * el menú de juego. Si la opción es 2, se pone una bandera en la celda y se setea su Emoji.
-     * Si la opción es 3, se quita la bandera y se restaura el Emoji original. Imprime un mensaje de error si al poner
-     * la bandera la celda ya está descubierta o si al quitarla la celda no tiene bandera.
-     * @param posX - Fila de la celda seleccionada.
-     * @param posY - Columna de la celda seleccionada.
-     * @param opt - Opción seleccionada en el menú de juego.
-     * @throws InterruptedException - lanza InterruptedException.
+     * Método que abre casillas a 0 automáticamente y se detiene en las casillas con un 1 o mayor.
+     *
+     * @param posX Posición de la fila seleccionada
+     * @param posY Posición de la columna seleccionada
      */
-    public void actualizarTablero(int posX, int posY, int opt) throws InterruptedException {
-        if (opt == 2 && celdas[posX][posY].isDescubierta()) {
-            System.out.println("No puedes poner una bandera en una celda ya descubierta.");
-            Thread.sleep(2500);
-            return;
-        }else if(opt == 3 && !celdas[posX][posY].isBandera()){
-            System.out.println("No puedes quitar una bandera de una celda que no tiene bandera.");
-            Thread.sleep(2500);
-            return;
-        }
-
-        if (opt == 2 && !celdas[posX][posY].isDescubierta()
-                && (celdas[posX][posY].isVacia() || celdas[posX][posY].isMina())){
-            celdas[posX][posY].setImagen(celdas[posX][posY].getBANDERA());
-            celdas[posX][posY].setBandera(true);
-        }else if (opt == 3 && celdas[posX][posY].isBandera()){
-            if(celdas[posX][posY].isVacia()){
-                celdas[posX][posY].setImagen(celdas[posX][posY].getDIGITOS_CELDAS()[0]);
-            }else{
-                celdas[posX][posY].setImagen(celdas[posX][posY].getBOMBA());
-            }
-            celdas[posX][posY].setBandera(false);
-        }
-    }
-
-    /**
-     * Itera sobre las celdas, si son minas, las descubre y setea el emoji de bomba.
-     * Si es una celda vacía y tiene una bandera, setea el emoji de no bomba.
-     */
-    public void loopSeteoFinDeJuego(){
-        for (Celda[] celda : celdas) {
-            for (Celda valor : celda) {
-                if (valor.isMina()){
-                    valor.setDescubierta(true);
-                    valor.setImagen(valor.getBOMBA());
-                }
-                if (valor.isVacia() && valor.isBandera() && !valor.isMina()){
-                    valor.setImagen(valor.getNO_BOMBA());
-                }
-            }
-        }
-    }
-
-    /**
-     * Método que imprime el tablero por pantalla.
-     */
-    public void imprimirTablero() {
-        System.out.print("\u2009   ");
-        // Imprime los números de las columnas
-        for (int i = 0; i < celdas.length; i++){
-            imprimirDigitosCeldas(i);
-        }
-        System.out.println();
-        for (int i = 0; i < celdas.length; i++) {
-            imprimirDigitosCeldas(i);
-            for (int j = 0; j < celdas[i].length; j++) {
-                if (celdas[i][j].isDescubierta()){
-                    if (celdas[i][j].isBandera()){
-                        if (celdas[i][j].isMina()) {
-                            System.out.print(celdas[i][j].getImagen());
-                        }else{
-                            System.out.print(celdas[i][j].getDIGITOS_CELDAS()[0]);
-                        }
-                    }else{
-                        if (celdas[i][j].isMina()){
-                            System.out.print(celdas[i][j].getImagen());
-                        }else {
-                            System.out.print(celdas[i][j].getDIGITOS_CELDAS()[
-                                    celdas[i][j].getNumeroMinasAlrededor()]);
-                        }
-                    }
-                }else{
-                    if(celdas[i][j].isBandera()) {
-                        System.out.print(celdas[i][j].getImagen());
-                    }else{
-                        System.out.print(celdas[i][j].getDIGITOS_CELDAS()[0]);
-                    }
-                }
-            }
-            System.out.println(" ");
-        }
-    }
-
-    /**
-     * Método que abre casillas a 0 automáticamente y se detiene en las casillas con un 1.
-     * @param posX Posición de la fila elegida
-     * @param posY Posición de la columna elegida
-     */
-    public void abrirEnCascada(int posX, int posY){
+    public void abrirEnCascada(int posX, int posY) {
         if ((posX < 0 || posX >= celdas.length) || (posY < 0 || posY >= celdas[0].length)) return;
         else if (celdas[posX][posY].isMina()) return;
         else if (celdas[posX][posY].isDescubierta()) return;
@@ -402,47 +288,48 @@ public class CuadriculaJuego {
             celdas[posX][posY].setDescubierta(true);
             recuentoCeldas--;
             return;
-        }else if (celdas[posX][posY].getNumeroMinasAlrededor() == 0){
+        } else if (celdas[posX][posY].getNumeroMinasAlrededor() == 0) {
             celdas[posX][posY].setDescubierta(true);
             recuentoCeldas--;
             abrirEnCascada(posX + 1, posY);
             abrirEnCascada(posX - 1, posY);
+            abrirEnCascada(posX + 1, posY + 1);
+            abrirEnCascada(posX + 1, posY - 1);
             abrirEnCascada(posX, posY + 1);
             abrirEnCascada(posX, posY - 1);
+            abrirEnCascada(posX - 1, posY - 1);
+            abrirEnCascada(posX - 1, posY + 1);
         }
         return;
     }
 
     /**
-     * Método que imprime los números de las columnas y filas.
-     * @param i Posición de la fila o columna elegida.
+     * Itera sobre las celdas, si son minas, las descubre y setea la imagen BOMBA.
+     * Si es una celda vacía y tiene una bandera, setea la imagen NO_BOMBA.
      */
-    private void imprimirDigitosCeldas(int i){
-        System.out.printf("%s", celdas[i/celdas.length][i%celdas.length].getDIGITOS_CELDAS()[i+1]);
-    }
-
-    /**
-     * Método que cuenta las banderas en el campo de juego.
-     */
-    public int contarBanderas() {
-        int recuento = 0;
+    public void loopSeteoFinDeJuego() {
         for (Celda[] celda : celdas) {
-            for (Celda value : celda) {
-                if (value.isBandera()) {
-                    recuentoBanderas++;
+            for (Celda valor : celda) {
+                if (valor.isMina()) {
+                    valor.setDescubierta(true);
+                    valor.setImagen(valor.getBOMBA());
+                }
+                if (!valor.isDescubierta() && valor.isBandera() && !valor.isMina()) {
+                    valor.setImagen(valor.getNO_BOMBA());
+                }
+                if (valor.isMina() && !valor.isDescubierta()) {
+                    valor.setImagen(valor.getBANDERA());
                 }
             }
         }
-        return recuentoBanderas;
     }
 
     /**
-     * Método que imprime de forma básica el campo de juego para debugging según la opción elegida:
-     *      <p style = "margin-top: 0em; text-indent: 1cm;">- "tablero" imprime el tablero con las posiciones vacías y las minas.</p>
-     *      <p style = "margin-top: 0em; text-indent: 1cm;">- "pistas" imprime el tablero con las pistas de las casillas adyacentes a las minas.</p>
+     * Método que imprime de forma básica el campo de juego con la posición de las bombas para debugging.
      *
      * @return String con el campo de juego.
      */
+    @Override
     public String toString() {
         StringBuilder resultado = new StringBuilder();
         for (Celda[] celda : celdas) {
