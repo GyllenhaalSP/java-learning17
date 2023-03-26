@@ -21,7 +21,7 @@ public class MainPizzeria {
         cls();
         Pizzeria pizzeria = new Pizzeria(nombrePizzeria, maxClientes, maxPedidos);
 
-        int opcion = 0;
+        int opcion;
 
         do {
             System.out.println("Menú de opciones:");
@@ -34,11 +34,11 @@ public class MainPizzeria {
             opcion = sc.nextInt();
             sc.nextLine();
             switch (opcion) {
-                case 1:
+                case 1 -> {
                     cls();
                     System.out.println(pizzeria);
-                    break;
-                case 2:
+                }
+                case 2 -> {
                     System.out.print("Introduzca el nombre del cliente: ");
                     String nombre = sc.nextLine();
                     System.out.print("Introduzca los apellidos del cliente: ");
@@ -48,8 +48,8 @@ public class MainPizzeria {
                     System.out.print("Introduzca el teléfono del cliente: ");
                     String tel = sc.nextLine();
                     pizzeria.addCliente(nombre, apellidos, dir, tel);
-                    break;
-                case 3:
+                }
+                case 3 -> {
                     System.out.print("Introduzca la posición del cliente: ");
                     int posicionCliente = sc.nextInt();
                     sc.nextLine();
@@ -58,19 +58,15 @@ public class MainPizzeria {
                     System.out.print("Introduzca el tipo de la pizza: ");
                     String type = sc.nextLine();
                     pizzeria.addPedido(posicionCliente, size, type);
-                    break;
-                case 4:
+                }
+                case 4 -> {
                     System.out.println("Introduzca la posición del pedido: ");
                     int posicionPedido = sc.nextInt();
                     sc.nextLine();
                     pizzeria.pedidoServido(posicionPedido);
-                    break;
-                case 5:
-                    System.out.println("Saliendo...");
-                    break;
-                default:
-                    System.out.println("Error: Opción no válida.");
-                    break;
+                }
+                case 5 -> System.out.println("Saliendo...");
+                default -> System.out.println("Error: Opción no válida.");
             }
         } while (opcion != 6);
     }
