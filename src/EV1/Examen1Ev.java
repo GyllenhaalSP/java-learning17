@@ -1,4 +1,4 @@
-package ProgramasPruebas;
+package EV1;
 
 import java.util.Scanner;
 

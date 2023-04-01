@@ -1,4 +1,4 @@
-package ProgramasPruebas;
+package EV1.VendingMachine;
 
 import javax.swing.*;
 import java.awt.*;
