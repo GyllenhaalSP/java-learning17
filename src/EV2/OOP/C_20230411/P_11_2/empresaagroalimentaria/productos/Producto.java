@@ -1,7 +1,5 @@
 package EV2.OOP.C_20230411.P_11_2.empresaagroalimentaria.productos;
 
-import EV2.OOP.C_20230411.P_11_2.empresaagroalimentaria.productos.congelados.ProductoCongelado;
-
 import java.util.GregorianCalendar;
 import java.util.Random;
 

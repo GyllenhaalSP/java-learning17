@@ -1,8 +1,10 @@
 package EV2.OOP.C_20230411.P_11_2.empresaagroalimentaria.productos.congelados;
 
+import EV2.OOP.C_20230411.P_11_2.empresaagroalimentaria.productos.ProductoCongelado;
+
 import java.util.GregorianCalendar;
 
-public class CongeladoAgua extends ProductoCongelado{
+public class CongeladoAgua extends ProductoCongelado {
     private final float salinidad;
 
     public CongeladoAgua(String nombre, String paisOrigen, GregorianCalendar fechaEnvasado, int temperaturaRecomendada, float salinidad) {

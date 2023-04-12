@@ -1,5 +1,7 @@
 package EV2.OOP.C_20230411.P_11_2.empresaagroalimentaria.productos.congelados;
 
+import EV2.OOP.C_20230411.P_11_2.empresaagroalimentaria.productos.ProductoCongelado;
+
 import java.util.GregorianCalendar;
 
 public class CongeladoAire extends ProductoCongelado {
