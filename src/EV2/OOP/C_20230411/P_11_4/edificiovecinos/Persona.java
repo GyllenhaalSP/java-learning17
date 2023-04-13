@@ -55,11 +55,14 @@ public class Persona {
         char letraDNI = dni.charAt(8);
         String letrasControl = "TRWAGMYFPDXBNJZSQVHLCKE";
 
-
         String numeroDNI = dni.toUpperCase().substring(0, dni.length()-1).replace("X", "0")
                 .replace("Y", "1").replace("Z", "2");
 
-        return letraDNI == letrasControl.charAt(Integer.parseInt(numeroDNI) % 23);
+        try{
+            return letraDNI == letrasControl.charAt(Integer.parseInt(numeroDNI) % 23);
+        }catch(NumberFormatException e){
+            return false;
+        }
     }
 
     public boolean codigoValido(String codigo){
