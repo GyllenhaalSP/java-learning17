@@ -3,7 +3,7 @@ package EV2.OOP.C_20230411.P_11_2.empresaagroalimentaria.productos;
 import java.util.GregorianCalendar;
 import java.util.Random;
 
-public class Producto {
+public abstract class Producto {
 
     // Atributos
     private String nombre;
