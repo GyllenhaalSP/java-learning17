@@ -2,14 +2,14 @@ package EV2.OOP.C_20230411.P_11_2.empresaagroalimentaria.productos.congelados;
 
 import EV2.OOP.C_20230411.P_11_2.empresaagroalimentaria.productos.ProductoCongelado;
 
-import java.util.GregorianCalendar;
+import java.time.LocalDate;
 
 public class CongeladoNitrogeno extends ProductoCongelado {
 
         private String metodoCongelacion;
         private final int tiempoExposicionNitrogeno;
 
-        public CongeladoNitrogeno(String nombre, String paisOrigen, GregorianCalendar fechaEnvasado, int temperaturaRecomendada, String metodoCongelacion, int tiempoExposicionNitrogeno) {
+        public CongeladoNitrogeno(String nombre, String paisOrigen, LocalDate fechaEnvasado, int temperaturaRecomendada, String metodoCongelacion, int tiempoExposicionNitrogeno) {
             super(nombre, paisOrigen, fechaEnvasado, temperaturaRecomendada);
             this.metodoCongelacion = metodoCongelacion;
             this.tiempoExposicionNitrogeno = tiempoExposicionNitrogeno;
@@ -35,7 +35,7 @@ public class CongeladoNitrogeno extends ProductoCongelado {
     @Override
         public String toString() {
             return super.toString()
-                    +"\n\tMétodo de congelación: " + metodoCongelacion
-                    +"\n\tTiempo de exposición al nitrógeno: " + tiempoExposicionNitrogeno + " segundos." + "\n";
+                    +"\nMétodo de congelación: " + metodoCongelacion
+                    +" Tiempo de exposición al nitrógeno: " + tiempoExposicionNitrogeno + " segundos.";
         }
 }

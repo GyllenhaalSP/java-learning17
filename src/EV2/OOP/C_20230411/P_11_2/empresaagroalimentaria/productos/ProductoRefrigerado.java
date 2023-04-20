@@ -1,6 +1,6 @@
 package EV2.OOP.C_20230411.P_11_2.empresaagroalimentaria.productos;
 
-import java.util.GregorianCalendar;
+import java.time.LocalDate;
 
 public class ProductoRefrigerado extends Producto {
 
@@ -11,7 +11,7 @@ public class ProductoRefrigerado extends Producto {
     // Constructor
     public ProductoRefrigerado(String nombre,
                                String paisOrigen,
-                               GregorianCalendar fechaEnvasado,
+                               LocalDate fechaEnvasado,
                                String organismoSupervision,
                                int temperaturaRecomendada) {
         super(nombre, paisOrigen, fechaEnvasado);
@@ -31,7 +31,7 @@ public class ProductoRefrigerado extends Producto {
     @Override
     public String toString() {
         return super.toString()
-                + "\n\tOrganismo de supervisión: " + organismoSupervision
-                + "\n\tTemperatura de mantenimiento recomendada: " + temperaturaRecomendada + "ºC";
+                + "\nOrganismo de supervisión: " + organismoSupervision
+                + " Temperatura de mantenimiento recomendada: " + temperaturaRecomendada + "ºC";
     }
 }

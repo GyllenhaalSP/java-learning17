@@ -2,7 +2,7 @@ package EV2.OOP.C_20230411.P_11_2.empresaagroalimentaria.productos.congelados;
 
 import EV2.OOP.C_20230411.P_11_2.empresaagroalimentaria.productos.ProductoCongelado;
 
-import java.util.GregorianCalendar;
+import java.time.LocalDate;
 
 public class CongeladoAire extends ProductoCongelado {
 
@@ -11,7 +11,7 @@ public class CongeladoAire extends ProductoCongelado {
     private final float porcentajeDioxidoCarbono;
     private final float porcentajeVaporAgua;
 
-    public CongeladoAire(String nombre, String paisOrigen, GregorianCalendar fechaEnvasado, int temperaturaRecomendada, float porcentajeNitrogeno, float porcentajeOxigeno, float porcentajeDioxidoCarbono, float porcentajeVaporAgua) {
+    public CongeladoAire(String nombre, String paisOrigen, LocalDate fechaEnvasado, int temperaturaRecomendada, float porcentajeNitrogeno, float porcentajeOxigeno, float porcentajeDioxidoCarbono, float porcentajeVaporAgua) {
         super(nombre, paisOrigen, fechaEnvasado, temperaturaRecomendada);
         this.porcentajeNitrogeno = porcentajeNitrogeno;
         this.porcentajeOxigeno = porcentajeOxigeno;
@@ -43,9 +43,9 @@ public class CongeladoAire extends ProductoCongelado {
     @Override
     public String toString() {
         return super.toString()
-                + "\n\tNitrógeno: " + porcentajeNitrogeno + "%"
-                + "\n\tOxigeno: " + porcentajeOxigeno + "%"
-                + "\n\tDióxido de Carbono: " + porcentajeDioxidoCarbono + "%"
-                + "\n\tVapor de Agua: " + porcentajeVaporAgua + "%";
+                + "\nNitrógeno: " + porcentajeNitrogeno + "%"
+                + " Oxigeno: " + porcentajeOxigeno + "%"
+                + " Dióxido de Carbono: " + porcentajeDioxidoCarbono + "%"
+                + " Vapor de Agua: " + porcentajeVaporAgua + "%";
     }
 }

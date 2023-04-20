@@ -1,6 +1,7 @@
 package EV2.OOP.C_20230411.P_11_2.empresaagroalimentaria.productos;
 
-import java.util.GregorianCalendar;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Random;
 
 public abstract class Producto {
@@ -9,8 +10,8 @@ public abstract class Producto {
     private String nombre;
     private String lote;
     private String paisOrigen;
-    private final GregorianCalendar fechaEnvasado;
-    private final GregorianCalendar fechaCaducidad;
+    private final LocalDate fechaEnvasado;
+    private final LocalDate fechaCaducidad;
     static private final int DIAS_CADUCIDAD_FRESCO = 7;
     static private final int DIAS_CADUCIDAD_REFRIGERADO = 20;
     static private final int DIAS_CADUCIDAD_CONGELADO = 90;
@@ -18,7 +19,7 @@ public abstract class Producto {
     // Constructor
     public Producto(String nombre,
                     String paisOrigen,
-                    GregorianCalendar fechaEnvasado) {
+                    LocalDate fechaEnvasado) {
         this.nombre = nombre;
         this.lote = generarLote();
         this.paisOrigen = paisOrigen;
@@ -50,11 +51,11 @@ public abstract class Producto {
     }
 
 
-    public GregorianCalendar getFechaEnvasado() {
+    public LocalDate getFechaEnvasado() {
         return fechaEnvasado;
     }
 
-    public GregorianCalendar getFechaCaducidad() {
+    public LocalDate getFechaCaducidad() {
         return fechaCaducidad;
     }
 
@@ -71,19 +72,16 @@ public abstract class Producto {
         return lote.toString();
     }
 
-    public GregorianCalendar calcularFechaCaducidad(GregorianCalendar fechaEnvasado, int diasCaducidad) {
-        GregorianCalendar fechaCaducidad = new GregorianCalendar();
-        fechaCaducidad.setTime(fechaEnvasado.getTime());
-        fechaCaducidad.add(GregorianCalendar.DAY_OF_MONTH, diasCaducidad);
-        return fechaCaducidad;
+    public LocalDate calcularFechaCaducidad(LocalDate fechaEnvasado, int diasCaducidad) {
+        return fechaEnvasado.plus(Period.ofDays(diasCaducidad));
     }
 
     @Override
     public String toString() {
         return "\nProducto: " + nombre
-                + "\n\tLote: " + lote
-                + "\n\tPaís de origen: " + paisOrigen
-                + "\n\tFecha de envasado: " + fechaEnvasado.getTime()
-                + "\n\tFecha de caducidad: " + fechaCaducidad.getTime();
+                + " Lote: " + lote
+                + " País de origen: " + paisOrigen
+                + " Fecha de envasado: " + fechaEnvasado
+                + " Fecha de caducidad: " + fechaCaducidad;
     }
 }
