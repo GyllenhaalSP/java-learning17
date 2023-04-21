@@ -1,6 +1,5 @@
 package EV2.OOP.C_20230411.P_11_2.empresaagroalimentaria;
 
-import EV2.OOP.C_20230411.P_11_2.empresaagroalimentaria.productos.ProductoCongelado;
 import EV2.OOP.C_20230411.P_11_2.empresaagroalimentaria.productos.ProductoFresco;
 import EV2.OOP.C_20230411.P_11_2.empresaagroalimentaria.productos.ProductoRefrigerado;
 import EV2.OOP.C_20230411.P_11_2.empresaagroalimentaria.productos.congelados.CongeladoAgua;
@@ -8,77 +7,139 @@ import EV2.OOP.C_20230411.P_11_2.empresaagroalimentaria.productos.congelados.Con
 import EV2.OOP.C_20230411.P_11_2.empresaagroalimentaria.productos.congelados.CongeladoNitrogeno;
 
 import java.time.LocalDate;
+import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
-        System.out.println("Creando empresa agroalimentaria...\n");
-        EmpresaAgroalimentaria empresa = new EmpresaAgroalimentaria("Agroalimentación Gyllenhaal", "12345678A", "Calle Falsa 123", "618182368");
-        System.out.println(empresa);
+    public static void main(String[] args) {
+        EmpresaAgroalimentaria empresa = new EmpresaAgroalimentaria("Alimentación Chen", "88278890R", "Calle Falsa 123", "618182368");
 
-        System.out.print("Creando 2 productos frescos...");
-        ProductoFresco manzana = new ProductoFresco("Manzana", "España", LocalDate.now());
-        empresa.addProducto(manzana);
-        ProductoFresco pera = new ProductoFresco("Pera", "España", LocalDate.now());
-        empresa.addProducto(pera);
+        int salir = 1;
 
-        System.out.println("\nImprimiendo la lista de productos frescos...");
-        empresa.getListaDeProductosFrescos().forEach(System.out::println);
-
-        System.out.print("\nCreando 3 productos refrigerados...");
-        ProductoRefrigerado leche = new ProductoRefrigerado("Leche", "España", LocalDate.now(), "Central Lechera Asturiana", 2);
-        empresa.addProducto(leche);
-        ProductoRefrigerado yogur = new ProductoRefrigerado("Yogur", "España", LocalDate.now(), "Danone", 2);
-        empresa.addProducto(yogur);
-        ProductoRefrigerado carnePicada = new ProductoRefrigerado("Carne Picada", "España", LocalDate.now(), "Cárnicas Españolas", 1);
-        empresa.addProducto(carnePicada);
-
-        System.out.println("\nImprimiendo la lista de productos refrigerados...");
-        empresa.getListaDeProductosRefrigerados().forEach(System.out::println);
-
-        System.out.print("\nCreando 2 productos congelados por agua...");
-        CongeladoAgua caldo = new CongeladoAgua("Caldo de pollo", "España", LocalDate.now(), -18, 0.43f);
-        empresa.addProducto(caldo);
-        CongeladoAgua cocido = new CongeladoAgua("Cocido Madrileño", "España", LocalDate.now(), -18, 0.51f);
-        empresa.addProducto(cocido);
-
-        System.out.println("\nImprimiendo la lista de productos congelados por agua...");
-
-        for(ProductoCongelado producto : empresa.getListaDeProductosCongelados()){
-            if(producto instanceof CongeladoAgua){
-                System.out.println(producto);
-            }
+        while (salir != 0) {
+            salir = menu(empresa);
         }
+    }
 
-        System.out.print("\nCreando 2 productos congelados por aire...");
-        CongeladoAire pan = new CongeladoAire("Pan blanco", "España", LocalDate.now(), -18, 78f, 21f, 0.04f, 3f);
-        empresa.addProducto(pan);
-        CongeladoAire croquetas = new CongeladoAire("Croquetas de pollo", "España", LocalDate.now(), -18, 78f, 21f, 0.04f, 3f);
-        empresa.addProducto(croquetas);
+    public static int menu(EmpresaAgroalimentaria empresa) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("1. Añadir producto");
+        System.out.println("2. Mostrar lista de productos");
+        System.out.println("3. Guardar lista de productos en disco");
+        System.out.println("4. Cargar lista de productos desde disco");
+        System.out.println("5. Salir");
 
-        System.out.println("\nImprimiendo la lista de productos congelados por aire...");
-        for(ProductoCongelado producto : empresa.getListaDeProductosCongelados()){
-            if(producto instanceof CongeladoAire){
-                System.out.println(producto);
+        String choice = sc.nextLine();
+
+        switch (choice) {
+            case "1" -> {
+                addProducto(empresa);
+                System.out.println("Producto añadido correctamente.\n");
+                return 1;
             }
-        }
-
-        System.out.print("\nCreando 1 producto congelado por nitrógeno...");
-        CongeladoNitrogeno pizza = new CongeladoNitrogeno("Pizza Carbonara", "España", LocalDate.now(), -18, "Inmersión en nitrógeno líquido.", 27);
-        empresa.addProducto(pizza);
-
-        System.out.println("\nImprimiendo la lista de productos congelados por nitrógeno...");
-        for(ProductoCongelado producto : empresa.getListaDeProductosCongelados()){
-            if(producto instanceof CongeladoNitrogeno){
-                System.out.println(producto);
+            case "2" -> {
+                empresa.getListaDeProductos().forEach(System.out::println);
+                System.out.println();
+                return 1;
             }
+            case "3" -> {
+                empresa.guardarCSV(empresa.getListaDeProductos(), "productos");
+                return 1;
+            }
+            case "4" -> {
+                //empresa.cargarCSV(empresa.getListaDeProductos(), "productos");
+                return 1;
+            }
+            case "5" -> {
+                return 0;
+            }
+            default -> System.out.println("Opción no válida");
         }
+        return 1;
+    }
 
-        System.out.println("\nImprimiendo la lista de productos...");
-        empresa.getListaDeProductos().forEach(System.out::println);
-
-        System.out.println("\nGuardando en disco...");
-        empresa.escribirCSV(empresa.getListaDeProductos());
-
-
+    public static void addProducto(EmpresaAgroalimentaria empresa) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("¿Qué tipo de producto quieres añadir?");
+        System.out.println("1. Fresco");
+        System.out.println("2. Refrigerado");
+        System.out.println("3. Congelado");
+        String choice = sc.nextLine();
+        switch (choice) {
+            case "1" -> {
+                System.out.print("Introduce el nombre del producto: ");
+                String nombre = sc.nextLine();
+                System.out.print("Introduce el país de origen: ");
+                String pais = sc.nextLine();
+                ProductoFresco producto = new ProductoFresco(nombre, pais, LocalDate.now());
+                empresa.addProducto(producto);
+            }
+            case "2" -> {
+                System.out.print("Introduce el nombre del producto: ");
+                String nombre = sc.nextLine();
+                System.out.print("Introduce el país de origen: ");
+                String pais = sc.nextLine();
+                System.out.print("Introduce el organismo de supervisión: ");
+                String organismoSupervision = sc.nextLine();
+                System.out.print("Introduce el número de temperatura de refrigeración: ");
+                int temperatura = Integer.parseInt(sc.nextLine());
+                ProductoRefrigerado producto = new ProductoRefrigerado(nombre, pais, LocalDate.now(), organismoSupervision, temperatura);
+                empresa.addProducto(producto);
+            }
+            case "3" -> {
+                System.out.println("¿Qué tipo de producto congelado es?");
+                System.out.println("1. Por agua");
+                System.out.println("2. Por aire");
+                System.out.println("3. Por nitrógeno");
+                String subChoice = sc.nextLine();
+                switch (subChoice) {
+                    case "1" -> {
+                        System.out.print("Introduce el nombre del producto: ");
+                        String nombre = sc.nextLine();
+                        System.out.print("Introduce el país de origen: ");
+                        String pais = sc.nextLine();
+                        System.out.print("Introduce la temperatura de refrigeración: ");
+                        int temperatura = Integer.parseInt(sc.nextLine());
+                        System.out.println("Introduce el % de sal: ");
+                        float porcentajeSal = Float.parseFloat(sc.nextLine());
+                        CongeladoAgua producto = new CongeladoAgua(nombre, pais, LocalDate.now(), temperatura, porcentajeSal);
+                        empresa.addProducto(producto);
+                    }
+                    case "2" -> {
+                        System.out.print("Introduce el nombre del producto: ");
+                        String nombre = sc.nextLine();
+                        System.out.print("Introduce el país de origen: ");
+                        String pais = sc.nextLine();
+                        System.out.print("Introduce la temperatura de refrigeración: ");
+                        int temperatura = Integer.parseInt(sc.nextLine());
+                        System.out.println("Introduce el % de nitrógeno: ");
+                        float porcentajeNitrogeno = Float.parseFloat(sc.nextLine());
+                        System.out.println("Introduce el % de oxígeno: ");
+                        float porcentajeOxigeno = Float.parseFloat(sc.nextLine());
+                        System.out.println("Introduce el % de dioxido de carbono: ");
+                        float porcentajeDioxidoCarbono = Float.parseFloat(sc.nextLine());
+                        System.out.println("Introduce el % de vapor de agua: ");
+                        float porcentajeVaporAgua = Float.parseFloat(sc.nextLine());
+                        CongeladoAire producto = new CongeladoAire(nombre, pais, LocalDate.now(), temperatura, porcentajeNitrogeno, porcentajeOxigeno, porcentajeDioxidoCarbono, porcentajeVaporAgua);
+                        empresa.addProducto(producto);
+                    }
+                    case "3" -> {
+                        System.out.print("Introduce el nombre del producto: ");
+                        String nombre = sc.nextLine();
+                        System.out.print("Introduce el país de origen: ");
+                        String pais = sc.nextLine();
+                        System.out.print("Introduce la temperatura de refrigeración: ");
+                        int temperatura = Integer.parseInt(sc.nextLine());
+                        System.out.println("Introduce el método de congelación: ");
+                        String metodoCongelacion = sc.nextLine();
+                        System.out.println("Introduce el tiempo de exposición al nitrógeno: ");
+                        int tiempoExposicionNitrogeno = Integer.parseInt(sc.nextLine());
+                        CongeladoNitrogeno producto = new CongeladoNitrogeno(nombre, pais, LocalDate.now(), temperatura, metodoCongelacion, tiempoExposicionNitrogeno);
+                        empresa.addProducto(producto);
+                    }
+                    default -> System.out.println("Opción no válida");
+                }
+            }
+            default -> System.out.println("Opción no válida");
+        }
     }
 }

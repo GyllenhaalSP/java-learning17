@@ -13,13 +13,11 @@ public abstract class ProductoCongelado extends Producto {
         this.temperaturaRecomendada = temperaturaRecomendada;
     }
 
-    // Getters y Setters
+    // Métodos
     public abstract int getTemperaturaRecomendada();
 
     @Override
     public String toString() {
-        return super.toString()
-                +" Temperatura de mantenimiento recomendada: " + temperaturaRecomendada
-                + "ºC";
+        return super.toString() + " Temperatura de mantenimiento recomendada: " + temperaturaRecomendada + "ºC";
     }
 }

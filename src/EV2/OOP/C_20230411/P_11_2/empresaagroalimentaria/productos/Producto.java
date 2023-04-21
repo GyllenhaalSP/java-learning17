@@ -5,21 +5,19 @@ import java.time.Period;
 import java.util.Random;
 
 public abstract class Producto {
-
     // Atributos
-    private String nombre;
-    private String lote;
-    private String paisOrigen;
-    private final LocalDate fechaEnvasado;
-    private final LocalDate fechaCaducidad;
     static private final int DIAS_CADUCIDAD_FRESCO = 7;
     static private final int DIAS_CADUCIDAD_REFRIGERADO = 20;
     static private final int DIAS_CADUCIDAD_CONGELADO = 90;
+    private final LocalDate fechaEnvasado;
+    private final LocalDate fechaCaducidad;
+    private final String nombre;
+    private final String lote;
+    private final String paisOrigen;
+    public static String PATH = "src/EV2/OOP/C_20230411/P_11_2/empresaagroalimentaria/";
 
     // Constructor
-    public Producto(String nombre,
-                    String paisOrigen,
-                    LocalDate fechaEnvasado) {
+    public Producto(String nombre, String paisOrigen, LocalDate fechaEnvasado) {
         this.nombre = nombre;
         this.lote = generarLote();
         this.paisOrigen = paisOrigen;
@@ -41,7 +39,6 @@ public abstract class Producto {
         return nombre;
     }
 
-
     public String getLote() {
         return lote;
     }
@@ -49,7 +46,6 @@ public abstract class Producto {
     public String getPaisOrigen() {
         return paisOrigen;
     }
-
 
     public LocalDate getFechaEnvasado() {
         return fechaEnvasado;
@@ -60,8 +56,7 @@ public abstract class Producto {
     }
 
     // Métodos
-
-    public String generarLote() {
+    private String generarLote() {
         int longitud = 10;
         Random rand = new Random();
         StringBuilder lote = new StringBuilder();
@@ -72,16 +67,12 @@ public abstract class Producto {
         return lote.toString();
     }
 
-    public LocalDate calcularFechaCaducidad(LocalDate fechaEnvasado, int diasCaducidad) {
+    private LocalDate calcularFechaCaducidad(LocalDate fechaEnvasado, int diasCaducidad) {
         return fechaEnvasado.plus(Period.ofDays(diasCaducidad));
     }
 
     @Override
     public String toString() {
-        return "\nProducto: " + nombre
-                + " Lote: " + lote
-                + " País de origen: " + paisOrigen
-                + " Fecha de envasado: " + fechaEnvasado
-                + " Fecha de caducidad: " + fechaCaducidad;
+        return "\nProducto: " + nombre + " Lote: " + lote + " País de origen: " + paisOrigen + " Fecha de envasado: " + fechaEnvasado + " Fecha de caducidad: " + fechaCaducidad;
     }
 }
