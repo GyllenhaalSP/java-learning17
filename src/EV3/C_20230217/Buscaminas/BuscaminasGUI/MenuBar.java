@@ -1,6 +1,10 @@
 package EV3.C_20230217.Buscaminas.BuscaminasGUI;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 /**
  * Clase MenuBar.

@@ -1,7 +1,13 @@
 package EV3.C_20230217.Buscaminas.BuscaminasGUI;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.UIManager;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
 
 /**
  * Clase Bienvenida.

@@ -1,6 +1,6 @@
 package EV3.C_20230217.Buscaminas;
 
-import java.util.Random;
+import static utilities.StaticUtilities.rand;
 
 /**
  * Clase que simula el campo de juego del Buscaminas.
@@ -33,7 +33,6 @@ public class Buscaminas {
 
 
         for (int i = 0; i < MAX_MINAS; i++) {
-            Random rand = new Random();
             int fila = rand.nextInt(MAX_FILAS);
             int columna = rand.nextInt(MAX_COLUMNAS);
             if(campoDeMinas[fila][columna] == MINA){

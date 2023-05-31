@@ -1,15 +1,14 @@
 package EV2.OOP.C_20230125;
 
-import java.util.Scanner;
+import static utilities.StaticUtilities.sc;
 
 /**
  * Contiene el método main de la clase CuentaBancaria.
+ *
  * @author Daniel Alonso Lázaro - 2023
  * @version 1.0
  */
 public class Ej_230125_CuentaBancaria {
-    static Scanner sc = new Scanner(System.in);
-
     public static void main(String[] args) {
         System.out.println("-------------------PARTE OBLIGATORIA (Ejecución hardcoded)----------------------------");
 
@@ -99,6 +98,7 @@ public class Ej_230125_CuentaBancaria {
 
     /**
      * Método que inicializa un objeto cuenta bancaria con datos introducidos por teclado.
+     *
      * @return objeto de cuenta bancaria creada.
      */
     public static CuentaBancaria abrirCuenta() {
@@ -110,74 +110,78 @@ public class Ej_230125_CuentaBancaria {
 
     /**
      * Método que pide al usuario por teclado el nombre del titular de la cuenta bancaria.
+     *
      * @return nombre del titular.
      */
-    public static String getInputNombreTitular(){
+    public static String getInputNombreTitular() {
         String titular;
-        do{
+        do {
             System.out.print("Introduzca el nombre del titular: ");
             titular = sc.nextLine();
-        }while(titular.isBlank());
+        } while (titular.isBlank());
         return titular;
     }
 
     /**
      * Método que pide al usuario el saldo inicial de la cuenta bancaria.
+     *
      * @return saldo inicial de la cuenta bancaria.
      */
-    public static double getInputSaldoInicial(){
+    public static double getInputSaldoInicial() {
         double saldo;
-        do{
+        do {
             System.out.print("Introduzca el saldo inicial: ");
             saldo = sc.nextDouble();
             sc.nextLine();
-        }while(saldo < 0);
+        } while (saldo < 0);
         return saldo;
     }
 
     /**
      * Método que pide al usuario el tipo de moneda de la cuenta bancaria.
+     *
      * @return tipo de moneda de la cuenta bancaria.
      */
-    public static String getInputTipoMoneda(){
+    public static String getInputTipoMoneda() {
         String moneda;
-        do{
+        do {
             System.out.print("Introduzca el tipo de moneda: ");
             moneda = sc.nextLine();
-        }while(!(moneda.equals("€") ^ moneda.equals("$") ^ moneda.equals("£")));
+        } while (!(moneda.equals("€") ^ moneda.equals("$") ^ moneda.equals("£")));
         return moneda;
     }
 
     /**
      * Método que pide al usuario si la cuenta bancaria es de tipo nómina o no.
-     * @return
-     * <ul>
+     *
+     * @return <ul>
      *     <li>true: si la cuenta es de tipo nómina.</li>
      *     <li>false: si la cuenta no es de tipo nómina.</li>
      * </ul>
      */
-    public static boolean getInputVentajasNomina(){
+    public static boolean getInputVentajasNomina() {
         boolean ventajasNomina = false;
-        do{
+        do {
 
             System.out.print("¿Es una cuenta nómina? (S/N): ");
             String input = sc.nextLine();
             if (input.equalsIgnoreCase("S")) {
                 ventajasNomina = true;
                 break;
-            } else if (input.equalsIgnoreCase("N")){
+            } else if (input.equalsIgnoreCase("N")) {
                 break;
             }
             System.out.println("Introduzca si o no (S/N) para indicar si la cuenta es nómina.\n"
                     + input
-                    +" no es una opción válida.");
-        }while(true);
+                    + " no es una opción válida.");
+        } while (true);
         System.out.println();
         return ventajasNomina;
     }
 
     /**
      * Método que muestra los datos de un objeto de cuenta bancaria.
+     *
      * @param cuenta cuenta bancaria de la que se quieren consultar los datos.
      */
     public static void consultarSaldo(CuentaBancaria cuenta) {

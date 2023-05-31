@@ -1,6 +1,6 @@
 package EV1.P_REF1EV.P_REF_1;
 
-import java.util.Scanner;
+import static utilities.StaticUtilities.sc;
 
 public class P_REF_1_4 {
     // Daniel Alonso Lázaro - 2022
@@ -10,7 +10,6 @@ public class P_REF_1_4 {
     */
     public static void main(String[] args) {
         int mayor, menor;
-        Scanner sc = new Scanner(System.in);
         System.out.print("Introduce un número: ");
         int num1 = Integer.parseInt(sc.nextLine());
         System.out.print("Introduce otro número: ");

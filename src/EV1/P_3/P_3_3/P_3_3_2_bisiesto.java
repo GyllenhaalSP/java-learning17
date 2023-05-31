@@ -1,8 +1,7 @@
 package EV1.P_3.P_3_3;
 
-import java.util.Scanner;
-
-import static ProgramasPruebas.Metodos.bisiesto;
+import static utilities.Metodos.bisiesto;
+import static utilities.StaticUtilities.sc;
 
 public class P_3_3_2_bisiesto {
 //    Escribir un programa que lea un año indicar si es bisiesto. Nota: un año es bisiesto si es un
@@ -13,7 +12,6 @@ public class P_3_3_2_bisiesto {
         char salir = 'n';
         System.out.println("Bienvenido al comprobador de años bisiestos®");
         while (Character.toLowerCase(salir) != 's') {
-            Scanner sc = new Scanner(System.in);
             System.out.print("\nIntroduce un año: ");
             year = sc.nextInt();
             System.out.println(bisiesto(year) ? year+" es bisiesto.": year+" no es bisiesto.");

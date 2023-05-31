@@ -1,6 +1,6 @@
 package EV1.P_4.P_4_2;
 
-import java.util.Scanner;
+import static utilities.StaticUtilities.sc;
 
 public class P_4_2_1_posicionSilaba {
     // Daniel Alonso Lázaro - 2022
@@ -10,7 +10,6 @@ public class P_4_2_1_posicionSilaba {
     preguntar si quiere continuar S o N. (indexOf(string))
     */
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         String palabra, silaba;
         int pos = 0;
 
@@ -30,7 +29,7 @@ public class P_4_2_1_posicionSilaba {
                 }
             }
         }
-        System.out.println("La sílaba '"+silaba+
-                "' empieza en la posición "+(pos+1)+" de la palabra '"+palabra+"'.");
+        System.out.println("La sílaba '" + silaba +
+                "' empieza en la posición " + (pos + 1) + " de la palabra '" + palabra + "'.");
     }
 }

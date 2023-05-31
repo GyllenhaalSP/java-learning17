@@ -1,22 +1,21 @@
 package EV2.OOP.C_20230117;
 
-import java.util.Scanner;
+import static utilities.StaticUtilities.sc;
 
 /**
  * Clase que simula una cuenta corriente.
+ *
  * @author Daniel Alonso Lázaro - 2023
  * @version 1.0
  */
 public class CuentaCorriente {
-    static Scanner sc = new Scanner(System.in);
-
     // Variables de clase
     private final int numeroCuenta;
     private String nombre;
     private double saldo;
 
     // Constructor
-    public CuentaCorriente(int numeroCuenta, String nombre){
+    public CuentaCorriente(int numeroCuenta, String nombre) {
         this.numeroCuenta = numeroCuenta;
         this.nombre = nombre;
         this.saldo = 0;
@@ -27,77 +26,6 @@ public class CuentaCorriente {
         this.numeroCuenta = numeroCuenta;
         this.nombre = nombre;
         this.saldo = saldo;
-    }
-
-    // Getters y Setters
-    public int getNumeroCuenta() {
-        return numeroCuenta;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public double getSaldo() {
-        return saldo;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
-    }
-
-    // Métodos
-    public void ingresar(double cantidad){
-        this.saldo += cantidad;
-        System.out.println("Se han ingresado " + cantidad + "€ en la cuenta " + this.numeroCuenta + ".");
-    }
-
-    public boolean retirar(double cantidad){
-        if (this.saldo >= cantidad){
-            this.saldo -= cantidad;
-            System.out.println("Se han retirado " + cantidad + "€ de la cuenta " + this.numeroCuenta + ".");
-            return true;
-        } else {
-            System.out.println("No se puede retirar " + cantidad + "€ de la cuenta " + this.numeroCuenta + ".");
-        }
-        return false;
-    }
-
-    public void consultarSaldo(){
-        System.out.println("Hay " +
-                this.saldo + "€ en la cuenta " +
-                this.numeroCuenta + " que pertenece a " +
-                this.nombre + ".");
-    }
-
-    // Sobrecarga de métodos
-    public void transferir(CuentaCorriente cuentaDestino, double cantidad){
-        if(this.retirar(cantidad)){
-            System.out.println("Se han transferido " +
-                    cantidad + "€ de la cuenta " +
-                    this.numeroCuenta + " a la cuenta " +
-                    cuentaDestino.getNumeroCuenta() + ".");
-            cuentaDestino.ingresar(cantidad);
-        } else System.out.println("El ingreso en la cuenta " +
-                cuentaDestino.getNumeroCuenta() +
-                " no se ha podido realizar.");
-    }
-
-    public void transferir(CuentaCorriente cuentaDestino, double cantidad, double comision){
-        if(this.retirar(cantidad + comision)){
-            System.out.println("Se han transferido " +
-                    (cantidad + comision) + "€ de la cuenta " +
-                    this.numeroCuenta + " a la cuenta " +
-                    cuentaDestino.getNumeroCuenta());
-            cuentaDestino.ingresar(cantidad);
-            System.out.println("Se ha cobrado una comisión de " + comision + "€.");
-        } else System.out.println("El ingreso en la cuenta " +
-                cuentaDestino.getNumeroCuenta() +
-                " no se ha podido realizar.");
     }
 
     public static void main(String[] args) {
@@ -138,5 +66,76 @@ public class CuentaCorriente {
         cuenta1.consultarSaldo();
         System.out.println("--------------------------------------------------------");
         cuenta2.consultarSaldo();
+    }
+
+    // Getters y Setters
+    public int getNumeroCuenta() {
+        return numeroCuenta;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    // Métodos
+    public void ingresar(double cantidad) {
+        this.saldo += cantidad;
+        System.out.println("Se han ingresado " + cantidad + "€ en la cuenta " + this.numeroCuenta + ".");
+    }
+
+    public boolean retirar(double cantidad) {
+        if (this.saldo >= cantidad) {
+            this.saldo -= cantidad;
+            System.out.println("Se han retirado " + cantidad + "€ de la cuenta " + this.numeroCuenta + ".");
+            return true;
+        } else {
+            System.out.println("No se puede retirar " + cantidad + "€ de la cuenta " + this.numeroCuenta + ".");
+        }
+        return false;
+    }
+
+    public void consultarSaldo() {
+        System.out.println("Hay " +
+                this.saldo + "€ en la cuenta " +
+                this.numeroCuenta + " que pertenece a " +
+                this.nombre + ".");
+    }
+
+    // Sobrecarga de métodos
+    public void transferir(CuentaCorriente cuentaDestino, double cantidad) {
+        if (this.retirar(cantidad)) {
+            System.out.println("Se han transferido " +
+                    cantidad + "€ de la cuenta " +
+                    this.numeroCuenta + " a la cuenta " +
+                    cuentaDestino.getNumeroCuenta() + ".");
+            cuentaDestino.ingresar(cantidad);
+        } else System.out.println("El ingreso en la cuenta " +
+                cuentaDestino.getNumeroCuenta() +
+                " no se ha podido realizar.");
+    }
+
+    public void transferir(CuentaCorriente cuentaDestino, double cantidad, double comision) {
+        if (this.retirar(cantidad + comision)) {
+            System.out.println("Se han transferido " +
+                    (cantidad + comision) + "€ de la cuenta " +
+                    this.numeroCuenta + " a la cuenta " +
+                    cuentaDestino.getNumeroCuenta());
+            cuentaDestino.ingresar(cantidad);
+            System.out.println("Se ha cobrado una comisión de " + comision + "€.");
+        } else System.out.println("El ingreso en la cuenta " +
+                cuentaDestino.getNumeroCuenta() +
+                " no se ha podido realizar.");
     }
 }

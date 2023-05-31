@@ -1,15 +1,16 @@
 package EV3.C_20230215;
 
-import java.util.Random;
-import java.util.Scanner;
+import static utilities.StaticUtilities.rand;
+import static utilities.StaticUtilities.sc;
 
-/**.
+/**
+ * .
+ *
  * @author Daniel Alonso Lázaro - 2023
  * @version 1.0
  */
 public class NumeroAleatorio {
     public static void main(String[] args) {
-        Random rand = new Random();
         final int MAX_VALOR_RANDOM = 999;
         final int MIN_VALOR_RANDOM = 0;
         final int MAX_INTENTOS = 10;
@@ -19,7 +20,7 @@ public class NumeroAleatorio {
         System.out.println("¡Adivina el número!");
         int numeroUsuario = getUserNumber(intentos);
 
-        do{
+        do {
             if (intentos == 9) {
                 System.out.println("¡Última oportunidad!\n");
             }
@@ -38,42 +39,41 @@ public class NumeroAleatorio {
             }
             numeroUsuario = getUserNumber(intentos);
             intentos--;
-        }while(numeroRandom != numeroUsuario && intentos < MAX_INTENTOS);
+        } while (numeroRandom != numeroUsuario && intentos < MAX_INTENTOS);
 
-        if (numeroRandom == numeroUsuario){
+        if (numeroRandom == numeroUsuario) {
             System.out.println("¡Has acertado!");
-        }else{
+        } else {
             System.out.println("¡Has fallado!");
-            System.out.println("El número era: "+numeroRandom);
+            System.out.println("El número era: " + numeroRandom);
         }
     }
 
-    public static void checkUserNumber(int numeroUsuario, int numeroRandom, int intentos){
+    public static void checkUserNumber(int numeroUsuario, int numeroRandom, int intentos) {
         int num = Math.abs(numeroUsuario - numeroRandom);
         if (num <= 10) {
             System.out.println("¡Casi lo tienes, ±10 números!");
-        } else if (num <= 50){
+        } else if (num <= 50) {
             System.out.println("¡Estás cerca, ±50 números!");
-        } else if (num <= 100){
+        } else if (num <= 100) {
             System.out.println("¡Estás lejos, ±100 números!");
-        } else if (num <= 300){
+        } else if (num <= 300) {
             System.out.println("¡Estás muy lejos, ±300 números!");
-        } else if (num <= 500){
+        } else if (num <= 500) {
             System.out.println("¡Estás lejísimos!, ±500 números!");
         } else {
             System.out.println("Pppfft, introduce otro número, anda.");
         }
 
         if (intentos >= 0 && intentos < 9) {
-            System.out.println("¡Prueba otra vez! te quedan: "+intentos+"\n");
+            System.out.println("¡Prueba otra vez! te quedan: " + intentos + "\n");
         }
     }
 
-    public static int getUserNumber(int intentos){
-        Scanner sc = new Scanner(System.in);
-        if(intentos == 0){
+    public static int getUserNumber(int intentos) {
+        if (intentos == 0) {
             System.out.print("Introduce un número: ");
-        }else{
+        } else {
             System.out.print("Introduce otro número: ");
         }
         return sc.nextInt();

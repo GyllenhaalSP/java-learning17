@@ -1,6 +1,6 @@
 package EV1.P_REF1EV.P_REF_2;
 
-import java.util.Scanner;
+import static utilities.StaticUtilities.sc;
 
 public class P_REF_2_5 {
     // Daniel Alonso Lázaro - 2022
@@ -15,7 +15,6 @@ public class P_REF_2_5 {
             1 2 3 4   4 3 2 1
     */
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         System.out.print("Introduce un número: ");
         int num = Integer.parseInt(sc.nextLine());
 

@@ -1,6 +1,6 @@
 package EV1.P_4.P_4_1;
 
-import java.util.Scanner;
+import static utilities.StaticUtilities.sc;
 
 public class P_4_1_5_charAChar {
     // Daniel Alonso Lázaro - 2022
@@ -9,7 +9,6 @@ public class P_4_1_5_charAChar {
     Deben estar separados las letras por un guion. (charAt(int))
     */
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         System.out.print("Introduce una frase: ");
         String frase = sc.nextLine();
 

@@ -1,6 +1,6 @@
 package EV1.P_REF1EV.P_REF_1;
 
-import java.util.Scanner;
+import static utilities.StaticUtilities.sc;
 
 public class P_REF_1_5 {
     // Daniel Alonso Lázaro - 2022
@@ -10,7 +10,6 @@ public class P_REF_1_5 {
     supera dicha cantidad los mostramos el valor introducido.
     */
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         System.out.print("Introduce un valor: ");
         double valor = Double.parseDouble(sc.nextLine());
         if (valor > 1500) {

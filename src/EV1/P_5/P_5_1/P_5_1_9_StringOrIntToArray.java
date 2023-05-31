@@ -1,7 +1,8 @@
 package EV1.P_5.P_5_1;
 
 import java.util.Arrays;
-import java.util.Scanner;
+
+import static utilities.StaticUtilities.sc;
 
 public class P_5_1_9_StringOrIntToArray {
     // Daniel Alonso Lázaro - 2022
@@ -11,14 +12,12 @@ public class P_5_1_9_StringOrIntToArray {
     Ejemplo: si leo el número 23451, se generará el array [[2], [3], [4], [5], [1]].
     */
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         System.out.print("Introduce un número: ");
         String num = sc.nextLine();
         int[] array = new int[num.length()];
         for (int i = 0; i < num.length(); i++) {
             array[i] = Character.getNumericValue(num.charAt(i));
         }
-        System.out.println("El array es: "+ Arrays.toString(array));
-
+        System.out.println("El array es: " + Arrays.toString(array));
     }
 }

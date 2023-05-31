@@ -19,5 +19,4 @@ public class P_4_4_2_discernidor {
             System.out.println(caracter+" es un caracter especial.");
         }
     }
-
 }

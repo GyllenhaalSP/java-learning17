@@ -1,7 +1,7 @@
 package EV1.P_3.P_3_8;
 
 import java.util.ArrayList;
-import java.util.Scanner;
+import static utilities.StaticUtilities.sc;
 
 public class P_3_8_1_IRPF {
 //    Hacer un programa que sea capaz de calcular el impuesto sobre la renta a partir del salario
@@ -16,13 +16,12 @@ public class P_3_8_1_IRPF {
 //    y del 15% si tiene más de 2.
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         double hijos, deduccion = 0d, tipoInf = 0.15, tipoMed = 0.18, tipoSup = 0.25;
         String continuar;
         ArrayList<Double> salario = new ArrayList<>();
         ArrayList<Double> total = new ArrayList<>();
 
-        do{
+        do {
             System.out.print("Salario bruto: ");
             salario.add(sc.nextDouble());
             sc.nextLine();
@@ -31,31 +30,31 @@ public class P_3_8_1_IRPF {
             sc.nextLine();
             System.out.println("¿Quieres continuar con otro caso? s/n");
             continuar = sc.nextLine();
-        }while(!continuar.equalsIgnoreCase("n"));
+        } while (!continuar.equalsIgnoreCase("n"));
 
-        if (hijos > 2){
+        if (hijos > 2) {
             deduccion = 0.15;
-        } else if (hijos > 0){
+        } else if (hijos > 0) {
             deduccion = 0.05;
         }
 
         for (double bruto : salario) {
-            if (bruto > 30000){
+            if (bruto > 30000) {
                 total.add((bruto - (deduccion != 0d ? bruto * deduccion : 0)) - (bruto * tipoSup));
-            }
-            else if (bruto > 20000) total.add((bruto - (deduccion != 0d ? bruto * deduccion : 0) - (bruto * tipoMed)));
+            } else if (bruto > 20000)
+                total.add((bruto - (deduccion != 0d ? bruto * deduccion : 0) - (bruto * tipoMed)));
             else total.add((bruto - (deduccion != 0d ? bruto * deduccion : 0) - (bruto * tipoInf)));
         }
 
-        for (int i = 0; i < total.size(); i++){
+        for (int i = 0; i < total.size(); i++) {
             double x = salario.get(i);
             double y = total.get(i);
-            double z = x-y;
-            System.out.println("Caso "+(i+1)+": ");
-            System.out.print("\tSalario bruto: "+(x%1==0.0 ? (int)x : String.format("%.2f", x))+
-                    "€\n\tNúmero de hijos: "+(int)hijos+
-                    "\n\tNeto anual: "+(y%1==0.0 ? (int)y : String.format("%.2f", y))+
-                    "€\n\tRetenciones: "+(z%1==0.0 ? (int)z : String.format("%.2f", z))+
+            double z = x - y;
+            System.out.println("Caso " + (i + 1) + ": ");
+            System.out.print("\tSalario bruto: " + (x % 1 == 0.0 ? (int) x : String.format("%.2f", x)) +
+                    "€\n\tNúmero de hijos: " + (int) hijos +
+                    "\n\tNeto anual: " + (y % 1 == 0.0 ? (int) y : String.format("%.2f", y)) +
+                    "€\n\tRetenciones: " + (z % 1 == 0.0 ? (int) z : String.format("%.2f", z)) +
                     "€\n\n");
         }
 

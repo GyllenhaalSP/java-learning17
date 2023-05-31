@@ -1,6 +1,6 @@
 package EV1.P_5.P_5_2;
 
-import static ProgramasPruebas.Metodos.*;
+import static utilities.Metodos.*;
 
 public class P_5_2_2_maquinaVending {
     //    Daniel Alonso Lázaro - 2022
@@ -26,13 +26,13 @@ public class P_5_2_2_maquinaVending {
         String producto, salida = "salir";
         do {
             Object[] menu = menuOpciones();
-            precio = (int)menu[1];
-            if(!(producto = (String)menu[0]).equalsIgnoreCase(salida)) {
-                if((cambio = (calculoPrecios(precio, cantidad, monedas) - precio)) < 0) break;
+            precio = (int) menu[1];
+            if (!(producto = (String) menu[0]).equalsIgnoreCase(salida)) {
+                if ((cambio = (calculoPrecios(precio, cantidad, monedas) - precio)) < 0) break;
                 expendedor(producto, cambio);
-                if(cambio != 0) returnChange(cambio, monedas, cantidad);
+                if (cambio != 0) returnChange(cambio, monedas, cantidad);
             }
-        }while(!producto.equalsIgnoreCase(salida));
+        } while (!producto.equalsIgnoreCase(salida));
         cierreMaquina(cantidad, monedas);
     }
 }

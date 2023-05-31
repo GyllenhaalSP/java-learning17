@@ -1,0 +1,35 @@
+package EV3.examenteorico;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class MainEj11 {
+    static final String RUTA_FICHERO = "input.txt";
+
+    public static void main(String[] args) {
+        String linea;
+        BufferedReader lectorBuffer = null;
+        try{
+            lectorBuffer = new BufferedReader(new FileReader(RUTA_FICHERO));
+            int contadorLineas = 1;
+            while ((linea = lectorBuffer.readLine()) != null){
+                System.out.println("Linea " + contadorLineas++ + ": '" + linea + "'");
+            }
+        }catch(FileNotFoundException e){
+            System.out.println("Hemos capturado FileNotFoundException: " + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("Hemos capturado IOException: " + e.getMessage());
+        } finally {
+            if (lectorBuffer != null) {
+                try{
+                    System.out.println("Cerramos el lector con lectorBuffer.close()");
+                    lectorBuffer.close();
+                }catch (IOException e){
+                    System.out.println("Hemos capturado IOException llamando a lectorBuffer.close(): " + e.getMessage());
+                }
+            }
+        }
+    }
+}

@@ -1,6 +1,6 @@
 package EV1.P_4.P_4_1;
 
-import java.util.Scanner;
+import static utilities.StaticUtilities.sc;
 
 public class P_4_1_4_ordenLexicografico {
     // Daniel Alonso Lázaro - 2022
@@ -9,8 +9,6 @@ public class P_4_1_4_ordenLexicografico {
     */
     public static void main(String[] args) {
         String palabra1, palabra2, palabra3, palabraMenor, palabraMediana, palabraMayor;
-
-        Scanner sc = new Scanner(System.in);
 
         System.out.print("Introduce una palabra: ");
         palabra1 = sc.nextLine();

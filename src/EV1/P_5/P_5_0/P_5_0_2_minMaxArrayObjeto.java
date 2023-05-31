@@ -1,6 +1,6 @@
 package EV1.P_5.P_5_0;
 
-import java.util.Scanner;
+import static utilities.StaticUtilities.sc;
 
 public class P_5_0_2_minMaxArrayObjeto {
     // Daniel Alonso Lázaro - 2022
@@ -10,20 +10,19 @@ public class P_5_0_2_minMaxArrayObjeto {
     mínimo almacenado.
     */
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int [] matrix = new int[10];
+        int[] matrix = new int[10];
         int mayor, menor;
 
         System.out.print("Introduce un número: ");
         menor = sc.nextInt();
         mayor = menor;
 
-        for(int i = 1; i < matrix.length; i++){
+        for (int i = 1; i < matrix.length; i++) {
             System.out.print("Introduce un número: ");
             matrix[i] = sc.nextInt();
-            if(matrix[i] > mayor){
+            if (matrix[i] > mayor) {
                 mayor = matrix[i];
-            }else if(matrix[i] < menor){
+            } else if (matrix[i] < menor) {
                 menor = matrix[i];
             }
         }

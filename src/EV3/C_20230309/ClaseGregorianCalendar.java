@@ -2,7 +2,8 @@ package EV3.C_20230309;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.Random;
+
+import static utilities.StaticUtilities.rand;
 /*
 1. Instancia 2 objetos de la clase utilizando distintos constructores. Comprueba.
 2. Utilizando el método get para obtener los valores de los distintos FIELD, muestra la información de alguna
@@ -35,7 +36,6 @@ public class ClaseGregorianCalendar {
                 + calendario3.getTime().toLocaleString() + "\n");
         System.out.println("Imprime años random desde 1896 hasta 2023 y dice si son bisiestos: ");
         GregorianCalendar calendario4 = new GregorianCalendar();
-        Random rand = new Random();
         for (int i = 0; i < 5; i++) {
             int year = rand.nextInt(1896, 2023);
             System.out.println("\t¿Es el año " + year + " bisiesto? " + calendario4.isLeapYear(year));

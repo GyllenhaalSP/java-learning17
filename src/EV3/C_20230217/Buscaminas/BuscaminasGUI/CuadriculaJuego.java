@@ -1,6 +1,6 @@
 package EV3.C_20230217.Buscaminas.BuscaminasGUI;
 
-import javax.swing.*;
+import javax.swing.JFrame;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;

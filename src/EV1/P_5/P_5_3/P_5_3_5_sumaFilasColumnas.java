@@ -2,7 +2,7 @@ package EV1.P_5.P_5_3;
 
 import java.util.Arrays;
 
-import static ProgramasPruebas.Metodos.cargarArray;
+import static utilities.Metodos.cargarArray;
 
 public class P_5_3_5_sumaFilasColumnas {
     //Daniel Alonso Lázaro - 2023
@@ -24,15 +24,14 @@ public class P_5_3_5_sumaFilasColumnas {
                 sumaFilas += matriz[i][j];
                 sumaColumnas += matriz[j][i];
             }
-            System.out.println("La "+cont+" fila suma un total de: "+sumaFilas);
-            System.out.println("La "+cont+" columna suma un total de: "+sumaColumnas);
+            System.out.println("La " + cont + " fila suma un total de: " + sumaFilas);
+            System.out.println("La " + cont + " columna suma un total de: " + sumaColumnas);
             sumaFilas = 0;
             sumaColumnas = 0;
         }
 
-        for(int[] array : matriz) {
+        for (int[] array : matriz) {
             System.out.println(Arrays.toString(array));
         }
-
     }
 }

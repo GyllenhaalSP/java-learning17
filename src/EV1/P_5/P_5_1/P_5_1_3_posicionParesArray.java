@@ -1,6 +1,6 @@
 package EV1.P_5.P_5_1;
 
-import static ProgramasPruebas.Metodos.cargarArray;
+import static utilities.Metodos.cargarArray;
 
 public class P_5_1_3_posicionParesArray {
     // Daniel Alonso Lázaro - 2022
@@ -12,7 +12,8 @@ public class P_5_1_3_posicionParesArray {
         Object[] array = new Object[10];
         cargarArray(array, 101, "int");
         for (int i = 0; i < array.length; i++) {
-            if ((int)array[i] % 2 == 0) System.out.println("El index "+i+" contiene: "+array[i]+" que es par.");
+            if ((int) array[i] % 2 == 0)
+                System.out.println("El index " + i + " contiene: " + array[i] + " que es par.");
         }
     }
 }

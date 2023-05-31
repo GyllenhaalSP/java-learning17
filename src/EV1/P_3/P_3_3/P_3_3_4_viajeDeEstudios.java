@@ -1,9 +1,9 @@
 package EV1.P_3.P_3_3;
 
-import java.util.Scanner;
+import static utilities.StaticUtilities.sc;
 
 public class P_3_3_4_viajeDeEstudios {
-//    El director de una escuela está organizando un viaje de estudios, y requiere determinar cuánto
+    //    El director de una escuela está organizando un viaje de estudios, y requiere determinar cuánto
 //    debe cobrar a cada alumno y cuánto debe pagar a la compañía de viajes por el servicio.
 //    La forma de cobrar es la siguiente:
 //        • si son 100 alumnos o más, el costo del viaje por cada alumno es de 65 euros;
@@ -18,17 +18,16 @@ public class P_3_3_4_viajeDeEstudios {
         int numAlumnos;
         double precio;
         String nombreColegio;
-        Scanner sc = new Scanner(System.in);
         System.out.print("Introduce el número de alumnos que van a acudir al viaje: ");
         numAlumnos = sc.nextInt();
         sc.nextLine();
         System.out.print("Introduce el nombre del colegio: ");
         nombreColegio = sc.nextLine();
-        if (numAlumnos >= 100){
+        if (numAlumnos >= 100) {
             precio = numAlumnos * 65;
-        } else if (50 < numAlumnos & numAlumnos < 99){
+        } else if (50 < numAlumnos & numAlumnos < 99) {
             precio = numAlumnos * 70;
-        } else if (30 < numAlumnos & numAlumnos < 49){
+        } else if (30 < numAlumnos & numAlumnos < 49) {
             precio = numAlumnos * 95;
         } else {
             precio = numAlumnos * 100;
@@ -36,6 +35,6 @@ public class P_3_3_4_viajeDeEstudios {
 
         precio += 4000d / numAlumnos;
 
-        System.out.printf("El viaje para "+numAlumnos+" alumnos del centro "+nombreColegio+" costará: %.2f euros.", precio);
+        System.out.printf("El viaje para " + numAlumnos + " alumnos del centro " + nombreColegio + " costará: %.2f euros.", precio);
     }
 }

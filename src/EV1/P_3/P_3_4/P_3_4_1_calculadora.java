@@ -1,9 +1,9 @@
 package EV1.P_3.P_3_4;
 
-import java.util.Scanner;
+import static utilities.StaticUtilities.sc;
 
 public class P_3_4_1_calculadora {
-//    Vamos a realizar las operaciones básicas de una calculadora.
+    //    Vamos a realizar las operaciones básicas de una calculadora.
 //    Se capturarán por teclado un operador aritmético y dos valores numéricos.
 //    Para pedir el operador mostraremos el siguiente menú, y pediremos que
 //    se introduzca el número que corresponda a la operación que queremos realizar.
@@ -11,7 +11,6 @@ public class P_3_4_1_calculadora {
 //        2. – 4. / 6. División entera
 //    Debemos mostrar un mensaje con la operación efectuada y su resultado.
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         int operando, operador, resultado;
         double operandoD, operadorD, resultadoD;
         String userInput, userInputStr;
@@ -114,12 +113,12 @@ public class P_3_4_1_calculadora {
                         if (userInput.equals("/")) {
                             resultadoD = operandoD / operadorD;
                             System.out.println("El resultado de " + operandoD + userInput + operadorD + " es " + resultadoD + ".");
-                        }else if (userInput.equals("%")){
+                        } else if (userInput.equals("%")) {
                             resultadoD = operandoD % operadorD;
                             System.out.println("El resultado de " + operandoD + userInput + operadorD + " es " + resultadoD + ".");
-                        }else{
+                        } else {
                             resultadoD = operandoD / operadorD;
-                            System.out.println("El resultado de " + operandoD + userInput + operadorD + " es " + (int)resultadoD + ".");
+                            System.out.println("El resultado de " + operandoD + userInput + operadorD + " es " + (int) resultadoD + ".");
                         }
                         System.out.println("\n¿Quieres seguir operando? 'S' para continuar, 'N' para salir, 'C' para cambiar de operación.");
                         userInputStr = sc.nextLine();
@@ -164,7 +163,7 @@ public class P_3_4_1_calculadora {
                 }
             }
             System.out.println();
-        }while (!userInput.equalsIgnoreCase("salir"));
+        } while (!userInput.equalsIgnoreCase("salir"));
 
         System.out.println("""
                 Gracias por usar esta calculadora.

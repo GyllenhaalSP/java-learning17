@@ -1,7 +1,7 @@
 package EV1.P_3.P_3_8;
 
-import java.util.Random;
-import java.util.Scanner;
+import static utilities.StaticUtilities.sc;
+import static utilities.StaticUtilities.rand;
 
 public class P_3_8_3_cuadradoHueco {
 //    Nos piden dibujar un cuadrado hueco en pantalla.
@@ -9,9 +9,7 @@ public class P_3_8_3_cuadradoHueco {
 //    Para la representación del cuadrado, utilizaremos los símbolos de la tabla ASCII (del 169 al 223 ),
 //    a elegir por el programador.
     public static void main(String[] args) {
-        Random r = new Random();
-        int random = r.nextInt((223-169)+1) + 169;
-        Scanner sc = new Scanner(System.in);
+        int random = rand.nextInt((223-169)+1) + 169;
         System.out.print("Introduce el lado A: ");
         int ladoA = sc.nextInt();
         System.out.print("Introduce el lado B: ");

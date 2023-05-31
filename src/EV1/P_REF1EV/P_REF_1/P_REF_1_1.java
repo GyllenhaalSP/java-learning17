@@ -1,6 +1,6 @@
 package EV1.P_REF1EV.P_REF_1;
 
-import java.util.Scanner;
+import static utilities.StaticUtilities.sc;
 
 public class P_REF_1_1 {
     // Daniel Alonso Lázaro - 2022
@@ -11,7 +11,6 @@ public class P_REF_1_1 {
     public static void main(String[] args) {
         java.util.Locale.setDefault(java.util.Locale.US);
         final double PI = Math.PI;
-        Scanner sc = new Scanner(System.in);
         System.out.print("Introduce el radio: ");
         double radio = sc.nextDouble();
         double longitud = 2 * PI * radio;

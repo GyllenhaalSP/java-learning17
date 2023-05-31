@@ -1,8 +1,7 @@
 package EV1.P_3.P_3_8;
 
-import java.util.Scanner;
-
-import static ProgramasPruebas.Metodos.base;
+import static utilities.Metodos.base;
+import static utilities.StaticUtilities.sc;
 
 public class P_3_8_2_cambioBase {
 //    Se introduce un número en base decimal y deseamos ver su representación en binario, octal
@@ -11,8 +10,6 @@ public class P_3_8_2_cambioBase {
     public static void main(String[] args) {
         String continuar;
         int numero, base;
-        Scanner sc = new Scanner(System.in);
-
         do{
             System.out.print("Introduce un número: ");
             numero = sc.nextInt();

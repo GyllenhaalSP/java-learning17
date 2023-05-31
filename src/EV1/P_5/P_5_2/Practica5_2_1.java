@@ -33,6 +33,5 @@ public class Practica5_2_1 {
             System.out.println(Arrays.toString(v1));
             cont++;
         } while (cont != 5);
-
     }
 }

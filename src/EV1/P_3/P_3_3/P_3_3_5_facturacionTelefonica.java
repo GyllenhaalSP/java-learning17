@@ -1,9 +1,9 @@
 package EV1.P_3.P_3_3;
 
-import java.util.Scanner;
+import static utilities.StaticUtilities.sc;
 
 public class P_3_3_5_facturacionTelefonica {
-//    La política de cobro de una compañía telefónica es:
+    //    La política de cobro de una compañía telefónica es:
 //        • Cuando se realiza una llamada, el cobro es por el tiempo que dura esta, de tal forma
 //          que los primeros cinco minutos cuestan 1 euro, los siguientes tres, 80 céntimos; los
 //          siguientes dos minutos, 70 céntimos; y a partir del décimo minuto, 50 céntimos.
@@ -18,7 +18,6 @@ public class P_3_3_5_facturacionTelefonica {
         double total, precio, impuestos;
         final double IMPUESTO_DIA = 0.15, IMPUESTO_TARDE = 0.10, IMPUESTO_GENERAL = 0.03,
                 TRAMO = 1, TRAMO2 = 0.8, TRAMO3 = 0.70, TRAMO4 = 0.5;
-        Scanner sc = new Scanner(System.in);
         System.out.print("Introduzca la duración de la llamada en minutos: ");
         duracionLlamada = sc.nextInt();
         System.out.print("Introduzca el día de la semana: ");
@@ -29,9 +28,9 @@ public class P_3_3_5_facturacionTelefonica {
         System.out.print("Introduzca el horario en formato HH:MM: ");
         horario = Integer.parseInt(sc.next().substring(0, 2));
 
-        if (duracionLlamada > 10) precio = TRAMO+TRAMO2+TRAMO3+TRAMO4;
-        else if (duracionLlamada > 8) precio = TRAMO+TRAMO2+TRAMO3;
-        else if (duracionLlamada > 5) precio = TRAMO+TRAMO2;
+        if (duracionLlamada > 10) precio = TRAMO + TRAMO2 + TRAMO3 + TRAMO4;
+        else if (duracionLlamada > 8) precio = TRAMO + TRAMO2 + TRAMO3;
+        else if (duracionLlamada > 5) precio = TRAMO + TRAMO2;
         else precio = TRAMO;
 
         if (!diaDeLaSemana.equalsIgnoreCase("domingo")) {
@@ -40,7 +39,7 @@ public class P_3_3_5_facturacionTelefonica {
         } else impuestos = precio * IMPUESTO_GENERAL;
 
         total = precio + impuestos;
-        System.out.println("\nEl precio de la llamada es de "+ String.format("%.2f", total) +" euros, de los " +
-                "cuales "+String.format("%.2f", impuestos)+" euros son impuestos.");
+        System.out.println("\nEl precio de la llamada es de " + String.format("%.2f", total) + " euros, de los " +
+                "cuales " + String.format("%.2f", impuestos) + " euros son impuestos.");
     }
 }

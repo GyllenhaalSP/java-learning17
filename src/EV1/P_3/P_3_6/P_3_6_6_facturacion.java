@@ -1,10 +1,11 @@
 package EV1.P_3.P_3_6;
 
 import java.util.Locale;
-import java.util.Scanner;
+
+import static utilities.StaticUtilities.sc;
 
 public class P_3_6_6_facturacion {
-//    Hacer un programa que calcule el total de una factura, partiendo de una
+    //    Hacer un programa que calcule el total de una factura, partiendo de una
 //    lista de parejas de valores, importe e iva, que se introducirán por teclado.
 //        ▪ La lista finaliza cuando se introduzca el importe 0.
 //        ▪ El iva puede ser el 4%, el 7% o el 16%, en cualquier otro caso se rechazan importe e iva y
@@ -16,7 +17,6 @@ public class P_3_6_6_facturacion {
 //    Para acabar se debe imprimir el importe y el iva resultantes (total menos descuento) y la suma de ambos.
     public static void main(String[] args) {
         Locale.setDefault(Locale.US);
-        Scanner sc = new Scanner(System.in);
         double sumaImporte = 0, sumaIVA = 0, importe, IVA, descuento, total, subtotal;
 
         do {
@@ -31,27 +31,29 @@ public class P_3_6_6_facturacion {
                 System.out.print("Introduce el importe: ");
                 importe = sc.nextDouble();
             }
-            if (importe != 0d){
+            if (importe != 0d) {
                 sumaImporte += importe;
                 sumaIVA += (importe * IVA / 100);
             }
-        }while(importe != 0d);
+        } while (importe != 0d);
 
-        if (sumaImporte < 1000){
+        if (sumaImporte < 1000) {
             descuento = 0;
-        }else if (sumaImporte < 10000){
+        } else if (sumaImporte < 10000) {
             descuento = 5;
-        }else{
+        } else {
             descuento = 10;
         }
 
-        subtotal = (sumaImporte*(descuento/100));
-        sumaIVA = (sumaIVA*(descuento/100));
+        subtotal = (sumaImporte * (descuento / 100));
+        sumaIVA = (sumaIVA * (descuento / 100));
         total = subtotal + sumaIVA;
-        System.out.println(
-                "El subtotal es: "+ (subtotal%1==0.0 ? (int)subtotal : String.format("%.2f", subtotal))+
-                        "€, el IVA es "+(sumaIVA%1==0.0 ? (int)sumaIVA : String.format("%.2f", sumaIVA))+
-                        "€ y el total es "+ (total%1==0.0 ? (int)total : String.format("%.2f", total))+"€.");
+        System.out.println("El subtotal es: "
+                + (subtotal % 1 == 0.0 ? (int) subtotal : String.format("%.2f", subtotal))
+                + "€, el IVA es "
+                + (sumaIVA % 1 == 0.0 ? (int) sumaIVA : String.format("%.2f", sumaIVA))
+                + "€ y el total es "
+                + (total % 1 == 0.0 ? (int) total : String.format("%.2f", total)) + "€.");
 
     }
 }

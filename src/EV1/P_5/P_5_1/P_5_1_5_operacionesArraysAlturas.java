@@ -1,6 +1,6 @@
 package EV1.P_5.P_5_1;
 
-import javax.swing.*;
+import javax.swing.JOptionPane;
 
 public class P_5_1_5_operacionesArraysAlturas {
     // Daniel Alonso Lázaro - 2022

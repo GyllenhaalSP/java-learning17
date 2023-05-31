@@ -1,6 +1,6 @@
 package EV1.P_4.P_4_1;
 
-import java.util.Scanner;
+import static utilities.StaticUtilities.sc;
 
 public class P_4_1_1_longitudNombre {
     // Daniel Alonso Lázaro - 2022
@@ -12,7 +12,6 @@ public class P_4_1_1_longitudNombre {
      */
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         String nombre, nombre2, nombreMasLargo, nombreMasCorto;
 
         System.out.print("Introduce un nombre: ");
@@ -22,16 +21,16 @@ public class P_4_1_1_longitudNombre {
             System.out.print("Introduce más nombres: ");
             nombre2 = sc.nextLine();
 
-            if (nombre.length() > nombre2.length()){
+            if (nombre.length() > nombre2.length()) {
                 nombreMasLargo = nombre;
                 nombreMasCorto = nombre2;
-            }else{
+            } else {
                 nombreMasLargo = nombre2;
                 nombreMasCorto = nombre;
             }
-            if(!nombre2.equals("")){
-                System.out.println("El nombre más largo es "+nombreMasLargo+" y tiene "+nombreMasLargo.length()+
-                        " letras y el más corto es "+nombreMasCorto+ " y tiene "+nombreMasCorto.length()+" letras.");
+            if (!nombre2.equals("")) {
+                System.out.println("El nombre más largo es " + nombreMasLargo + " y tiene " + nombreMasLargo.length() +
+                        " letras y el más corto es " + nombreMasCorto + " y tiene " + nombreMasCorto.length() + " letras.");
             }
             nombre = nombreMasLargo;
 

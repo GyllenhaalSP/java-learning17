@@ -1,6 +1,6 @@
 package EV1.P_REF1EV.P_REF_1;
 
-import java.util.Scanner;
+import static utilities.StaticUtilities.sc;
 
 public class P_REF_1_2 {
     // Daniel Alonso Lázaro - 2022
@@ -12,7 +12,6 @@ public class P_REF_1_2 {
     */
     public static void main(String[] args) {
         double sueldoBruto, sueldoNeto, descuentoSeguridadSocial, descuentoIRPF;
-        Scanner sc = new Scanner(System.in);
         System.out.print("Introduce el sueldo bruto: ");
         sueldoBruto = Double.parseDouble(sc.nextLine());
         descuentoSeguridadSocial = sueldoBruto * 0.05;

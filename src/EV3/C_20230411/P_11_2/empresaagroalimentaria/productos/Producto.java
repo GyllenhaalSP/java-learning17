@@ -2,7 +2,8 @@ package EV3.C_20230411.P_11_2.empresaagroalimentaria.productos;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Random;
+
+import static utilities.StaticUtilities.rand;
 
 public abstract class Producto {
     // Atributos
@@ -61,7 +62,6 @@ public abstract class Producto {
 
     private String generarLote() {
         int longitud = 10;
-        Random rand = new Random();
         StringBuilder lote = new StringBuilder();
         for (int i = 0; i < longitud; i++) {
             int numero = rand.nextInt(0, 10);
@@ -76,6 +76,7 @@ public abstract class Producto {
 
     @Override
     public String toString() {
-        return "\nProducto: " + nombre + " Lote: " + lote + " País de origen: " + paisOrigen + " Fecha de envasado: " + fechaEnvasado + " Fecha de caducidad: " + fechaCaducidad;
+        return "\nProducto: " + nombre + " Lote: " + lote + " País de origen: " + paisOrigen + " Fecha de envasado: "
+                + fechaEnvasado + " Fecha de caducidad: " + fechaCaducidad;
     }
 }

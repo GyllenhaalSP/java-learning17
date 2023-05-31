@@ -1,7 +1,7 @@
 package EV3.C_20230215;
 
-import java.util.Random;
-import static ProgramasPruebas.Metodos.mostrarArray;
+import static utilities.Metodos.mostrarArray;
+import static utilities.StaticUtilities.rand;
 
 /**.
  * @author Daniel Alonso Lázaro - 2023
@@ -12,7 +12,6 @@ public class EjDivEntYMod2 {
         final int FILAS = 4;
         final int COLUMNAS = 7;
         final int MAX_VALOR_RANDOM = 100;
-        Random rand = new Random();
         int[][] matriz = new int[FILAS][COLUMNAS];
 
         for (int i = 0; i < FILAS*COLUMNAS; i++) {

@@ -40,7 +40,5 @@ public class MainAgenciaAlquilerVehiculos {
     
     agencia.alquilarVehiculo(1, 0);
     System.out.println(agencia);
-
-
   }
 }

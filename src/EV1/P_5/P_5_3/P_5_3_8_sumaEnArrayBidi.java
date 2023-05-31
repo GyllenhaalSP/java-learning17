@@ -1,7 +1,7 @@
 package EV1.P_5.P_5_3;
 
-import static ProgramasPruebas.Metodos.cargarArray;
-import static ProgramasPruebas.Metodos.mostrarArray;
+import static utilities.Metodos.cargarArray;
+import static utilities.Metodos.mostrarArray;
 
 public class P_5_3_8_sumaEnArrayBidi {
     //Daniel Alonso Lázaro - 2023
@@ -17,13 +17,12 @@ public class P_5_3_8_sumaEnArrayBidi {
         cargarArray(array, 1, 100);
         mostrarArray("El array es ", array, 15);
 
-        for(int i = 0; i < array.length; i++)
-            for(int j = 0; j < array[i].length; j++)
+        for (int i = 0; i < array.length; i++)
+            for (int j = 0; j < array[i].length; j++)
                 array2[i] += array[i][j];
 
         for (int i = 0; i < array2.length; i++) {
-            System.out.println("La suma de la fila "+i+" es: "+array2[i]);
+            System.out.println("La suma de la fila " + i + " es: " + array2[i]);
         }
-
     }
 }

@@ -2,7 +2,8 @@ package EV3.C_20230217.Buscaminas;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
+
+import static utilities.StaticUtilities.rand;
 
 /**
  * Clase que simula el campo de juego del Buscaminas.
@@ -63,7 +64,6 @@ public class CuadriculaJuego {
     private void generarMinas() {
         int minasGeneradas = 0;
         int longitud = celdas.length;
-        Random rand = new Random();
         while (minasGeneradas < MINAS) {
             int posTempX = rand.nextInt(longitud);
             int posTempY = rand.nextInt(longitud);
@@ -236,9 +236,7 @@ public class CuadriculaJuego {
                         if (celdas[i][j].isMina()) {
                             System.out.print(celdas[i][j].getEmoji());
                         } else {
-                            System.out.print(celdas[i][j]
-                                    .getEMOJIS_DIGITOS_CELDAS()[celdas[i][j]
-                                    .getNumeroMinasAlrededor()]);
+                            System.out.print(celdas[i][j].getEMOJIS_DIGITOS_CELDAS()[celdas[i][j].getNumeroMinasAlrededor()]);
                         }
                     }
                 } else {

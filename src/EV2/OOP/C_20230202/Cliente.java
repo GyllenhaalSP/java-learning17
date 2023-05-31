@@ -20,6 +20,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente: {\nNombre:" + nombre + "\nApellidos:" + apellidos + "\nDirección:" + dir + "\nTeléfono:" + tel + " }";
+        return "Cliente: {\nNombre:" + nombre + "\nApellidos:" + apellidos + "\nDirección:" + dir
+                + "\nTeléfono:" + tel + " }";
     }
 }

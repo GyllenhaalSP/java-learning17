@@ -1,8 +1,7 @@
 package EV1.P_REF1EV.P_REF_2;
 
-import java.util.Scanner;
-
-import static ProgramasPruebas.Metodos.normalizador;
+import static utilities.Metodos.normalizador;
+import static utilities.StaticUtilities.sc;
 
 public class P_REF_2_2 {
     // Daniel Alonso Lázaro - 2022
@@ -21,7 +20,6 @@ public class P_REF_2_2 {
         int vocales = 0;
 
         do {
-            Scanner sc = new Scanner(System.in);
             System.out.print("Introduce una frase: ");
             frase = sc.nextLine();
             frase = normalizador(frase);

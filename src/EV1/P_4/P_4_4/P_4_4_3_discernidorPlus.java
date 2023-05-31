@@ -1,6 +1,6 @@
 package EV1.P_4.P_4_4;
 
-import static ProgramasPruebas.Metodos.esVocal;
+import static utilities.Metodos.esVocal;
 
 public class P_4_4_3_discernidorPlus {
     // Daniel Alonso Lázaro - 2022
@@ -13,12 +13,12 @@ public class P_4_4_3_discernidorPlus {
         char caracter = new java.util.Scanner(System.in).nextLine().charAt(0);
         if (Character.isDigit(caracter)) {
             System.out.println("Es un dígito");
-        }else if (Character.isUpperCase(caracter)) {
-            System.out.println(caracter+" es mayúscula y "+esVocal(caracter));
+        } else if (Character.isUpperCase(caracter)) {
+            System.out.println(caracter + " es mayúscula y " + esVocal(caracter));
         } else if (Character.isLowerCase(caracter)) {
-            System.out.println(caracter+" es minúscula y "+esVocal(caracter));
+            System.out.println(caracter + " es minúscula y " + esVocal(caracter));
         } else {
-            System.out.println(caracter+" es un caracter especial.");
+            System.out.println(caracter + " es un caracter especial.");
         }
     }
 }

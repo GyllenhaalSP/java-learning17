@@ -1,6 +1,5 @@
 package EV3.C_20230411.P_11_2.empresaagroalimentaria.productos.congelados;
 
-
 import EV3.C_20230411.P_11_2.empresaagroalimentaria.productos.Producto;
 import EV3.C_20230411.P_11_2.empresaagroalimentaria.productos.ProductoCongelado;
 

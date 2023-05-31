@@ -1,7 +1,7 @@
 package EV1.P_REF1EV.P_REF_1;
 
 import java.io.IOException;
-import java.util.Scanner;
+import static utilities.StaticUtilities.sc;
 
 public class P_REF_1_12 {
     // Daniel Alonso Lázaro - 2022
@@ -14,8 +14,6 @@ public class P_REF_1_12 {
     */
     public static void main(String[] args) throws IOException, InterruptedException {
         int num1, num2;
-        Scanner sc = new Scanner(System.in);
-
         System.out.print("Introduce un número de 3 cifras: ");
         num1 = Integer.parseInt(sc.nextLine());
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();

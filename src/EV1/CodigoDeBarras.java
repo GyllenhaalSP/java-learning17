@@ -1,14 +1,13 @@
 package EV1;
-import java.util.Scanner;
 
-import static ProgramasPruebas.Metodos.isCorrectDC;
-import static ProgramasPruebas.Metodos.normalize;
+import static utilities.Metodos.isCorrectDC;
+import static utilities.Metodos.normalize;
+import static utilities.StaticUtilities.sc;
 
 public class CodigoDeBarras {
     // Daniel Alonso Lázaro - 2022
 
     public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
         String code, newCompleteCode;
 
         do{

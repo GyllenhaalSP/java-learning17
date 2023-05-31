@@ -1,8 +1,9 @@
 package EV3.C_20230217.Buscaminas;
 
 import java.io.IOException;
-import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
+
+import static utilities.StaticUtilities.sc;
 
 /**
  * Clase principal del juego Buscaminas.
@@ -11,8 +12,6 @@ import java.util.concurrent.TimeUnit;
  * @version 1.0
  */
 public class Main {
-    static Scanner sc = new Scanner(System.in);
-
     public static void main(String[] args) throws IOException, InterruptedException {
 
         int[] opciones = bienvenida();

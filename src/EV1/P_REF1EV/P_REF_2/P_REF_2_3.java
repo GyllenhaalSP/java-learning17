@@ -1,9 +1,8 @@
 package EV1.P_REF1EV.P_REF_2;
 
-import java.util.Scanner;
-
-import static ProgramasPruebas.Metodos.dataIn;
-import static ProgramasPruebas.Metodos.media;
+import static utilities.Metodos.dataIn;
+import static utilities.Metodos.media;
+import static utilities.StaticUtilities.sc;
 
 public class P_REF_2_3 {
     // Daniel Alonso Lázaro - 2022
@@ -20,44 +19,42 @@ public class P_REF_2_3 {
         c) Obtener la temperatura diurna media del mes.
     */
     public static void main(String[] args) {
-
-        Scanner sc = new Scanner(System.in);
-        String responsable, respMin="";
+        String responsable, respMin = "";
         int cont = 0, temp, dias, minima = 0;
         double TempMedia, mediaMes = 0, AcuTemp;
 
-        do{
+        do {
             System.out.print("¿De cuántos días se van a introducir temperaturas?: ");
             dias = sc.nextInt();
             sc.nextLine();
-        }while(dias < 1);
+        } while (dias < 1);
 
-        do{
+        do {
             AcuTemp = 0;
             System.out.print("Introduzca el nombre del responsable de las mediciones: ");
             responsable = sc.nextLine();
             System.out.println("\nIntroduzca cuatro temperaturas diurnas:");
-            for(int i = 0; i < 4; i++) AcuTemp += dataIn();
+            for (int i = 0; i < 4; i++) AcuTemp += dataIn();
             TempMedia = media(AcuTemp, 4);
-            System.out.println("La temperatura media diurna es: "+TempMedia+"ºC\n");
+            System.out.println("La temperatura media diurna es: " + TempMedia + "ºC\n");
             mediaMes += TempMedia;
             AcuTemp = 0;
 
             System.out.println("\nIntroduzca cuatro temperaturas nocturnas:");
-            for(int i = 0; i < 4; i++){
+            for (int i = 0; i < 4; i++) {
                 temp = dataIn();
-                if (temp < minima){
+                if (temp < minima) {
                     minima = temp;
                     respMin = responsable;
                 }
                 AcuTemp += temp;
             }
-            System.out.println("La temperatura media nocturna es: "+media(AcuTemp, 4)+"ºC\n");
+            System.out.println("La temperatura media nocturna es: " + media(AcuTemp, 4) + "ºC\n");
             cont++;
-        }while(cont < dias);
+        } while (cont < dias);
 
         System.out.println("La temperatura nocturna más baja es: "
-                +minima+"ªC y el responsable de la medición es: "+respMin);
-        System.out.println("La temperatura media del periodo introducido es de "+media(mediaMes, dias)+"ºC");
+                + minima + "ªC y el responsable de la medición es: " + respMin);
+        System.out.println("La temperatura media del periodo introducido es de " + media(mediaMes, dias) + "ºC");
     }
 }

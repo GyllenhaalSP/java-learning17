@@ -1,6 +1,6 @@
 package EV1.P_3.P_3_3;
 
-import java.util.Scanner;
+import static utilities.StaticUtilities.sc;
 
 public class P_3_3_8_paqueteriaInternacional {
 //    Una compañía de transporte internacional tiene servicio en algunos países de América del
@@ -18,8 +18,6 @@ public class P_3_3_8_paqueteriaInternacional {
 //    en su caso, el rechazo de la entrega.
 
     public static void main(String[] args) {
-
-        Scanner sc = new Scanner(System.in);
         double userWeight, price, userInput = -1;
         System.out.print("Introduce el número de Kg: ");
         userWeight = sc.nextDouble();

@@ -1,7 +1,7 @@
 package EV1.P_5.P_5_3;
 
-import static ProgramasPruebas.Metodos.cargarArray;
-import static ProgramasPruebas.Metodos.mostrarArray;
+import static utilities.Metodos.cargarArray;
+import static utilities.Metodos.mostrarArray;
 
 public class P_5_3_7_notasClaseBidimensionales {
     //Daniel Alonso Lázaro - 2023
@@ -27,7 +27,7 @@ public class P_5_3_7_notasClaseBidimensionales {
 
         mostrarArray("Las notas son: ", notas, 10);
 
-        for(int i = 0; i < notas.length; i++) {
+        for (int i = 0; i < notas.length; i++) {
             for (int j = 0; j < notas[i].length; j++) {
                 if (notas[i][j] == notaMaxima) {
                     System.out.println("La nota máxima es: " + notaMaxima + ", alumno " + (j + 1) +

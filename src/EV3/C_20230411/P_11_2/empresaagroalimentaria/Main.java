@@ -7,10 +7,10 @@ import EV3.C_20230411.P_11_2.empresaagroalimentaria.productos.congelados.Congela
 import EV3.C_20230411.P_11_2.empresaagroalimentaria.productos.congelados.CongeladoNitrogeno;
 
 import java.time.LocalDate;
-import java.util.Scanner;
+
+import static utilities.StaticUtilities.sc;
 
 public class Main {
-    public static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
         EmpresaAgroalimentaria empresa = new EmpresaAgroalimentaria("Alimentación Chen", "88278890R", "Calle Falsa 123", "618182368");

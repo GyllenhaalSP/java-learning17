@@ -1,7 +1,10 @@
 package EV1.VendingMachine;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.ImageIcon;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+import java.awt.Dialog;
+import java.awt.Image;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Arrays;

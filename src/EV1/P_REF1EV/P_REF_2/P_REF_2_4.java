@@ -1,6 +1,6 @@
 package EV1.P_REF1EV.P_REF_2;
 
-import java.util.Scanner;
+import static utilities.StaticUtilities.sc;
 
 public class P_REF_2_4 {
     // Daniel Alonso Lázaro - 2022
@@ -23,7 +23,6 @@ public class P_REF_2_4 {
         Por cada caso de prueba n, se mostrará el último dígito (el de la izquierda) de su factorial, n!.
     */
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         int casos = 1, num = 0, primerDigito;
         long factorial;
 
@@ -46,7 +45,7 @@ public class P_REF_2_4 {
             }
 
             primerDigito = Integer.parseInt(Long.toString(factorial).substring(0, 1));
-            System.out.println("El primer dígito de "+num+"! es "+primerDigito+".");
+            System.out.println("El primer dígito de " + num + "! es " + primerDigito + ".");
         }
     }
 }

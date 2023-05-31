@@ -1,6 +1,6 @@
 package EV1.P_5.P_5_3;
 
-import java.util.Scanner;
+import static utilities.StaticUtilities.sc;
 
 public class P_5_3_9_potenciasEnArray {
     //Daniel Alonso Lázaro - 2023
@@ -15,22 +15,21 @@ public class P_5_3_9_potenciasEnArray {
     public static void main(String[] args) {
         int[][] potencias = new int[2][20];
         int userChoice;
-        Scanner sc = new Scanner(System.in);
 
-        for(int i = 0; i < potencias.length; i++){
-            for(int j = 0; j < potencias[i].length; j++){
-                if(i == 0) potencias[i][j] = j;
-                if(i == 1) potencias[i][j] = (int) Math.pow(2, j);
+        for (int i = 0; i < potencias.length; i++) {
+            for (int j = 0; j < potencias[i].length; j++) {
+                if (i == 0) potencias[i][j] = j;
+                if (i == 1) potencias[i][j] = (int) Math.pow(2, j);
             }
         }
 
-        do{
+        do {
             System.out.print("Introduce la potencia que quieres visualizar (0-19) o -1000 para salir: ");
             userChoice = sc.nextInt();
-            for(int i = 0; i < 1; i++)
+            for (int i = 0; i < 1; i++)
                 for (int j = 0; j < potencias[i].length; j++)
-                    if(userChoice == potencias[i][j])
+                    if (userChoice == potencias[i][j])
                         System.out.println("2^" + userChoice + " = " + potencias[i + 1][j]);
-        }while(userChoice != -1000);
+        } while (userChoice != -1000);
     }
 }

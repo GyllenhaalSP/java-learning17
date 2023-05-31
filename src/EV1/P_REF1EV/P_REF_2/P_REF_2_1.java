@@ -1,8 +1,7 @@
 package EV1.P_REF1EV.P_REF_2;
 
-import java.util.Scanner;
-
-import static ProgramasPruebas.Metodos.calculoSalarios;
+import static utilities.Metodos.calculoSalarios;
+import static utilities.StaticUtilities.sc;
 
 public class P_REF_2_1 {
     // Daniel Alonso Lázaro - 2022
@@ -27,8 +26,6 @@ public class P_REF_2_1 {
     */
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
         int tipoEmpleado, contadorTipo1 = 0, contadorTipo2 = 0, contadorTipo3 = 0, contadorOtros = 0;
         double salarioBase, complementos, salarioFinal, totalSalarios,
                 totalTipo1 = 0d, totalTipo2 = 0d, totalTipo3 = 0d, totalOtros = 0d;
@@ -41,12 +38,12 @@ public class P_REF_2_1 {
             do {
                 System.out.print("Introduce el salario base: ");
                 salarioBase = Double.parseDouble(sc.nextLine());
-            }while(salarioBase < 1);
+            } while (salarioBase < 1);
 
             do {
                 System.out.print("Introduce el importe de los complementos: ");
                 complementos = Double.parseDouble(sc.nextLine());
-            }while(complementos < 1);
+            } while (complementos < 1);
 
             switch (tipoEmpleado) {
                 case 1 -> {
@@ -76,27 +73,27 @@ public class P_REF_2_1 {
                 }
             }
             System.out.println("El salario final del empleado es: "
-                    +(salarioFinal%1==0?(int)salarioFinal:String.format("%.2f", salarioFinal))+"€");
+                    + (salarioFinal % 1 == 0 ? (int) salarioFinal : String.format("%.2f", salarioFinal)) + "€");
             System.out.print("¿Quieres introducir más datos? (S/N): ");
             respuesta = sc.next().charAt(0);
             sc.nextLine();
-        }while(Character.toLowerCase(respuesta) == 's');
+        } while (Character.toLowerCase(respuesta) == 's');
 
         totalSalarios = totalTipo1 + totalTipo2 + totalTipo3 + totalOtros;
 
         System.out.println("El número de empleados de tipo 1 es: "
-                +contadorTipo1+" y el total de sus salarios es: "
-                +(totalTipo1 % 1 == 0 ? (int)totalTipo1 : String.format("%.2f", totalTipo1))+"€");
+                + contadorTipo1 + " y el total de sus salarios es: "
+                + (totalTipo1 % 1 == 0 ? (int) totalTipo1 : String.format("%.2f", totalTipo1)) + "€");
         System.out.println("El número de empleados de tipo 2 es: "
-                +contadorTipo2+" y el total de sus salarios es: "
-                +(totalTipo2 % 1 == 0 ? (int)totalTipo2 : String.format("%.2f", totalTipo2))+"€");
+                + contadorTipo2 + " y el total de sus salarios es: "
+                + (totalTipo2 % 1 == 0 ? (int) totalTipo2 : String.format("%.2f", totalTipo2)) + "€");
         System.out.println("El número de empleados de tipo 3 es: "
-                +contadorTipo3+" y el total de sus salarios es: "
-                +(totalTipo3 % 1 == 0 ? (int)totalTipo3 : String.format("%.2f", totalTipo3))+"€");
+                + contadorTipo3 + " y el total de sus salarios es: "
+                + (totalTipo3 % 1 == 0 ? (int) totalTipo3 : String.format("%.2f", totalTipo3)) + "€");
         System.out.println("El número de empleados de otro tipo es: "
-                +contadorOtros+" y el total de sus salarios es: "
-                +(totalOtros % 1 == 0 ? (int)totalOtros : String.format("%.2f", totalOtros))+"€");
+                + contadorOtros + " y el total de sus salarios es: "
+                + (totalOtros % 1 == 0 ? (int) totalOtros : String.format("%.2f", totalOtros)) + "€");
         System.out.println("El total de salarios es: "
-                +(totalSalarios % 1 == 0 ? (int)totalSalarios : String.format("%.2f", totalSalarios))+"€");
+                + (totalSalarios % 1 == 0 ? (int) totalSalarios : String.format("%.2f", totalSalarios)) + "€");
     }
 }

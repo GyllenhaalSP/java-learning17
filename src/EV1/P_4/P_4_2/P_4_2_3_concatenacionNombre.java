@@ -1,6 +1,6 @@
 package EV1.P_4.P_4_2;
 
-import java.util.Scanner;
+import static utilities.StaticUtilities.sc;
 
 public class P_4_2_3_concatenacionNombre {
     // Daniel Alonso Lázaro - 2022
@@ -10,8 +10,7 @@ public class P_4_2_3_concatenacionNombre {
     una única cadena. (concat(String))
     */
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String pos1, pos2, pos3, resultado ="";
+        String pos1, pos2, pos3, resultado = "";
 
         System.out.print("Introduce el primer nombre: ");
         pos1 = sc.nextLine();
@@ -20,7 +19,7 @@ public class P_4_2_3_concatenacionNombre {
         System.out.print("Introduce el tercer nombre: ");
         pos3 = sc.nextLine();
 
-        resultado = resultado.concat(pos1+" ").concat(pos2+" ").concat(pos3+" ");
+        resultado = resultado.concat(pos1 + " ").concat(pos2 + " ").concat(pos3 + " ");
 
         System.out.println(resultado);
     }

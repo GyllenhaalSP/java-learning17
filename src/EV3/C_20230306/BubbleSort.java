@@ -1,7 +1,8 @@
 package EV3.C_20230306;
 
-import java.util.Random;
 import java.util.concurrent.TimeUnit;
+
+import static utilities.StaticUtilities.rand;
 
 /**
  * Clase contenedora de los diferentes métodos para implementar el algoritmo de ordenación por burbuja.
@@ -111,7 +112,7 @@ public class BubbleSort {
      * @return Array unidimensional cargado con números enteros aleatorios entre min inclusive y max inclusive.
      */
     public static int[] cargarArray(int[] v, int min, int max){
-        return new Random().ints(v.length, min, max + 1).toArray();
+        return rand.ints(v.length, min, max + 1).toArray();
     }
 
     /**

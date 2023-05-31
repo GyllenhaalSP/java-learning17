@@ -1,12 +1,11 @@
 package EV1.P_3.P_3_2;
 
-import java.util.Scanner;
+import static utilities.StaticUtilities.sc;
 
 public class P_3_2_15_numPrimo {
     //Introducir un número por teclado y mostrar si el número es primo o no.
     //(*) Un número es primo si es divisible solo por 1 y por sí mismo.
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         int num, loop, cont;
         cont = 0;
         loop = 1;

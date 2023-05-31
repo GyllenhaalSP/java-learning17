@@ -1,8 +1,9 @@
 package EV1.P_4.P_4_4;
 
 import java.io.IOException;
-import java.util.Scanner;
-import static ProgramasPruebas.Metodos.cls;
+
+import static utilities.Metodos.cls;
+import static utilities.StaticUtilities.sc;
 
 public class P_4_4_5_relojDigital {
     // Daniel Alonso Lázaro - 2022
@@ -11,7 +12,6 @@ public class P_4_4_5_relojDigital {
     visualizará en todo momento las horas, minutos y segundos con el formato “hh:mm:ss”.
     */
     public static void main(String[] args) throws InterruptedException, IOException {
-        Scanner sc = new Scanner(System.in);
         System.out.print("Introduce las horas: ");
         int hours = sc.nextInt();
         System.out.print("Introduce los minutos: ");
@@ -19,7 +19,7 @@ public class P_4_4_5_relojDigital {
         System.out.print("Introduce los segundos: ");
         int seconds = sc.nextInt();
         String reloj;
-        while(true) {
+        while (true) {
             while (hours < 24) {
                 while (minutes < 60) {
                     while (seconds < 60) {
