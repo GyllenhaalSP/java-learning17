@@ -1,4 +1,4 @@
-package EV3.EmpresaAlquilerVehiculos.programacion.negocios.empresaalquilervehiculos;
+package EV3.empresaalquilervehiculos.programacion.negocios.empresaalquilervehiculos;
 
 public class EmpresaAlquilerVehiculos extends AbstractEmpresaAlquilerVehiculos
     implements InterfazEmpresaAlquilerVehiculos {

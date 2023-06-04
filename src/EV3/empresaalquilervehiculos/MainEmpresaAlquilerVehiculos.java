@@ -1,8 +1,8 @@
-package EV3.EmpresaAlquilerVehiculos;
+package EV3.empresaalquilervehiculos;
 
-import EV3.EmpresaAlquilerVehiculos.programacion.negocios.empresaalquilervehiculos.ClienteParticular;
-import EV3.EmpresaAlquilerVehiculos.programacion.negocios.empresaalquilervehiculos.EmpresaAlquilerVehiculos;
-import EV3.EmpresaAlquilerVehiculos.programacion.negocios.empresaalquilervehiculos.Turismo;
+import EV3.empresaalquilervehiculos.programacion.negocios.empresaalquilervehiculos.ClienteParticular;
+import EV3.empresaalquilervehiculos.programacion.negocios.empresaalquilervehiculos.EmpresaAlquilerVehiculos;
+import EV3.empresaalquilervehiculos.programacion.negocios.empresaalquilervehiculos.Turismo;
 
 public class MainEmpresaAlquilerVehiculos {
   public static void main(String[] args) {
